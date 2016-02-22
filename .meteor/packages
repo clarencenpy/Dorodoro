@@ -20,3 +20,8 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 aldeed:collection2
 meteortoys:allthings
+kadira:flow-router
+kadira:blaze-layout
+fortawesome:fontawesome
+accounts-facebook
+service-configuration
