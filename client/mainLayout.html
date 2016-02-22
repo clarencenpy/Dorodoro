@@ -1,0 +1,31 @@
+<template name="mainLayout">
+    {{#onlyIfLoggedIn}}
+        <section class="w-section mobile-wrapper">
+            <div class="page-content" id="main-stack">
+                {{>navigation}}
+                {{>Template.dynamic template=content}}
+            </div>
+        </section>
+    {{/onlyIfLoggedIn}}
+    <script>
+        WebFont.load({
+            google: {
+                families: ["Montserrat:400,700"]
+            }
+        });
+    </script>
+</template>
+
+<template name="onlyIfLoggedIn">
+    {{#if authInProcess}}
+        <p>{{>loading}}</p>
+    {{else}}
+        {{#if canShow}}
+            {{> UI.contentBlock }}
+            <!--Run framework code after contentBlock is loaded-->
+            <script src="/framework.js"></script>
+        {{else}}
+            {{>login}}
+        {{/if}}
+    {{/if}}
+</template>
