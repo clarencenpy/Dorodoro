@@ -1,7 +1,7 @@
 <template name="mainLayout">
     {{#onlyIfLoggedIn}}
         <section class="w-section mobile-wrapper">
-            <div class="page-content" id="main-stack">
+            <div class="page-content">
                 {{>navigation}}
                 {{>Template.dynamic template=content}}
             </div>

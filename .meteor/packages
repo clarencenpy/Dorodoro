@@ -25,3 +25,5 @@ kadira:blaze-layout
 fortawesome:fontawesome
 accounts-facebook
 service-configuration
+zimme:active-route
+arillo:flow-router-helpers
