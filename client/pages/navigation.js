@@ -3,3 +3,9 @@ Template.navigation.events({
         Meteor.logout()
     }
 })
+
+Template.navigation.helpers({
+    header() {
+        return Session.get('header') || 'Dorodoro';
+    }
+})

@@ -2,17 +2,12 @@
     {{#onlyIfLoggedIn}}
         <section class="w-section mobile-wrapper">
             <div class="page-content">
+                {{>navigation}}
                 {{>Template.dynamic template=content}}
             </div>
         </section>
+    <script src="/framework.js"></script>
     {{/onlyIfLoggedIn}}
-    <script>
-        WebFont.load({
-            google: {
-                families: ["Montserrat:400,700", "Fredoka One:400"]
-            }
-        });
-    </script>
 </template>
 
 <template name="onlyIfLoggedIn">
