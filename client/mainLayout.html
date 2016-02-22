@@ -1,10 +1,8 @@
 <template name="mainLayout">
     {{#onlyIfLoggedIn}}
         <section class="w-section mobile-wrapper">
-            <div class="page-content">
-                {{>navigation}}
-                {{>Template.dynamic template=content}}
-            </div>
+            {{>navigation}}
+            {{>Template.dynamic template=content}}
         </section>
     <script src="/framework.js"></script>
     {{/onlyIfLoggedIn}}
