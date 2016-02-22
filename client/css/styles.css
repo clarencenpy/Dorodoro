@@ -384,10 +384,19 @@ a {
 
 .logo-login {
   height: 211px;
-  background-image: url('../images/logo.png');
+  background-image: url('/images/dorodoro.png');
   background-position: 50% 50%;
-  background-size: 121px;
+  background-size: 250px;
   background-repeat: no-repeat;
+}
+.logo-text {
+  font-family: "Fredoka One";
+  font-weight: 700;
+  font-size: 48px;
+  color: #d7cfff;
+  text-shadow: 3px 0px 0px rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 30px;
 }
 .logo-login.smaller {
   height: 97px;
@@ -401,7 +410,7 @@ a {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  padding-bottom: 5px;
+  padding-bottom: 20px;
 }
 .padding {
   padding-right: 28px;
