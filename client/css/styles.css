@@ -95,7 +95,7 @@ a {
 .mobile-wrapper {
   position: relative;
   width: 342px;
-  height: 570px;
+  height: 100vh;
   margin-right: auto;
   margin-left: auto;
   background-color: white;
@@ -271,8 +271,6 @@ a {
   position: absolute;
   display: none;
   width: 92%;
-  padding-right: 22px;
-  padding-left: 22px;
   background-color: white;
 }
 .nav-menu.bg-gradient.visible {
@@ -290,10 +288,14 @@ a {
 .nav-menu-link {
   display: block;
   height: 50px;
-  padding: 0px;
+  padding: 0px 22px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  font-size: 16px;
   text-decoration: none;
+}
+.nav-menu-link.active {
+  background-color: rgba(0, 0, 0, 0.53);
+  color: rgb(255, 255, 255);
 }
 .nav-menu-link:active {
   color: white;

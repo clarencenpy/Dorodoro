@@ -2,7 +2,6 @@
     {{#onlyIfLoggedIn}}
         <section class="w-section mobile-wrapper">
             <div class="page-content">
-                {{>navigation}}
                 {{>Template.dynamic template=content}}
             </div>
         </section>
@@ -22,8 +21,6 @@
     {{else}}
         {{#if canShow}}
             {{> UI.contentBlock }}
-            <!--Run framework code after contentBlock is loaded-->
-            <script src="/framework.js"></script>
         {{else}}
             {{>login}}
         {{/if}}
