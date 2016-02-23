@@ -3,9 +3,11 @@ Template.store.onCreated(function () {
     template.goingBack = !!Session.get('goingBack')
     Session.set('goingBack', false)
 })
+
 Template.store.onRendered(function () {
     Session.set('header', 'Gift Store')
 })
+
 Template.store.helpers({
     products() {
         return Products.find()
@@ -14,9 +16,7 @@ Template.store.helpers({
         return Template.instance().goingBack
     }
 })
-Template.store.onDestroyed(function () {
-    Session.set('header', null)
-})
+
 Template.store.events({
     'click .group-block'() {
         let pid = this._id
@@ -25,5 +25,9 @@ Template.store.events({
         Session.set('pageStack', pageStack)
         FlowRouter.go('product', {id: pid})
     }
+})
+
+Template.store.onDestroyed(function () {
+    Session.set('header', null)
 })
 

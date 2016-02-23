@@ -1,3 +1,18 @@
+Template.navigation.onRendered(function () {
+    frameworkInit()
+})
+
+
+Template.navigation.helpers({
+    header() {
+        return Session.get('header') || 'Dorodoro';
+    },
+    showBackButton() {
+        let pageStack = Session.get('pageStack') || []
+        return pageStack.length > 0
+    }
+})
+
 Template.navigation.events({
     'click #logout-btn'() {
         Meteor.logout()
@@ -10,18 +25,4 @@ Template.navigation.events({
         Session.set('goingBack', true)
         FlowRouter.go(page)
     }
-})
-
-Template.navigation.helpers({
-    header() {
-        return Session.get('header') || 'Dorodoro';
-    },
-    showBackButton() {
-        let pageStack = Session.get('pageStack') || []
-        return pageStack.length > 0
-    }
-})
-
-Template.navigation.onRendered(function () {
-    frameworkInit()
 })
