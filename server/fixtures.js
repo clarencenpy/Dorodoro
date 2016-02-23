@@ -1,20 +1,10 @@
-if (Products.find().count() === 0) {
-    inventory.forEach(function (p) {
-        p.comments = p.comments.map(function (comment) {
-            comment.date = new Date()
-            return comment
-        })
-        Products.insert(p)
-    })
-}
-
 const inventory = [
     {
         "title": "Moscow Mule Mug",
         "description": "Stainless steel takes on a coppery finish as a maintenance-free alternative to the traditional copper mug used to serve the 1950s classic Moscow Mule cocktail of lime juice, vodka, ginger beer and plenty of ice. In order to keep the copper plating from tarnishing, we have applied a protective lacquer finish best protected by hand washing with mild soap.",
-        "category": ["Gadgets", "For Him"],
-        "price": 253.3,
-        "image": "http://images.crateandbarrel.com/is/image/Crate/MoscowMule16ozF13/\u0026$web_product_hero$\u0026wid\u003d625\u0026hei\u003d625/150812144032/moscow-mule-glass.jpg",
+        "category": ["Gadgets", "For Her"],
+        "price": 73.8,
+        "image": "https://foodservice.libbey.com/var/libbey/storage/images/libbey-foodservice-home/product-repository/copper-moscow-mule-mug/206668-120-eng-US/Copper-Moscow-Mule-Mug.jpg",
         "likes": 117,
         "rating": [
             3,
@@ -42,12 +32,11 @@ const inventory = [
         }
     },
     {
-        "index": 2,
-        "title": "A Wallet",
+        "title": "Guy Wallet",
         "description": "A fashionable Wallet all men must have.",
-        "category": "Fashion",
+        "category": ["Fashion", "For Him"],
         "price": 146.81,
-        "image": "http://www.mensfitness.com/sites/mensfitness.com/files/styles/photo_gallery_full/public/items-every-man-should-own-wallet.jpg?itok\u003dGZZkZsfN",
+        "image": "http://www.refinedguy.com/wp-content/uploads/2012/10/capsule-minimalist-wallet.jpg",
         "likes": 56,
         "rating": [
             3,
@@ -83,12 +72,11 @@ const inventory = [
         }
     },
     {
-        "index": 3,
         "title": "A Pale Blue Shirt",
         "description": "An essential workaday item, this. Wear with a beige, grey or navy suit, a tie in a darker shade of blue and wait patiently for your promotion.",
-        "category": "Fashion",
+        "category": ["Fashion", "For Him"],
         "price": 144.01,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_1440_43/pale-blue-shirt-43.jpg",
+        "image": "http://www.moss.co.uk/images/original/964226891_01.jpg",
         "likes": 149,
         "rating": [
             2,
@@ -116,12 +104,11 @@ const inventory = [
         }
     },
     {
-        "index": 4,
         "title": "Tan Derbies",
         "description": "Brilliant with navy and just as good with grey, a pair of tan derbies works as well with denim as it will with more traditional tailoring.",
-        "category": "Fashion",
+        "category": ["Fashion","For Him"],
         "price": 273.01,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_1440_43/derby-shoes-43.jpg",
+        "image": "https://s-media-cache-ak0.pinimg.com/736x/f5/eb/62/f5eb626b6114eea08891104bc0585472.jpg",
         "likes": 74,
         "rating": [
             1,
@@ -149,12 +136,11 @@ const inventory = [
         }
     },
     {
-        "index": 5,
         "title": "A Woven Silk Burgundy Tie",
-        "description": "Modern and chic, a woven silk tie will lift even the most boring suit and shirt combinations. Forgo navy in favour of a fetching shade of burgundy, loden green or gold (yes, gold).",
-        "category": "Fashion",
+        "description": "Modern and chic, a woven silk tie will lift even the most boring suit and shirt combinations.",
+        "category": ["Fashion","For Him"],
         "price": 197.36,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_1440_43/knitted-tie-43.jpg",
+        "image": "http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg",
         "likes": 44,
         "rating": [
             1,
@@ -182,12 +168,11 @@ const inventory = [
         }
     },
     {
-        "index": 6,
         "title": "Timex Watch",
         "description": "A simple and affordable Timex is a wardrobe banker. This casual but classic Expedition model will work with anything.",
-        "category": "Fashion",
+        "category": ["Fashion","For Him"],
         "price": 187.55,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_1440_43/Timex-expedition-43.jpg",
+        "image": "http://www.ablogtowatch.com/wp-content/uploads/2011/11/Timex-watches-2011-1.jpg",
         "likes": 202,
         "rating": [
             4,
@@ -215,12 +200,11 @@ const inventory = [
         }
     },
     {
-        "index": 7,
         "title": "Zac Posen Eartha Top-Handle Bag",
         "description": "This gorgeous handbag is great for the woman who has everything, and needs a great bag to carry it all around.",
-        "category": "Fashion",
+        "category": ["Fashion", "For Her"],
         "price": 247.49,
-        "image": "https://heavyeditorial.files.wordpress.com/2015/08/zac-bag.jpg?quality\u003d65\u0026strip\u003dall\u0026strip\u003dall",
+        "image": "https://farm9.staticflickr.com/8646/15260168363_e670154786.jpg",
         "likes": 64,
         "rating": [
             3,
@@ -252,12 +236,11 @@ const inventory = [
         }
     },
     {
-        "index": 8,
         "title": "Timberland Boots",
-        "description": "Timberland Women\u0027s 6-Inch Premium Waterproof Boot-Dark Pink White Grey",
-        "category": "Fashion",
+        "description": "Timberland Women's 6-Inch Premium Waterproof Boot-Dark Pink Black Grey",
+        "category": ["Fashion","For Her"],
         "price": 180.54,
-        "image": "http://www.uktimberlandonline.co.uk/PicImages/Timberland%20Women\u0027s%206-Inch%20Premium%20Waterproof%20Boot-Dark%20Pink%20White%20Grey.jpg",
+        "image": "https://s-media-cache-ak0.pinimg.com/736x/de/3a/4b/de3a4b90c68c9795be0f93a8f7f4bbce.jpg",
         "likes": 145,
         "rating": [
             4,
@@ -285,12 +268,11 @@ const inventory = [
         }
     },
     {
-        "index": 9,
         "title": "Kate Middleton Wardrobe Dress",
         "description": "TEMPERLEY LONDON Amoret Lace Dress",
-        "category": "Fashion",
+        "category": ["Fashion", "For Her"],
         "price": 280.71,
-        "image": "http://www.polyvore.com/cgi/img-thing?.out\u003djpg\u0026size\u003dl\u0026tid\u003d36933173",
+        "image": "http://www.eonline.com/eol_images/Entire_Site/20131111/rs_634x1024-131211123203-634.Duchess-Cambridge-Temperley-Lace-Dress.jl.121113.jpg",
         "likes": 201,
         "rating": [
             5,
@@ -322,12 +304,11 @@ const inventory = [
         }
     },
     {
-        "index": 10,
         "title": "NAKETANO Jennifer Hart",
         "description": "Hooded Jacket for Women. Fabric: 65% Cotton, 35% Polyester.",
-        "category": "Fashion",
+        "category": ["Fashion","For Her"],
         "price": 157.22,
-        "image": "https://planet-sports-res.cloudinary.com/images/t_ps_xl/planetsports/products/43709700_00/naketano-jennifer-hart-hooded-jacket-women-pink.jpg",
+        "image": "http://i01.i.aliimg.com/wsphoto/v0/577835029/Hotsale-women-s-long-sleeve-hoodies-zipper-decorated-hooded-Coat-cotton-women-s-zipper-wool-sweater.jpg",
         "likes": 45,
         "rating": [
             3,
@@ -359,12 +340,11 @@ const inventory = [
         }
     },
     {
-        "index": 11,
         "title": "Technics SL-1200",
         "description": "The sequence ‘SL-1200’ can send men of a certain age into minor raptures, it being the model of Technics turntable lauded by DJs through the acid house years and considered so culturally important London’s Science Museum has one on permanent display.",
-        "category": "Gadgets",
+        "category": ["Gadgets","For Him"],
         "price": 129.44,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_720_43/new_technics_turntable-616x440.jpg",
+        "image": "http://www.vinylengine.com/images/model/technics_sl-1200_mk2_top.jpg",
         "likes": 146,
         "rating": [
             5,
@@ -396,12 +376,11 @@ const inventory = [
         }
     },
     {
-        "index": 12,
         "title": "Bar10der",
-        "description": "Enter Bar10der, a ten-in-one tool that’ll have you whipping up mojitos like no one’s business. Featuring cocktail-making essentials like measuring cups, a juicer and a strainer, it\u0027s everything you\u0027ll need when you want to play at mixology.",
-        "category": "Gadgets",
+        "description": "Enter Bar10der, a ten-in-one tool that’ll have you whipping up mojitos like no one’s business. Featuring cocktail-making essentials like measuring cups, a juicer and a strainer, it's everything you'll need when you want to play at mixology.",
+        "category": ["Home & Living"],
         "price": 183.71,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_1080_43/l_3-gadgets-bar10der-1.jpg",
+        "image": "http://media.firebox.com/pic/p5714_column_grid_12.jpg",
         "likes": 151,
         "rating": [
             5,
@@ -429,12 +408,11 @@ const inventory = [
         }
     },
     {
-        "index": 13,
         "title": "Leica Adventure Camera",
         "description": "Lecia’s new camera is the first they’ve designed for outdoor and underwater use.",
-        "category": "Gadgets",
+        "category": ["Gadgets"],
         "price": 188.63,
-        "image": "http://assets.esquire.co.uk/images/uploads/fourbythree/_1440_43/Leica-X-U_top-43.jpg",
+        "image": "http://theawesomer.com/photos/2016/01/leica_x_u_camera_1.jpg",
         "likes": 48,
         "rating": [
             2,
@@ -470,12 +448,11 @@ const inventory = [
         }
     },
     {
-        "index": 14,
         "title": "Behmor Connected 8 Cup Coffee Maker",
         "description": "Truly modern brewing, made possible through a mobile app that runs from your Apple or Android smart phone so you can wake up to fresh-brewed coffee or hot water—and texts you when your beverage is ready.",
-        "category": "Gadgets",
+        "category": ["Gadgets"],
         "price": 108.92,
-        "image": "http://images.crateandbarrel.com/is/image/Crate/BrazenConnectedCoffeeMakerS16/\u0026$web_product_hero$\u0026wid\u003d969\u0026hei\u003d969/151208114019/brazen-connected-coffee-maker.jpg",
+        "image": "http://cnet2.cbsistatic.com/hub/i/r/2015/10/22/782a24f6-2d3f-4af0-a4dc-33ec738c0e22/thumbnail/770x433/5a7a11f6eab5a9f4c89b643abca81468/oxo-barista-brain-product-photos-8.jpg",
         "likes": 164,
         "rating": [
             5,
@@ -511,12 +488,11 @@ const inventory = [
         }
     },
     {
-        "index": 15,
         "title": "Tria Beauty Hair Removal Laser 4X",
         "description": "Tria is the first FDA-cleared laser available for home use.",
-        "category": "Gadgets",
-        "price": 267.46,
-        "image": "https://heavyeditorial.files.wordpress.com/2015/08/tria.jpg?quality\u003d65\u0026strip\u003dall\u0026strip\u003dall",
+        "category": ["Gadgets","For Her"],
+        "price": 67.46,
+        "image": "http://media.glittergeek.ca/wp-content/uploads/2014/05/Tria-Beauty-Hair-Removal-Laser-4X-and-Calming-Gel.jpg",
         "likes": 50,
         "rating": [
             1,
@@ -552,12 +528,11 @@ const inventory = [
         }
     },
     {
-        "index": 16,
         "title": "Amazon Echo",
-        "description": "It understands your voice and answers your question promptly. The beauty is you don\u0027t have to touch the device, and it constantly listens to you.",
-        "category": "Gadgets",
+        "description": "It understands your voice and answers your question promptly. The beauty is you don't have to touch the device, and it constantly listens to you.",
+        "category": ["Gadgets"],
         "price": 106.3,
-        "image": "http://lh3.googleusercontent.com/jA5R8cvN3P-w--0zKwgQzZ_iX8aXe1Qxbg5WrRAj8sB77g2dK6AB6IxkdPZFRutr_WRaCOppZsBTEwz-x0UHaqgh0zFr",
+        "image": "http://www.technobuffalo.com/wp-content/uploads/2015/06/Amazon-Echo-Main-Image.jpg",
         "likes": 86,
         "rating": [
             2,
@@ -585,12 +560,11 @@ const inventory = [
         }
     },
     {
-        "index": 17,
         "title": "Beats Studio Wireless Over-Ear Headphone",
         "description": "The Beats Acoustic Engine(TM) makes your listening experience personal and real. ",
-        "category": "Gadgets",
+        "category": ["Gadgets"],
         "price": 188.03,
-        "image": "http://lh3.googleusercontent.com/T8NN-YrZai4n9AMOENiNSHB1MDHnDnjjrbn0XK49TCYubuO80GgsWdVH-x0VOTsnPv_BYZP1RbBBUvAr4VwmYETUCxOD5A",
+        "image": "http://cnet4.cbsistatic.com/hub/i/r/2014/03/18/adf02390-b0b9-11e3-a24e-d4ae52e62bcc/resize/1170xauto/bda817d4a2f7f30a562a88cbd1c510f2/Beats_Studio_Wireless_35834962-03_1.jpg",
         "likes": 82,
         "rating": [
             5,
@@ -626,12 +600,11 @@ const inventory = [
         }
     },
     {
-        "index": 18,
         "title": "Anker PowerCore+ Lipstick-Sized Portable Charger",
         "description": "Fast Charging Technology: PowerIQ detects your device to deliver its fastest possible charge speed up to 1 amp.",
-        "category": "Gadgets",
+        "category": ["Gadgets"],
         "price": 121.4,
-        "image": "http://lh3.googleusercontent.com/InaShETfZwAqtFi2U7YCq2yntQZzkVbyfyUQFvrJClYO6UCfdX0rq5Onaz8zd2DqKdN4IeUatSjX2jUd3Z8wcF-G-TBV_A",
+        "image": "https://lh4.googleusercontent.com/v0KnVkAaYZpA0GPKjWFljBRRklV0gFo0GI0JGdbo26aKdLKtYm2SSB4xkNmMSB-Bv26qTDy_w6C8Vq7ajsJP1EqB4V6hndyDfSbPu0tKhb66oa3uoXERyZjdqRz9S4KVkpVvlQfJ",
         "likes": 152,
         "rating": [
             4,
@@ -667,12 +640,11 @@ const inventory = [
         }
     },
     {
-        "index": 19,
         "title": "Portable Ultrasonic Cool Mist Aroma Humidifier",
         "description": "Whisper-Quiet Ultrasonic Operation - humidify your living space to prevent dry, stuffy air and flu/cold germs infecting your loved ones. Prevent dry and chapped skin in dry winter months.",
-        "category": "Gadgets",
+        "category": ["Gadgets","For Her"],
         "price": 109.45,
-        "image": "http://ecx.images-amazon.com/images/I/51QOHOg0lLL._SX522_.jpg",
+        "image": "http://ecx.images-amazon.com/images/I/51Io7iXwYfL._SY355_.jpg",
         "likes": 210,
         "rating": [
             3,
@@ -704,12 +676,11 @@ const inventory = [
         }
     },
     {
-        "index": 20,
         "title": "AcousticSheep Classic Sleep Headphones",
         "description": "Accelerate like a sports car. A revolutionary 2,000 watts of power means a completely new riding experience.",
-        "category": "Gadgets",
+        "category": ["Gadgets"],
         "price": 208.39,
-        "image": "http://ecx.images-amazon.com/images/I/61sM%2BP0%2BuFL._SX522_.jpg",
+        "image": "http://www.sleepphones.com/sites/default/files/styles/uc_product_full/public/ClassicWoman-AltImage.jpg?itok=n0tuo_hx",
         "likes": 173,
         "rating": [
             1,
@@ -741,12 +712,11 @@ const inventory = [
         }
     },
     {
-        "index": 21,
         "title": "Boosted Electric Skateboard 2000W",
         "description": "These wireless headphones with a headband let you sleep without any disturbance. They are soft and hypoallergenic so that you can listen to your music and sleep like a baby.",
-        "category": "Sport",
+        "category": ["Sport","Gadgets"],
         "price": 280.83,
-        "image": "http://ecx.images-amazon.com/images/I/81f8hUveSqL._SY500_.jpg",
+        "image": "http://o.aolcdn.com/hss/storage/midas/1e0592cfe13a77236104dcab67c822fd/201397817/boosted-lead-irl-960-1.jpg",
         "likes": 105,
         "rating": [
             4,
@@ -782,12 +752,11 @@ const inventory = [
         }
     },
     {
-        "index": 22,
         "title": "Electronic Skateboard Scooter",
         "description": "sport gift hover board two 2 wheel self board balance scooters rock board hover led 8 inch electronic skateboard scooter.",
-        "category": "Sport",
+        "category": ["Sport"],
         "price": 246.42,
-        "image": "http://g02.s.alicdn.com/kf/HTB1WZ1xKXXXXXcoXVXXq6xXFXXXp/225478018/HTB1WZ1xKXXXXXcoXVXXq6xXFXXXp.jpg",
+        "image": "http://kt-media.knowtechie.netdna-cdn.com/wp-content/uploads/2015/10/space-board-900x450.jpg",
         "likes": 146,
         "rating": [
             2,
@@ -823,12 +792,11 @@ const inventory = [
         }
     },
     {
-        "index": 23,
-        "title": "Nike Goft Ball",
-        "description": "High quality Nike goft ball",
-        "category": "Sport",
-        "price": 143.54,
-        "image": "https://www.golfsmith.com/images/310123.jpg",
+        "title": "Nike Golf Ball",
+        "description": "High quality Nike golf ball",
+        "category": ["Sport"],
+        "price": 43.54,
+        "image": "http://www.mygolfspy.com/wp-content/uploads/2012/06/Nike-ball-review-all-3.jpg",
         "likes": 137,
         "rating": [
             4,
@@ -860,12 +828,11 @@ const inventory = [
         }
     },
     {
-        "index": 24,
         "title": "Everlast Boxing Gloves",
         "description": "Design to accustom your knuckles to harder impact",
-        "category": "Sport",
+        "category": ["Sport"],
         "price": 219.7,
-        "image": "http://bestboxingreviews.com/wp-content/uploads/2015/08/img_499.jpg",
+        "image": "http://76.my/Malaysia/everlast-boxing-muay-thai-training-gym-punching-bag-beg-glove-tokyodomalaysia-1401-16-tokyodomalaysia@3.jpg",
         "likes": 25,
         "rating": [
             1,
@@ -901,12 +868,11 @@ const inventory = [
         }
     },
     {
-        "index": 25,
         "title": "Nike Soccer Shoes",
         "description": "Limited edition, design to give you better performance",
-        "category": "Sport",
+        "category": ["Sport","For Him"],
         "price": 135.92,
-        "image": "http://soccer-items.com/wp-content/uploads/2014/11/soccer-cleats.jpg",
+        "image": "http://usa.lilendiscount.com/images/Fixed/Nike%20Mercurial%20Veloce%20IX%20AG%20Soccer%20Shoes-PurpleGreenBlack.jpg",
         "likes": 153,
         "rating": [
             1,
@@ -934,12 +900,11 @@ const inventory = [
         }
     },
     {
-        "index": 26,
-        "title": "Westmount Dental Mouth Guard",
-        "description": "A properly fitted mouth guard can prevent far more than just chipped or broken teeth.",
-        "category": "Sport",
-        "price": 245.58,
-        "image": "http://wmdental.ca/wp-content/uploads/2013/02/sports-guard-1.jpg",
+        "title": "Herschel Black Bagpack",
+        "description": "A high quality backpack for school.",
+        "category": ["Fashion", "For Him"],
+        "price": 105.58,
+        "image": "http://images.asos-media.com/inv/media/6/7/2/0/2980276/image3xxl.jpg",
         "likes": 49,
         "rating": [
             5,
@@ -971,12 +936,11 @@ const inventory = [
         }
     },
     {
-        "index": 27,
         "title": "MCL Knee Brace",
         "description": "MCL knee braces is used to treat patellar subluxation, instability, tendonitis, and post-fracture conditions, and offers compression and protection for post-op phases, as well as passive support and protection during the rehab phase.",
-        "category": "Sport",
+        "category": ["Sport"],
         "price": 272.42,
-        "image": "http://www.kneeshop.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/a/x/axissport800x800_1_1.jpg",
+        "image": "http://cdn3.volusion.com/mqnu5.mamc7/v/vspfiles/photos/75-2.jpg",
         "likes": 79,
         "rating": [
             5,
@@ -1012,12 +976,11 @@ const inventory = [
         }
     },
     {
-        "index": 28,
         "title": "YONEX Nylon Shuttlecocks",
         "description": "Developed using the flight timing of feather shuttlecocks, MAVIS Nylon shuttlecocks are precision designed and manufactured to provide accurate flight performance.",
-        "category": "Sport",
+        "category": ["Sport"],
         "price": 132.36,
-        "image": "http://www.yonex.com/_assets/images/badminton-shuttlecocks-M2000-main.jpg",
+        "image": "http://thumbs.ebaystatic.com/images/g/Ez0AAOSwuTxV9sbv/s-l225.jpg",
         "likes": 61,
         "rating": [
             3,
@@ -1049,12 +1012,11 @@ const inventory = [
         }
     },
     {
-        "index": 29,
         "title": "NIKE VAPOR 360 BF1665 BASEBALL GLOVE",
-        "description": "Designed with insight from Carlos Gonzalez, one of baseball\u0027s most exciting defensive outfielders, the Nike Vapor 360 Men\u0027s Fielding Glove blends Hyperfuse construction, dynamic Nike Flywire and an engineered leather palm to achieve the first lightweight, ultra-responsive glove that is game-ready right out of the box.",
-        "category": "Sport",
+        "description": "Designed with insight from Carlos Gonzalez, one of baseball's most exciting defensive outfielders, the Nike Vapor 360 Men's Fielding Glove blends Hyperfuse construction, dynamic Nike Flywire and an engineered leather palm to achieve the first lightweight, ultra-responsive glove that is game-ready right out of the box.",
+        "category": ["Sport"],
         "price": 279.75,
-        "image": "http://lgcdn.homerunmonkey.com/80A850/magento/media/catalog/product/cache/5/small_image/600x/9df78eab33525d08d6e5fb8d27136e95/n/i/nike-baseball-glove-bf1665-101-vapor-360.jpg",
+        "image": "http://i.ebayimg.com/images/i/121831988810-0-1/s-l1000.jpg",
         "likes": 54,
         "rating": [
             3,
@@ -1090,12 +1052,11 @@ const inventory = [
         }
     },
     {
-        "index": 30,
         "title": "FLOYD Bicycle",
         "description": "Neon pink frame and the rest is none more black. One of our boldest and unmistakable creations yet.",
-        "category": "Sport",
+        "category": ["Sport"],
         "price": 252.91,
-        "image": "http://cdn.shopify.com/s/files/1/0232/3305/products/State_Bicycle_Cyclocross_SSCX_Thunderbird2_large.JPG?v\u003d1432246329",
+        "image": "http://www.bocabikeshop.com/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/f/l/floyd.jpg",
         "likes": 76,
         "rating": [
             2,
@@ -1131,3 +1092,13 @@ const inventory = [
         }
     }
 ]
+
+if (Products.find().count() === 0) {
+    inventory.forEach(function (p) {
+        p.comments = p.comments.map(function (comment) {
+            comment.date = new Date()
+            return comment
+        })
+        Products.insert(p)
+    })
+}
