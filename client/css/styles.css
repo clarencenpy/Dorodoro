@@ -806,6 +806,7 @@ a {
   padding: 5px;
   float: left;
   position: relative;
+  cursor: pointer;
 }
 .group-block.last {
   margin-right: 0px;

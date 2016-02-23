@@ -1,17 +1,17 @@
 <template name="store">
     <div class="page-content">
-        <div class="body animated fadeIn">
+        <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
             <div class="w-tabs" data-duration-in="400" data-duration-out="400" data-easing="ease-out-quint">
                 <div class="w-tab-menu top-buttons">
-                    <a class="w-tab-link w-inline-block toolbar-top-button" data-w-tab="Tab 1">
+                    <a class="w-tab-link w--current w-inline-block toolbar-top-button" data-w-tab="Tab 1">
                         <div>ACTIVE</div>
                     </a>
-                    <a class="w-tab-link w--current w-inline-block toolbar-top-button" data-w-tab="Tab 2">
+                    <a class="w-tab-link w-inline-block toolbar-top-button" data-w-tab="Tab 2">
                         <div>ARCHIVED</div>
                     </a>
                 </div>
                 <div class="w-tab-content tabs-content">
-                    <div class="w-tab-pane w-clearfix tab-pane" data-w-tab="Tab 1">
+                    <div class="w-tab-pane w--tab-active w-clearfix tab-pane" data-w-tab="Tab 1">
 
                         {{#each products}}
                         <div class="group-block">
@@ -27,7 +27,7 @@
                         {{/each}}
 
                     </div>
-                    <div class="w-tab-pane w--tab-active tab-pane" data-w-tab="Tab 2">
+                    <div class="w-tab-pane tab-pane" data-w-tab="Tab 2">
                         <div class="group-block">
                             <a class="w-inline-block" href="news.html" data-load="1">
                                 <div class="group-image bg4"></div>
