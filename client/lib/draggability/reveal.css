@@ -125,6 +125,15 @@
 	border: 10px solid transparent;
 }
 
+.drop-area__label {
+	font-size: 18px;
+	text-align: center;
+	font-weight: 700;
+	color: black;
+	padding-top: 25px;
+	text-transform: uppercase;
+}
+
 .drop-area__item > div {
 	width: 100%;
 	height: 100%;
@@ -138,8 +147,8 @@
 
 .drop-area__item.highlight > div {
 	background: #dbdada;
-	-webkit-transform: scale3d(0.95,0.95,1);
-	transform: scale3d(0.95,0.95,1);
+	-webkit-transform: scale3d(1.05,1.05,1);
+	transform: scale3d(1.05,1.05,1);
 }
 
 .drop-area__item > div::before,
@@ -150,7 +159,7 @@
 	margin-top: -0.35em;
 	width: 100%;
 	color: #ff7474;
-	font-size: 1.5em;
+	font-size: 18px;
 	font-family: FontAwesome;
 	pointer-events: none;
 }
@@ -166,7 +175,7 @@
 }
 
 .drop-area__item > div::after {
-	margin-top: -0.5em;
+	margin-top: 5px;
 	color: #ff7474;
 	content: '\f00c';
 	font-size: 3em;

@@ -62,8 +62,6 @@ Template.store.onRendered(function () {
                     dropAreaTimeout = setTimeout(afterDropFn, 400);
                 }
             }
-        }, function () {
-            console.log('static')
         })
     });
     /** End Draggable Code **/
