@@ -9,3 +9,7 @@ Template.navigation.helpers({
         return Session.get('header') || 'Dorodoro';
     }
 })
+
+Template.navigation.onRendered(function () {
+    frameworkInit()
+})
