@@ -2692,7 +2692,8 @@
 	      }
 
 	      // Close when navigating to an in-page anchor
-	      if (href && href.indexOf('#') === 0 && data.open) {
+	      //if (href && href.indexOf('#') === 0 && data.open) {
+	      if (href && data.open) {
 	        close(data);
 	      }
 	    };
