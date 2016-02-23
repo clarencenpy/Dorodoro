@@ -30,10 +30,9 @@
             <div class="container">
                 <div id="grid">
                     {{#each products}}
-                        <div class="group-block grid__item">
+                        <div class="group-block">
                             <a class="w-inline-block">
-                                <div class="group-image" style="background-image: url({{image}})">
-                                </div>
+                                <img class="square-crop grid__item" src="{{image}}">
                                 <div class="title-price">${{price}}</div>
                                 <div class="group-title">
                                     <div class="title-text">{{title}}</div>
