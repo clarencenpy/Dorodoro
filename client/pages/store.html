@@ -1,20 +1,42 @@
 <template name="store">
     <div class="page-content">
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
-            <div class="w-tabs" data-duration-in="400" data-duration-out="400" data-easing="ease-out-quint">
-                <div class="w-tab-menu top-buttons">
-                    <a class="w-tab-link w--current w-inline-block toolbar-top-button" data-w-tab="Tab 1">
-                        <div>ACTIVE</div>
-                    </a>
-                    <a class="w-tab-link w-inline-block toolbar-top-button" data-w-tab="Tab 2">
-                        <div>ARCHIVED</div>
-                    </a>
+            <div id="drop-area" class="drop-area">
+                <div>
+                    <div class="drop-area__item">
+                        <div>
+                            <div class="dummy"></div>
+                        </div>
+                    </div>
+                    <div class="drop-area__item">
+                        <div>
+                            <div class="dummy"></div>
+                        </div>
+                    </div>
+                    <div class="drop-area__item">
+                        <div>
+                            <div class="dummy"></div>
+                        </div>
+                    </div>
+                    <div class="drop-area__item">
+                        <div>
+                            <div class="dummy"></div>
+                        </div>
+                    </div>
+                    <div class="drop-area__item">
+                        <div>
+                            <div class="dummy"></div>
+                        </div>
+                    </div>
+                    <div class="drop-area__spacer"></div>
                 </div>
-                <div class="w-tab-content tabs-content">
-                    <div class="w-tab-pane w--tab-active w-clearfix tab-pane" data-w-tab="Tab 1">
+            </div>
+            <div class="drop-overlay"></div>
 
-                        {{#each products}}
-                        <div class="group-block">
+            <div class="container">
+                <div id="grid">
+                    {{#each products}}
+                        <div class="group-block grid__item">
                             <a class="w-inline-block">
                                 <div class="group-image" style="background-image: url({{image}})">
                                 </div>
@@ -24,59 +46,7 @@
                                 </div>
                             </a>
                         </div>
-                        {{/each}}
-
-                    </div>
-                    <div class="w-tab-pane tab-pane" data-w-tab="Tab 2">
-                        <div class="group-block">
-                            <a class="w-inline-block" href="news.html" data-load="1">
-                                <div class="group-image bg4"></div>
-                                <div class="group-title">
-                                    <div class="title-text">Economy</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="group-block last">
-                            <a class="w-inline-block" href="news.html" data-load="1">
-                                <div class="group-image bg5"></div>
-                                <div class="group-title">
-                                    <div class="title-text">Travel</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="group-block">
-                            <a class="w-inline-block" href="news.html" data-load="1">
-                                <div class="group-image bg2"></div>
-                                <div class="group-title">
-                                    <div class="title-text">Leisure</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="group-block last">
-                            <a class="w-inline-block" href="news.html" data-load="1">
-                                <div class="group-image bg3"></div>
-                                <div class="group-title">
-                                    <div class="title-text">Work</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="group-block">
-                            <a class="w-inline-block" href="news.html" data-load="1">
-                                <div class="group-image"></div>
-                                <div class="group-title">
-                                    <div class="title-text">Education</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="group-block last">
-                            <a class="w-inline-block" href="news.html" data-load="1">
-                                <div class="group-image bg1"></div>
-                                <div class="group-title">
-                                    <div class="title-text">Nature</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

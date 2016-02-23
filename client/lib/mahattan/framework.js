@@ -4272,7 +4272,6 @@
 frameworkLoaded = false
 frameworkInit = function () {
     if (!frameworkLoaded) {
-        console.log('framework loading')
         bootstrap(frameworkModules)
         frameworkLoaded = true
     }
