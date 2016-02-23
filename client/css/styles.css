@@ -85,7 +85,7 @@ a {
   position: fixed;
   z-index: 5;
   height: 60px;
-  padding-top: 15px;
+  padding-top: 8px;
   background-color: #151d31;
   color: white;
 }
@@ -120,10 +120,30 @@ a {
   line-height: 49px;
   text-align: center;
 }
+
+.navbar-back-button {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  padding: 0px;
+  color: #ccc;
+  line-height: 49px;
+  text-align: center;
+  font-size: 24px;
+}
 .navbar-button.left {
   float: left;
 }
+.navbar-back-button.left {
+  float: left;
+}
 .navbar-button.left.w--open {
+  background-color: transparent;
+}
+.navbar-button.right.w--open {
+  background-color: transparent;
+}
+.navbar-back-button.left.w--open {
   background-color: transparent;
 }
 .navbar-button.right {
