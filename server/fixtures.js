@@ -1,9 +1,18 @@
+if (Products.find().count() === 0) {
+    inventory.forEach(function (p) {
+        p.comments = p.comments.map(function (comment) {
+            comment.date = new Date()
+            return comment
+        })
+        Products.insert(p)
+    })
+}
+
 const inventory = [
     {
-        "index": 1,
         "title": "Moscow Mule Mug",
         "description": "Stainless steel takes on a coppery finish as a maintenance-free alternative to the traditional copper mug used to serve the 1950s classic Moscow Mule cocktail of lime juice, vodka, ginger beer and plenty of ice. In order to keep the copper plating from tarnishing, we have applied a protective lacquer finish best protected by hand washing with mild soap.",
-        "category": "Gadgets",
+        "category": ["Gadgets", "For Him"],
         "price": 253.3,
         "image": "http://images.crateandbarrel.com/is/image/Crate/MoscowMule16ozF13/\u0026$web_product_hero$\u0026wid\u003d625\u0026hei\u003d625/150812144032/moscow-mule-glass.jpg",
         "likes": 117,
@@ -1122,13 +1131,3 @@ const inventory = [
         }
     }
 ]
-
-if (Products.find().count() === 0) {
-    inventory.forEach(function (p) {
-        p.comments = p.comments.map(function (comment) {
-            comment.date = new Date()
-            return comment
-        })
-        Products.insert(p)
-    })
-}
