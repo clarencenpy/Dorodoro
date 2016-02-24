@@ -1,4 +1,19 @@
 <template name="store">
+    <style>
+
+        #grid {
+            padding: 10px 5px 0px 5px;
+        }
+
+        img.square-crop {
+            object-fit: cover;
+            object-position: center; /* Center the image within the element */
+            width: 100%;
+            height: 164px;
+        }
+
+    </style>
+
     <div class="page-content">
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
             <div id="drop-area" class="drop-area">
