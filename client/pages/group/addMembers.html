@@ -1,0 +1,77 @@
+<template name="addMembers">
+    <style>
+        .w-form {
+            height: 130px;
+            border-bottom: 1px solid #e7e7e9;
+            padding-left: calc(30vw + 5px);
+            padding-right: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .contact-list {
+            overflow-y: auto;
+            height: calc(100vh - 60px - 130px - 50px - 40px);
+        }
+        .receiver-avatar {
+            border-radius: 50%;
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            height: calc(30vw - 15px);
+            width: calc(30vw - 15px);
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .footer-btn {
+            position: fixed;
+            padding: 10px;
+            bottom: 0;
+            height: 40px;
+            width: 100%;
+            background-color: #fd4c58;
+            z-index: 1;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+    </style>
+
+    <div class="page-content">
+        <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeInRight{{/if}}">
+            <img class="receiver-avatar drop-shadow" src="{{receiver.profile.avatar}}">
+            <div class="w-form">
+                <div class="row-input-list">
+                    <label class="label-form" for="name">Event Name</label>
+                    <input class="w-input input-form" id="name" type="text" name="name" required value="{{group.eventName}}">
+                    <div class="separator-fields"></div>
+                </div>
+                <div class="row-input-list">
+                    <label class="label-form" for="date">Event Date</label>
+                    <input class="w-input input-form" id="date" type="date" name="date" required value="{{group.eventDate}}">
+                    <div class="separator-fields"></div>
+                </div>
+            </div>
+
+            <div class="grey-header">
+                <h3 style="margin: 0" class="grey-heading-title">3. Who will be sharing the Gift?</h3>
+            </div>
+
+            <ul class="contact-list list">
+                {{#each users}}
+                    <li class="list-item {{#if selected}} highlighted {{else}} grey {{/if}}">
+                        <a class="w-clearfix w-inline-block">
+                            <div class="icon-list">
+                                <div class="icon ion-ios-checkmark-empty"></div>
+                            </div>
+                            <div class="title-list">{{profile.name}}</div>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+
+        </div>
+    </div>
+    <div id="createGroup-btn" class="footer-btn animated fadeInUp">Create Group ({{numMembers}} members)</div>
+</template>
