@@ -106,7 +106,7 @@ const inventory = [
     {
         "title": "Tan Derbies",
         "description": "Brilliant with navy and just as good with grey, a pair of tan derbies works as well with denim as it will with more traditional tailoring.",
-        "category": ["Fashion","For Him"],
+        "category": ["Fashion", "For Him"],
         "price": 273.01,
         "image": "https://s-media-cache-ak0.pinimg.com/736x/f5/eb/62/f5eb626b6114eea08891104bc0585472.jpg",
         "likes": 74,
@@ -138,7 +138,7 @@ const inventory = [
     {
         "title": "A Woven Silk Burgundy Tie",
         "description": "Modern and chic, a woven silk tie will lift even the most boring suit and shirt combinations.",
-        "category": ["Fashion","For Him"],
+        "category": ["Fashion", "For Him"],
         "price": 78.90,
         "image": "http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg",
         "likes": 44,
@@ -170,7 +170,7 @@ const inventory = [
     {
         "title": "Timex Watch",
         "description": "A simple and affordable Timex is a wardrobe banker. This casual but classic Expedition model will work with anything.",
-        "category": ["Fashion","For Him"],
+        "category": ["Fashion", "For Him"],
         "price": 187.55,
         "image": "http://www.ablogtowatch.com/wp-content/uploads/2011/11/Timex-watches-2011-1.jpg",
         "likes": 202,
@@ -238,7 +238,7 @@ const inventory = [
     {
         "title": "Timberland Boots",
         "description": "Timberland Women's 6-Inch Premium Waterproof Boot-Dark Pink Black Grey",
-        "category": ["Fashion","For Her"],
+        "category": ["Fashion", "For Her"],
         "price": 170.00,
         "image": "https://s-media-cache-ak0.pinimg.com/736x/de/3a/4b/de3a4b90c68c9795be0f93a8f7f4bbce.jpg",
         "likes": 145,
@@ -306,7 +306,7 @@ const inventory = [
     {
         "title": "NAKETANO Jennifer Hart",
         "description": "Hooded Jacket for Women. Fabric: 65% Cotton, 35% Polyester.",
-        "category": ["Fashion","For Her"],
+        "category": ["Fashion", "For Her"],
         "price": 15.60,
         "image": "http://i01.i.aliimg.com/wsphoto/v0/577835029/Hotsale-women-s-long-sleeve-hoodies-zipper-decorated-hooded-Coat-cotton-women-s-zipper-wool-sweater.jpg",
         "likes": 45,
@@ -342,7 +342,7 @@ const inventory = [
     {
         "title": "Technics SL-1200",
         "description": "The sequence ‘SL-1200’ can send men of a certain age into minor raptures, it being the model of Technics turntable lauded by DJs through the acid house years and considered so culturally important London’s Science Museum has one on permanent display.",
-        "category": ["Gadgets","For Him"],
+        "category": ["Gadgets", "For Him"],
         "price": 4000,
         "image": "http://www.vinylengine.com/images/model/technics_sl-1200_mk2_top.jpg",
         "likes": 146,
@@ -490,7 +490,7 @@ const inventory = [
     {
         "title": "Tria Beauty Hair Removal Laser 4X",
         "description": "Tria is the first FDA-cleared laser available for home use.",
-        "category": ["Gadgets","For Her"],
+        "category": ["Gadgets", "For Her"],
         "price": 67.46,
         "image": "http://media.glittergeek.ca/wp-content/uploads/2014/05/Tria-Beauty-Hair-Removal-Laser-4X-and-Calming-Gel.jpg",
         "likes": 50,
@@ -642,7 +642,7 @@ const inventory = [
     {
         "title": "Portable Ultrasonic Cool Mist Aroma Humidifier",
         "description": "Whisper-Quiet Ultrasonic Operation - humidify your living space to prevent dry, stuffy air and flu/cold germs infecting your loved ones. Prevent dry and chapped skin in dry winter months.",
-        "category": ["Gadgets","For Her"],
+        "category": ["Gadgets", "For Her"],
         "price": 69.70,
         "image": "http://ecx.images-amazon.com/images/I/51Io7iXwYfL._SY355_.jpg",
         "likes": 210,
@@ -714,7 +714,7 @@ const inventory = [
     {
         "title": "Boosted Electric Skateboard 2000W",
         "description": "Accelerate like a sports car. A revolutionary 2,000 watts of power means a completely new riding experience. The world's only dual-drive system lets you accelerate up any hill and brake to a complete stop on the way back down.",
-        "category": ["Sport","Gadgets"],
+        "category": ["Sport", "Gadgets"],
         "price": 1105,
         "image": "http://o.aolcdn.com/hss/storage/midas/1e0592cfe13a77236104dcab67c822fd/201397817/boosted-lead-irl-960-1.jpg",
         "likes": 105,
@@ -870,7 +870,7 @@ const inventory = [
     {
         "title": "Nike Soccer Shoes",
         "description": "Limited edition, design to give you better performance",
-        "category": ["Sport","For Him"],
+        "category": ["Sport", "For Him"],
         "price": 135.92,
         "image": "http://usa.lilendiscount.com/images/Fixed/Nike%20Mercurial%20Veloce%20IX%20AG%20Soccer%20Shoes-PurpleGreenBlack.jpg",
         "likes": 153,
@@ -1101,4 +1101,116 @@ if (Products.find().count() === 0) {
         })
         Products.insert(p)
     })
+}
+
+//create fake users
+if (Meteor.users.find().count() < 25) {
+    _.each(_.range(25), function () {
+        Accounts.createUser({
+            username: faker.internet.userName(),
+            profile: {
+                name: faker.name.lastName() + ' ' + faker.name.firstName(),
+                avatar: faker.internet.avatar()
+            },
+            password: 'password'
+        })
+    })
+}
+
+
+if (Groups.find().count() === 0) {
+    let users = Meteor.users.find().fetch();
+    let group = {}
+    /*let u1 = Meteor.users.findOne({'profile.name': 'Esther Dietrich'})
+    let u2 = Meteor.users.findOne({'profile.name': 'Natalia Hermiston'})
+    let u3 = Meteor.users.findOne({'profile.name': 'Ethan Feest'})
+    let u4 = Meteor.users.findOne({'profile.name': 'Justus Fritsch'})
+    let u5 = Meteor.users.findOne({'profile.name': 'Efren Kling'})
+*/
+
+    let u1 = users[0]
+    let u2 = users[1]
+    let u3 = users[2]
+    let u4 = users[3]
+    let u5 = users[4]
+
+    let p1 = Products.findOne({'title': 'Moscow Mule Mug'})
+    let p2 = Products.findOne({'title': 'Guy Wallet'})
+    let p3 = Products.findOne({'title': 'Timex Watch'})
+
+    group.receiver = u1._id
+    group.createdBy = u2._id
+    group.members = [u2._id, u3._id, u4._id, u5._id]
+    let giftIdeas = []
+    giftIdeas.push(
+        {
+            contributor: u2._id,
+            productId: p1._id,
+            comments: [
+                {
+                    'userId': u3._id,
+                    'comment': 'Wow... this product look atas',
+                    'date': new Date()
+                },
+                {
+                    'userId': u4._id,
+                    'comment': 'this is the best!',
+                    'date': new Date()
+                },
+                {
+                    'userId': u5._id,
+                    'comment': 'Average quality',
+                    'date': new Date()
+                }
+            ],
+            votes: 1
+        },
+        {
+            contributor: u3._id,
+            productId: p2._id,
+            comments: [
+                {
+                    'userId': u2._id,
+                    'comment': 'Beautiful~ I would love this if someone buy for me',
+                    'date': new Date()
+                },
+                {
+                    'userId': u4._id,
+                    'comment': 'Bought this for my friend, he seem to like it alot',
+                    'date': new Date()
+                },
+                {
+                    'userId': u5._id,
+                    'comment': 'Great quality, best buy!',
+                    'date': new Date()
+                }
+            ],
+            votes: 2
+        },
+        {
+            contributor: u4._id,
+            productId: p3._id,
+            comments: [
+                {
+                    'userId': u2._id,
+                    'comment': 'A good product to buy for as a present',
+                    'date': new Date()
+                },
+                {
+                    'userId': u5._id,
+                    'comment': 'looks beautiful, my boufriend would love it',
+                    'date': new Date()
+                },
+                {
+                    'userId': u3._id,
+                    'comment': 'oh my god, this is great! Finally found this! Love this app!',
+                    'date': new Date()
+                }
+            ],
+            votes: 2
+        }
+    )
+    group.giftIdeas = giftIdeas
+    console.log(giftIdeas)
+    Groups.insert(group)
 }

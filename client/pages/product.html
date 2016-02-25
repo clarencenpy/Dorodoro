@@ -7,15 +7,17 @@
             <div class="text-new no-borders">
                 <div>
                     <div class="ui fluid image">
-                        <a class="ui large violet right ribbon label">${{product.price}}</a>
+                        <a class="ui big violet right ribbon label">${{product.price}}</a>
                         <img src={{product.image}}>
                     </div>
                     <div class="separator-button"></div>
                     <h2 class="title-new">
-                        <div><i class="icon ion-ios-heart custom-icon"></i> {{product.likes}}
+                        <div style="font-size: 25px"><i class="icon ion-ios-heart custom-icon"></i> {{product.likes}}
                             <div style="float: right">
-                                <div class="rateit" data-rateit-value={{productRating(product.rating)}} data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                                {{productRating(product.rating)}}
+                                <div class="rateit"
+                                     data-rateit-value={{productRating(product.rating)}} data-rateit-ispreset="true"
+                                     data-rateit-readonly="true">
+                                </div>
                             </div>
                         </div>
                     </h2>

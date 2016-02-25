@@ -5,22 +5,22 @@
             position: fixed;
             height: 70px;
             width: 100%;
-            background-color: #102a3b;
+            background-color: #fafafa;
+            color: #102a3b;
             z-index: 1;
             top: 60px;
             left: 0;
             padding-top: 10px;
             padding-left: 20px;
+            border-bottom: 1px solid #e7e7e9;
         }
         .product-title {
-            color: white;
             position: absolute;
             left: 110px;
             font-size: 16px;
             font-weight: 400;
         }
         .product-subtitle {
-            color: whitesmoke;
             position: absolute;
             left: 110px;
             top: 38px;
@@ -31,13 +31,13 @@
             position: absolute;
             right: 13px;
             top: 23px;
-            color: antiquewhite;
         }
         .body {
             min-height: calc(100vh - 60px - 70px);
             margin-top: calc(60px + 70px);
-            background: #f9f9f9 url(/images/bg.jpg);
+            background: #edfaff;
             padding: 10px;
+            padding-bottom: 40px;
         }
         .footer {
             position: fixed;
@@ -59,7 +59,7 @@
             right: 7px;
             top: 0px;
             color: white;
-            background: #50D2C2;
+            background: #d24052;
             height: 30px;
             width: 30px;
             border-radius: 50%;
@@ -70,8 +70,11 @@
 
     <div class="page-content">
         <div class="group-header animated fadeInDown">
-            <h4 class="product-title">{{currentUser.services.facebook.first_name}}'s Birthday</h4>
-            <div class="product-subtitle"><i class="fa fa-calendar-o fa-xs"></i> 12 July 2013</div>
+            <h4 class="product-title">{{getFirstName currentUser.profile.name}}'s Birthday</h4>
+            <div class="product-subtitle">
+                <img style="height: 20px" src="/icons/calendar-48.png">
+                <span>12 July 2015</span>
+            </div>
             <div class="ch-item-container small">
                 <img class="ch-item drop-shadow" src="{{currentUser.profile.avatar}}">
             </div>
@@ -81,7 +84,7 @@
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeInUp{{/if}}">
             <div class="ch-grid">
                 <div class="ch-item-container">
-                    <div class="ch-item" style="background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
+                    <div class="ch-item" style="color: rgba(168, 255, 65, 0.4); background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
                     <div class="notification-badge">3</div>
                 </div>
                 <div class="ch-item-container">
@@ -91,7 +94,7 @@
                     <div class="ch-item" style="background-image: url(http://cnet4.cbsistatic.com/hub/i/r/2014/03/18/adf02390-b0b9-11e3-a24e-d4ae52e62bcc/resize/1170xauto/bda817d4a2f7f30a562a88cbd1c510f2/Beats_Studio_Wireless_35834962-03_1.jpg)"></div>
                 </div>
                 <div class="ch-item-container">
-                    <div class="ch-item" style="background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
+                    <div class="ch-item" style="color: rgba(255, 91, 82, 0.4); background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
                     <div class="notification-badge">3</div>
                 </div>
                 <div class="ch-item-container">

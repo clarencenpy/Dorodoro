@@ -4,7 +4,7 @@
             <nav class="w-nav-menu nav-menu bg-gradient" role="navigation">
                 <div class="nav-menu-header">
                     <img class="avatar" src="{{currentUser.profile.avatar}}">
-                    <div class="logo">{{currentUser.services.facebook.name}}</div>
+                    <div class="logo">{{currentUser.profile.name}}</div>
                 </div>
                 <a id="logout-btn" class="w-clearfix w-inline-block nav-menu-link">
                     <div class="icon-list-menu">
@@ -29,6 +29,12 @@
                         <div class="icon ion-ios-people"></div>
                     </div>
                     <div class="nav-menu-titles">Group</div>
+                </a>
+                <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'collaborate'}}" href="{{pathFor 'collaborate'}}">
+                    <div class="icon-list-menu">
+                        <div class="ion-person-stalker"></div>
+                    </div>
+                    <div class="nav-menu-titles">Collaborate</div>
                 </a>
                 <a class="w-clearfix w-inline-block nav-menu-link" href="features.html" data-load="1">
                     <div class="icon-list-menu">

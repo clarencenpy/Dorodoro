@@ -5,25 +5,25 @@
             position: fixed;
             height: 70px;
             width: 100%;
-            background-color: #102a3b;
+            background-color: #fafafa;
+            color: #102a3b;
             z-index: 1;
             top: 60px;
             left: 0;
             padding-top: 10px;
             padding-left: 20px;
+            border-bottom: 1px solid #e7e7e9;
         }
         .list-chats {
             margin-top: 70px;
         }
         .product-title {
-            color: white;
             position: absolute;
             left: 110px;
             font-size: 16px;
             font-weight: 400;
         }
         .product-subtitle {
-            color: whitesmoke;
             position: absolute;
             left: 110px;
             top: 38px;
@@ -40,7 +40,10 @@
     <div class="page-content">
         <div class="idea-header animated fadeInDown">
             <h4 class="product-title">{{product.title}}</h4>
-            <div class="product-subtitle"><i class="fa fa-share-square-o fa-xs"></i> John<i style="margin-left: 20px" class="fa fa-heart-o fa-xs"></i> 12</div>
+            <div class="product-subtitle">
+                <img style="height: 17px" src="/icons/voice_presentation-48.png"> <span>John</span>
+                <i style="margin-left: 10px" class="icon ion-ios-heart custom-icon"></i> <span>12</span>
+            </div>
             <div class="ch-item-container small">
                 <img class="ch-item drop-shadow" src="{{product.image}}">
             </div>
