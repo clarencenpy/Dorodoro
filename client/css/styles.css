@@ -13,6 +13,11 @@
   color: red;
 }
 
+.color-icon {
+  height: 25px;
+  display: inline;
+}
+
 .map-container {
   width: 100%;
   max-width: 100%;
@@ -274,7 +279,6 @@ a {
 .list.list-chats {
   padding-top: 24px;
   padding-bottom: 65px;
-  border-top: 1px solid #e7e7e9;
 }
 .list-item {
   overflow-x: hidden;

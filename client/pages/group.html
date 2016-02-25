@@ -5,22 +5,22 @@
             position: fixed;
             height: 70px;
             width: 100%;
-            background-color: #102a3b;
+            background-color: #fafafa;
+            color: #102a3b;
             z-index: 1;
             top: 60px;
             left: 0;
             padding-top: 10px;
             padding-left: 20px;
+            border-bottom: 1px solid #e7e7e9;
         }
         .product-title {
-            color: white;
             position: absolute;
             left: 110px;
             font-size: 16px;
             font-weight: 400;
         }
         .product-subtitle {
-            color: whitesmoke;
             position: absolute;
             left: 110px;
             top: 38px;
@@ -31,12 +31,11 @@
             position: absolute;
             right: 13px;
             top: 23px;
-            color: antiquewhite;
         }
         .body {
             min-height: calc(100vh - 60px - 70px);
             margin-top: calc(60px + 70px);
-            background: #f9f9f9 url(/images/bg.jpg);
+            background: #edfaff;
             padding: 10px;
             padding-bottom: 40px;
         }
@@ -60,7 +59,7 @@
             right: 7px;
             top: 0px;
             color: white;
-            background: #50D2C2;
+            background: #d24052;
             height: 30px;
             width: 30px;
             border-radius: 50%;
@@ -72,7 +71,10 @@
     <div class="page-content">
         <div class="group-header animated fadeInDown">
             <h4 class="product-title">{{currentUser.services.facebook.first_name}}'s Birthday</h4>
-            <div class="product-subtitle"><i class="fa fa-calendar-o fa-xs"></i> 12 July 2013</div>
+            <div class="product-subtitle">
+                <img style="height: 20px" src="/icons/calendar-48.png">
+                <span>12 July 2015</span>
+            </div>
             <div class="ch-item-container small">
                 <img class="ch-item drop-shadow" src="{{currentUser.profile.avatar}}">
             </div>
