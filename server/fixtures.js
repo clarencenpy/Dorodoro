@@ -1099,7 +1099,6 @@ if (Products.find().count() === 0) {
             comment.date = new Date()
             return comment
         })
-        console.log(p)
         Products.insert(p)
     })
 }
