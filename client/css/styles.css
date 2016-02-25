@@ -288,9 +288,6 @@ a {
   border-left: 3px solid transparent;
   background-color: white;
 }
-.list-item:active {
-  background-color: #f7f7f7;
-}
 .list-item.grey {
   border-left: 3px solid transparent;
   background-color: #f7f7f7;
@@ -308,18 +305,20 @@ a {
   line-height: 60px;
   text-align: center;
 }
-.icon-list.highlighted {
-  color: #ff274a;
-}
 .title-list {
   display: inline-block;
   float: left;
   font-size: 14px;
   line-height: 60px;
-}
-.highlighted {
   color: #c2c2c2;
 }
+.list-item.highlighted .title-list {
+  color: #181818;
+}
+.list-item.highlighted .icon-list {
+  color: #ff274a;
+}
+
 .nav-menu {
   position: absolute;
   display: none;
@@ -526,8 +525,8 @@ a {
 }
 .label-form {
   margin-bottom: 0px;
-  color: #ccc;
-  font-size: 9px;
+  color: #7b7b7b;
+  font-size: 12px;
   line-height: 11px;
   letter-spacing: 1px;
 }
@@ -542,7 +541,7 @@ a {
 .input-form {
   display: inline-block;
   width: 100%;
-  height: 38px;
+  height: 25px;
   padding-right: 0px;
   padding-left: 0px;
   border-style: none none solid;

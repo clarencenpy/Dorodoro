@@ -203,7 +203,8 @@ input[type="reset"] {
   -webkit-appearance: button;
 }
 .w-form {
-  margin: 0 0 15px;
+  /*margin: 0 0 15px;*/
+  padding-top: 20px;
 }
 .w-form-done {
   display: none;
@@ -219,15 +220,14 @@ input[type="reset"] {
 }
 label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 400;
 }
 .w-input,
 .w-select {
   display: block;
   width: 100%;
   height: 38px;
-  padding: 8px 12px;
+  padding: 0px 6px;
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.428571429;
