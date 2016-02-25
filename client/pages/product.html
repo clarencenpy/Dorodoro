@@ -4,24 +4,30 @@
             <div class="grey-header">
                 <h2 class="grey-heading-title">{{product.title}}</h2>
             </div>
-            <img src={{product.image}}>
             <div class="text-new no-borders">
-                <h2 class="title-new">
-                    <div class="icon ion-ios-heart">{{product.likes}}</div>
-                </h2>
-                <h2>
-                    <div class="icon ion-ribbon-b">{{product.rating}}</div>
-                </h2>
-                <div class="separator-fields"></div>
-                <p class="description-new">{{product.description}}</p>
-                <div class="separator-button"></div>
+                <div>
+                    <div class="ui fluid image">
+                        <a class="ui large violet right ribbon label">${{product.price}}</a>
+                        <img src={{product.image}}>
+                    </div>
+                    <div class="separator-button"></div>
+                    <h2 class="title-new">
+                        <div><i class="icon ion-ios-heart custom-icon"></i> {{product.likes}}
+                            <div style="float: right">
+                                <div class="rateit" data-rateit-value={{productRating(product.rating)}} data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                {{productRating(product.rating)}}
+                            </div>
+                        </div>
+                    </h2>
+                    <div class="separator-fields"></div>
+                    <p class="description-new">{{product.description}}</p>
+                    <div class="separator-button"></div>
+                </div>
+
+                <div class="map-container">
+                    {{> googleMap name="map" options=mapOptions}}
+                </div>
             </div>
         </div>
-        <div class="map-container">
-            {{> googleMap name="map" options=mapOptions}}
-        </div>
-        Product Details for Product {{product._id}}
-        <br>
-        Name: {{product.title}}
     </div>
 </template>

@@ -1,5 +1,6 @@
 Template.product.onRendered(function () {
     Session.set('header', 'Product Details')
+    this.$('.rateit').rateit();
     GoogleMaps.load();
 })
 Template.product.helpers({
@@ -18,6 +19,12 @@ Template.product.helpers({
                 zoom: 15
             };
         }
+    },
+    productRating(arr){
+        console.log(arr)
+        return _.reduce(arr, function(memo, num) {
+                return memo + num;
+            }, 0) / (arr.length === 0 ? 1 : arr.length);
     }
 })
 
@@ -25,7 +32,7 @@ Template.product.onDestroyed(function () {
     Session.set('header', null)
 })
 
-Template.body.onCreated(function () {
+Template.product.onCreated(function () {
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready("exampleMap", function (map) {
         // Add a marker to the map once it's ready
@@ -38,11 +45,3 @@ Template.body.onCreated(function () {
         marker.setMapPosition();
     });
 });
-
-/*Template.product.helpers({
- rating(){
- var rate = new Array()
- rate = product.rating
-
- }
- })*/
