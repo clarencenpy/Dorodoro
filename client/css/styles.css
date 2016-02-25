@@ -9,6 +9,21 @@
 5. Extra
 -------------------------------------------------------------------*/
 
+.footer-btn {
+  position: fixed;
+  padding: 10px;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  background-color: #fd4c58;
+  z-index: 1;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
 .custom-icon{
   color: red;
 }
