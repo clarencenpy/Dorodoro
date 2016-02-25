@@ -1102,3 +1102,17 @@ if (Products.find().count() === 0) {
         Products.insert(p)
     })
 }
+
+//create fake users
+if(Meteor.users.find().count() < 25) {
+    _.each(_.range(25), function () {
+        Accounts.createUser({
+            username: faker.internet.userName(),
+            profile: {
+                name: faker.name.findName(),
+                avatar: faker.internet.avatar()
+            },
+            password: 'password'
+        })
+    })
+}
