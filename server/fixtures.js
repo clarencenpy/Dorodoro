@@ -1109,7 +1109,7 @@ if(Meteor.users.find().count() < 25) {
         Accounts.createUser({
             username: faker.internet.userName(),
             profile: {
-                name: faker.name.findName(),
+                name: faker.name.lastName() + ' ' + faker.name.firstName(),
                 avatar: faker.internet.avatar()
             },
             password: 'password'
