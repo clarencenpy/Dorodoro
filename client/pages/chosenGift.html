@@ -1,27 +1,112 @@
 <template name="chosenGift">
-    <style>
 
+    <style>
+        .body {
+            background-color: black;
+        }
+        .winner-container {
+            width: 280px;
+            height: 280px;
+            margin-top: 43px;
+            margin-left: 43px;
+            position: relative;
+        }
+        .img-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .gif-box {
+            width: 100%;
+            height: 375px;
+            z-index: -10;
+            overflow: hidden;
+            position: fixed;
+            top: 60px;
+        }
+        .gif {
+            margin-top: 25px;
+            z-index: -10;
+            transform: scale(1.5);
+        }
+        .ribbon {
+            width: 281px;
+            height: 50px;
+            position: absolute;
+            bottom: 80px;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            line-height: 50px;
+            text-transform: uppercase;
+            background: #c42217;
+        }
+        .ribbon i {
+            position: absolute;
+        }
+        /* Triangle blocks */
+        .ribbon i:first-child, .ribbon i:nth-child(2) {
+            position: absolute;
+            left: -19px;
+            bottom: -20px;
+            z-index: -2;
+            border: 20px solid transparent;
+            border-right-color: #811510;
+        }
+        .ribbon i:nth-child(2) {
+            left: auto;
+            right: -18px;
+            border-right-color: transparent;
+            border-left-color: #811510;
+        }
+        /* Side blocks */
+        .ribbon i:nth-child(3), .ribbon i:last-child {
+            width: 10px;
+            bottom: -20px;
+            left: -39px;
+            z-index: -3;
+            border: 30px solid #b11f17;
+            border-left-color: transparent;
+
+            -webkit-transform-origin: 100% 0;
+            -moz-transform-origin: 100% 0;
+            -ms-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+        }
+        .ribbon i:last-child {
+            bottom: -20px;
+            left: auto;
+            right: -39px;
+            border: 30px solid #b11f17;
+            border-right-color: transparent;
+        }
+        p {
+            text-align: center;
+            color: #aaa;
+        }
     </style>
 
-    <div class="page-content bg-gradient">
+    <div class="page-content">
         <div class="body animated fadeIn">
-            <div class="grey-header">
-                <h2 class="grey-heading-title">Most Voted Gift!</h2>
+            <div class="gif-box">
+                <img class="gif" src="/images/firedribbble.gif">
             </div>
+                <div class="winner-container">
+                    <div class="ribbon">
+                        WINNER
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <img class="img-circle drop-shadow"
+                         src="http://image.dhgate.com/0x0/f2/albu/g2/M01/D5/A7/rBVaGlZNS2GAFHU0AAZkAlmAa5w003.jpg">
+                </div>
 
-            <svg height="240" width="307" class="circle-img-svg" >
-                <clipPath id="circle">
-                    <circle cx="171" cy="120" r="100"></circle>
-                </clipPath>
-                <image x="0" y="0" xlink:href="http://image.dhgate.com/0x0/f2/albu/g2/M01/D5/A7/rBVaGlZNS2GAFHU0AAZkAlmAa5w003.jpg" height="240" width="342" clip-path="url(#circle)" ></image>
-                <circle class="empty status" r="100" cx="171" cy="120" fill="transparent" stroke-dasharray="500, 0" ></circle>
-                <circle class="upload status" r="100" cx="171" cy="120" fill="transparent" stroke-dasharray="620" stroke-dashoffset="300" id="status"></circle>
-            </svg>
-
-            <div class="text-new grey"></div>
-
-            <a class="action-button" href="#"></a>
+            <br><br><br><br><br>
+            <a class="w-button action-button" href="#">Volunteer to buy</a>
+        </div>
 
     </div>
-    </div>
+
 </template>
