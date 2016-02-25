@@ -1,0 +1,144 @@
+<template name="collaborate">
+    <style>
+        .group-header {
+            position: fixed;
+            height: 70px;
+            width: 100%;
+            background-color: #102a3b;
+            z-index: 1;
+            top: 60px;
+            left: 0;
+            padding-top: 10px;
+            padding-left: 20px;
+        }
+
+        .product-title {
+            color: white;
+            position: absolute;
+            left: 110px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .product-subtitle {
+            color: whitesmoke;
+            position: absolute;
+            left: 110px;
+            top: 38px;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .side-btn {
+            position: absolute;
+            right: 13px;
+            top: 23px;
+            color: antiquewhite;
+        }
+
+        .body {
+            min-height: calc(100vh - 60px - 70px);
+            margin-top: calc(60px + 70px);
+            background: #f9f9f9 url(/images/bg.jpg);
+            padding: 10px;
+        }
+
+        .footer {
+            position: fixed;
+            height: 40px;
+            width: 100%;
+            background-color: #102a3b;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            padding: 5px;
+        }
+
+        .footer-btn {
+            display: inline-block;
+            width: calc(50% - 2px);
+            height: 100%
+        }
+
+        .notification-badge {
+            position: absolute;
+            right: 7px;
+            top: 0px;
+            color: white;
+            background: #50D2C2;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            padding-top: 4px;
+            text-align: center;
+        }
+    </style>
+
+    <div class="page-content">
+        <div class="group-header animated fadeInDown">
+            <h4 class="product-title">{{currentUser.services.facebook.first_name}}'s Birthday</h4>
+            <div class="product-subtitle"><i class="fa fa-calendar-o fa-xs"></i> 12 July 2013</div>
+            <div class="ch-item-container small">
+                <img class="ch-item drop-shadow" src="{{currentUser.profile.avatar}}">
+            </div>
+            <div class="side-btn"><i class="fa fa-cog fa-lg"></i></div>
+
+
+            <ul class="list">
+                <li class="list-item grey highlighted" data-ix="list-item">
+                    <a class="w-clearfix w-inline-block highlighted" href="#">
+                        <div class="icon-list highlighted">
+                            <div class="icon ion-ios-checkmark-empty"></div>
+                        </div>
+                        <div class="title-list">Create a pixel-perfect design</div>
+                    </a>
+                </li>
+                <li class="list-item" data-ix="list-item">
+                    <a class="w-clearfix w-inline-block" href="#">
+                        <div class="icon-list">
+                            <div class="icon ion-ios-checkmark-empty"></div>
+                        </div>
+                        <div class="title-list">Simple to use</div>
+                    </a>
+                </li>
+                <li class="list-item grey highlighted" data-ix="list-item">
+                    <a class="w-clearfix w-inline-block highlighted" href="#">
+                        <div class="icon-list highlighted">
+                            <div class="icon ion-ios-checkmark-empty"></div>
+                        </div>
+                        <div class="title-list">Use an elegant typography
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br> �ܸ
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item" data-ix="list-item">
+                    <a class="w-clearfix w-inline-block" href="#">
+                        <div class="icon-list">
+                            <div class="icon ion-ios-checkmark-empty"></div>
+                        </div>
+                        <div class="title-list">Optimize for tablets and mobiles
+                            <br> mobiles
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br> �|n
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br> �ܸ
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
