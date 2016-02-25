@@ -1,4 +1,4 @@
-<template name="createGroup">
+<template name="addMembers">
     <style>
         .w-form {
             height: 130px;
@@ -7,6 +7,20 @@
             padding-right: 10px;
             padding-top: 20px;
             padding-bottom: 20px;
+        }
+        .contact-list {
+            overflow-y: auto;
+            height: calc(100vh - 60px - 130px - 50px - 40px);
+        }
+        .receiver-avatar {
+            border-radius: 50%;
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            height: calc(30vw - 15px);
+            width: calc(30vw - 15px);
+            max-width: 100px;
+            max-height: 100px;
         }
         .footer-btn {
             position: fixed;
@@ -22,30 +36,12 @@
             text-align: center;
             letter-spacing: 1px;
         }
-        .contact-list {
-            overflow-y: auto;
-            height: calc(100vh - 60px - 130px - 40px - 100px);
-        }
-        .receiver-avatar {
-            border-radius: 50%;
-            position: absolute;
-            top: 130px;
-            left: 10px;
-            height: calc(30vw - 15px);
-            width: calc(30vw - 15px);
-            max-width: 100px;
-            max-height: 100px;
-        }
     </style>
+
     <div class="page-content">
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeInRight{{/if}}">
-
-            <div class="grey-header">
-                <h3 style="margin: 0" class="grey-heading-title">1. Enter Event Details</h3>
-            </div>
-
+            <img class="receiver-avatar drop-shadow" src="{{receiver.profile.avatar}}">
             <div class="w-form">
-                <img class="receiver-avatar drop-shadow" src="{{#if receiver.profile.avatar}} {{receiver.profile.avatar}} {{else}} http://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2012/10/silhouette.jpg {{/if}}">
                 <div class="row-input-list">
                     <label class="label-form" for="name">Event Name</label>
                     <input class="w-input input-form" id="name" type="text" name="name" required value="{{group.eventName}}">
@@ -54,16 +50,17 @@
                 <div class="row-input-list">
                     <label class="label-form" for="date">Event Date</label>
                     <input class="w-input input-form" id="date" type="date" name="date" required value="{{group.eventDate}}">
+                    <div class="separator-fields"></div>
                 </div>
             </div>
 
             <div class="grey-header">
-                <h3 style="margin: 0" class="grey-heading-title">2. Who is the Gift for?</h3>
+                <h3 style="margin: 0" class="grey-heading-title">3. Who will be sharing the Gift?</h3>
             </div>
 
             <ul class="contact-list list">
                 {{#each users}}
-                    <li class="list-item {{#if isReceiver _id}} highlighted {{else}} grey {{/if}}">
+                    <li class="list-item {{#if selected}} highlighted {{else}} grey {{/if}}">
                         <a class="w-clearfix w-inline-block">
                             <div class="icon-list">
                                 <div class="icon ion-ios-checkmark-empty"></div>
@@ -75,7 +72,6 @@
             </ul>
 
         </div>
-
-        <div id="next-btn" class="footer-btn animated fadeInUp">Next</div>
     </div>
+    <div id="createGroup-btn" class="footer-btn animated fadeInUp">Create Group ({{numMembers}} members)</div>
 </template>

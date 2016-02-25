@@ -1139,6 +1139,8 @@ if (Groups.find().count() === 0) {
     let p3 = Products.findOne({'title': 'Timex Watch'})
 
     group.receiver = u1._id
+    group.eventName = 'Birthday'
+    group.eventDate = new Date()
     group.createdBy = u2._id
     group.members = [u2._id, u3._id, u4._id, u5._id]
     let giftIdeas = []
@@ -1211,6 +1213,5 @@ if (Groups.find().count() === 0) {
         }
     )
     group.giftIdeas = giftIdeas
-    console.log(giftIdeas)
     Groups.insert(group)
 }
