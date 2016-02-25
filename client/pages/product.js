@@ -1,5 +1,6 @@
 Template.product.onRendered(function () {
     Session.set('header', 'Product Details')
+    this.$('.rateit').rateit();
     GoogleMaps.load();
 })
 Template.product.helpers({
