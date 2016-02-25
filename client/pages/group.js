@@ -1,7 +1,20 @@
-Template.group.onRendered(function () {
-    //copy whatever js code here!
-    
-    
-    
-    
+Template.group.onCreated(function() {
+
 })
+
+Template.group.onRendered(function() {
+
+})
+
+Template.group.helpers({
+
+})
+
+Template.group.events({
+
+})
+
+Template.group.onDestroyed(function() {
+
+})
+

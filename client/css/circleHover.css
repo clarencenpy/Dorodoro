@@ -23,10 +23,11 @@ body {
 }
 
 .ch-item-container {
-	width: 170px;
-	height: 170px;
+	position: relative;
+	width: calc(50vw - 30px);
+	height: calc(50vw - 30px);
 	display: inline-block;
-	margin: 3px;
+	margin: 5px;
 }
 
 .ch-item-container.small {
@@ -58,12 +59,13 @@ body {
 .ch-item {
 	width: 100%;
 	height: 100%;
+	background-size: cover;
 	border-radius: 50%;
 	position: relative;
 	cursor: default;
 	box-shadow: 
 		inset 0 0 0 0 rgba(200,95,66, 0.4),
-		inset 0 0 0 16px rgba(255,255,255,0.6),
+		inset 0 0 0 8px rgba(255,255,255,0.6),
 		0 1px 2px rgba(0,0,0,0.1);
 
 	transition: all 0.4s ease-in-out;
