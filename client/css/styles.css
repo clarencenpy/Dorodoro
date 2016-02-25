@@ -9,6 +9,10 @@
 5. Extra
 -------------------------------------------------------------------*/
 
+.custom-icon{
+  color: red;
+}
+
 .map-container {
   width: 100%;
   max-width: 100%;
