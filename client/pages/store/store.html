@@ -61,8 +61,33 @@
             margin-bottom: 0;
         }
 
-        #search-btn {
+        #search-btn, #filter-btn {
             color: #848484
+        }
+
+        #filter-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+
+        #search-btn {
+            position: absolute;
+            top: 0px;
+            right: 38px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
         }
 
     </style>
@@ -97,8 +122,11 @@
                         <div class="block-input-combined">
                             <input class="w-input input-form search-input" id="Search" type="text" placeholder="Search"
                                    name="Search" data-name="Search" required="required">
-                            <a id="search-btn" class="w-inline-block right-input-icon search" href="#">
-                                <div class="icon ion-ios-search"></div>
+                            <a id="search-btn">
+                                <div class="icon ion-search"></div>
+                            </a>
+                            <a id="filter-btn">
+                                <div class="icon ion-funnel"></div>
                             </a>
                         </div>
                     </div>
