@@ -37,6 +37,9 @@ Template.store.onRendered(function () {
                     instance.checkmarkTimeout = setTimeout(function () {
                         classie.remove(instance.el, 'drop-feedback');
                     }, 800);
+
+                    let id = $(draggableEl).data('id')
+                    console.log(id)
                 }
             }));
         })

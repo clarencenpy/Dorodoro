@@ -43,6 +43,7 @@
             margin-top: 38px;
             height: calc(100vh - 60px);
             overflow-y: auto;
+            background-color: rgb(44,44,44);
         }
 
         .container.is-selecting {
@@ -72,7 +73,7 @@
 
     <div class="page-content">
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
-            <div id="drop-area" class="drop-area">
+            <div id="drop-area" class="drop-area show">
                 <div>
                     <div class="drop-area__item">
                         <div class="drop-area__label">Bros</div>
@@ -84,14 +85,8 @@
                         <div class="drop-area__label">Funny</div>
                     </div>
                     <div class="drop-area__item">
-                        <div>
-                            <div class="dummy"></div>
-                        </div>
                     </div>
                     <div class="drop-area__item">
-                        <div>
-                            <div class="dummy"></div>
-                        </div>
                     </div>
                     <div class="drop-area__spacer"></div>
                 </div>
