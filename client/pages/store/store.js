@@ -36,8 +36,29 @@ Template.store.onRendered(function () {
                         classie.remove(instance.el, 'drop-feedback');
                     }, 800);
 
-                    let id = $(draggableEl).data('id')
-                    console.log(id)
+                    let groupId = $(instance.el).data('id')
+                    let pid = $(draggableEl).data('id')
+                    //check if product has already been added
+                    let group = Groups.findOne(groupId)
+                    let addedBefore = false
+                    _.each(group.giftIdeas, function (idea) {
+                        if (idea.productId === pid) addedBefore = true
+                    })
+                    if (!addedBefore) {
+                        Groups.update(groupId, {$push: {giftIdeas: {
+                            productId: pid,
+                            contributor: Meteor.userId(),
+                            date: new Date(),
+                            votes: [Meteor.userId()] //self auto votes
+                        }}})
+
+                        //create a chat!
+                        Chats.insert({
+                            groupId: groupId,
+                            productId: pid
+                        })
+                    }
+
                 }
             }));
         })
@@ -129,7 +150,9 @@ Template.store.helpers({
     },
 
 
-
+    groups() {
+        return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]})
+    },
     productRating(arr){
         return _.reduce(arr, function(memo, num) {
                 return memo + num;

@@ -77,6 +77,7 @@
     width: 12em;
     height: 12em;
     border-radius: 4px;
+    padding: 20px;
     background: #d9424d;
     text-align: center;
     -webkit-transition: -webkit-transform 0.3s, background 0.3s;
@@ -92,7 +93,7 @@
 .drop-area__item::before,
 .drop-area__item::after {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 0;
     width: 100%;
     color: antiquewhite;

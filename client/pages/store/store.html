@@ -161,19 +161,11 @@
         <div class="body animated fadeIn">
             <div id="drop-area" class="drop-area">
                 <div>
-                    <div class="drop-area__item">
-                        <div class="drop-area__label">Bros</div>
-                    </div>
-                    <div class="drop-area__item">
-                        <div class="drop-area__label">Girlfriend</div>
-                    </div>
-                    <div class="drop-area__item">
-                        <div class="drop-area__label">Funny</div>
-                    </div>
-                    <div class="drop-area__item">
-                    </div>
-                    <div class="drop-area__item">
-                    </div>
+                    {{#each groups}}
+                        <div class="drop-area__item" data-id="{{_id}}">
+                            <div class="drop-area__label">{{getFirstNameFromId receiver}}'s {{eventName}}</div>
+                        </div>
+                    {{/each}}
                     <div class="drop-area__spacer"></div>
                 </div>
             </div>
