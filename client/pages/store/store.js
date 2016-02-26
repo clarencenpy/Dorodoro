@@ -1,7 +1,5 @@
 Template.store.onCreated(function () {
     const template = this
-    template.goingBack = !!Session.get('goingBack')
-    Session.set('goingBack', false)
 
     //gift selection mode
     //{
@@ -111,9 +109,6 @@ Template.store.onRendered(function () {
 Template.store.helpers({
     products() {
         return Products.find()
-    },
-    goingBack() {
-        return Template.instance().goingBack
     },
 
     //single selection mode
