@@ -8,7 +8,7 @@
         img.square-crop {
             object-fit: cover;
             object-position: center; /* Center the image within the element */
-            width: 100%;
+            width: calc((100vw - 30px) / 2);
             height: 164px !important;
         }
 
@@ -65,15 +65,11 @@
             color: #848484
         }
 
-        .block-input-combined {
-            margin-right: 50px;
-        }
-
     </style>
 
     <div class="page-content">
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
-            <div id="drop-area" class="drop-area show">
+            <div id="drop-area" class="drop-area">
                 <div>
                     <div class="drop-area__item">
                         <div class="drop-area__label">Bros</div>

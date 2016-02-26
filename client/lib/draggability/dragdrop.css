@@ -9,11 +9,6 @@
     color: #fff;
 }
 
-.grid__item.is-dragging {
-    height: 164px;
-    width: 164px;
-}
-
 .is-active {
     z-index: 100;
 }
