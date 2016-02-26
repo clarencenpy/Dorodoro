@@ -51,11 +51,14 @@ Template.store.onRendered(function () {
                 //add the product here!
                 let id = $(draggableEl).data('id')
                 let gs = Session.get('giftSelection')
-                gs.selection.push(Products.findOne({_id: id}, {
+                let product = Products.findOne({_id: id}, {
                     fields: {
                         image: 1
                     }
-                }))
+                })
+                if (!_.findWhere(gs.selection, product)) {
+                    gs.selection.push(product)
+                }
                 Session.set('giftSelection', gs)
             }
         }));
