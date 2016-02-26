@@ -43,7 +43,7 @@
             swipe_h_threshold: 50,
             swipe_v_threshold: 50,
             taphold_threshold: 750,
-            doubletap_int: 500,
+            doubletap_int: 300,
 
             touch_capable: ('ontouchstart' in window && !isChromeDesktop),
             orientation_support: ('orientation' in window && 'onorientationchange' in window),

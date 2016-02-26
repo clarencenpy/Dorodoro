@@ -51,6 +51,9 @@
             padding-top: 4px;
             text-align: center;
         }
+        .notification-badge.voted {
+            background: green;
+        }
     </style>
 
     <div class="page-content">
@@ -71,24 +74,9 @@
                 {{#each giftIdeas}}
                     <div class="ch-item-container">
                         <div class="ch-item" style="background-image: url({{image}})"></div>
+                        <div class="notification-badge {{#if hasVoted idea.votes}} voted {{/if}}">{{idea.votes.length}}</div>
                     </div>
                 {{/each}}
-                <div class="ch-item-container">
-                    <div class="ch-item" style="color: rgba(168, 255, 65, 0.4); background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
-                    <div class="notification-badge">3</div>
-                </div>
-
-                <div class="ch-item-container">
-                    <div class="ch-item" style="background-image: url(http://cnet4.cbsistatic.com/hub/i/r/2014/03/18/adf02390-b0b9-11e3-a24e-d4ae52e62bcc/resize/1170xauto/bda817d4a2f7f30a562a88cbd1c510f2/Beats_Studio_Wireless_35834962-03_1.jpg)"></div>
-                </div>
-                <div class="ch-item-container">
-                    <div class="ch-item" style="color: rgba(255, 91, 82, 0.4); background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
-                    <div class="notification-badge">3</div>
-                </div>
-                <div class="ch-item-container">
-                    <div class="ch-item" style="background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
-                    <div class="notification-badge">3</div>
-                </div>
             </div>
         </div>
 

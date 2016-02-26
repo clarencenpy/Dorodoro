@@ -168,7 +168,7 @@ Template.store.events({
                     contributor: Meteor.userId(),
                     date: new Date(),
                     productId: product._id,
-                    votes: 0
+                    votes: [Meteor.userId()] //self auto votes
                 })
             }
         })

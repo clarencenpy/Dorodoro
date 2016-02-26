@@ -3,7 +3,9 @@ Template.group.onCreated(function() {
 })
 
 Template.group.onRendered(function() {
+    const template = this
 
+    //template.$('.ch-item').on('doubleTap')
 })
 
 Template.group.helpers({
@@ -20,8 +22,16 @@ Template.group.helpers({
             let product = Products.findOne(idea.productId)
             return {
                 image: product.image,
-                _id: product._id
+                _id: product._id,
+                idea: _.find(group.giftIdeas, function (idea) {
+                    return idea.productId === product._id
+                })
             }
+        })
+    },
+    hasVoted(votes) {
+        return !!_.find(votes, function (vote) {
+            return Meteor.userId() === vote
         })
     }
 })
@@ -34,11 +44,17 @@ Template.group.events({
         })
         FlowRouter.go('store')
     },
-    'click .ch-item'() {
+    'singletap .ch-item'() {
         let pageStack = Session.get('pageStack') || []
         pageStack.push(FlowRouter.current().path)
         Session.set('pageStack', pageStack)
         FlowRouter.go('chat', {groupId: FlowRouter.getParam('id'), productId: this._id})
+    },
+    'doubletap .ch-item'() {
+        let pid = this._id
+        let groupId = FlowRouter.getParam('id')
+        Meteor.call('vote', pid, groupId, Meteor.userId())
+
     }
 })
 
