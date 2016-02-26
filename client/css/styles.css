@@ -948,10 +948,10 @@ a {
   background-size: cover;
 }
 .group-title {
-  height: 100px;
+  height: 65px;
   background-color: #ecebff;
   text-align: left;
-  padding: 20px 10px 10px 10px;
+  padding: 10px;
 }
 .title-text {
   line-height: 15px;

@@ -126,7 +126,6 @@ Template.store.helpers({
         }
     },
     productRating(arr){
-        console.log(arr)
         return _.reduce(arr, function(memo, num) {
                 return memo + num;
             }, 0) / (arr.length === 0 ? 1 : arr.length);

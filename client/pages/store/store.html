@@ -12,21 +12,60 @@
             height: 164px !important;
         }
 
+        .likes {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            font-size: 14px;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+        .likes i {
+            font-size: 20px;
+        }
+        .rateit {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+        }
+
         #custom-ribbon {
             width: 100px !important;
             border-color: #ff274a;
             background-color: #fd4c58;
             color: #fff;
+            font-size: 14px;
+            font-weight: 400;
         }
 
         /*store products*/
         .container {
+            margin-top: 38px;
             height: calc(100vh - 60px);
             overflow-y: auto;
         }
 
         .container.is-selecting {
             height: calc(100vh - 60px - 120px);
+        }
+
+        #search-bar {
+            position: fixed;
+            top: 60px;
+            z-index: 1;
+            width: 100%;
+        }
+
+        #search-bar .search-input {
+            margin-bottom: 0;
+        }
+
+        #search-btn {
+            color: #848484
+        }
+
+        .block-input-combined {
+            margin-right: 50px;
         }
 
     </style>
@@ -59,36 +98,36 @@
             </div>
             <div class="drop-overlay"></div>
 
+
             <div class="container {{#if isSelecting}} is-selecting {{/if}}">
-                <div class="row-input-list search">
-                    <div class="block-input-combined">
-                        <input class="w-input input-form search-input" id="Search" type="text" placeholder="Search"
-                               name="Search" data-name="Search" required="required">
-                        <a class="w-inline-block right-input-icon search" href="#">
-                            <div class="icon ion-ios-search"></div>
-                        </a>
+
+                <div id="search-bar" class="drop-shadow">
+                    <div class="row-input-list search">
+                        <div class="block-input-combined">
+                            <input class="w-input input-form search-input" id="Search" type="text" placeholder="Search"
+                                   name="Search" data-name="Search" required="required">
+                            <a id="search-btn" class="w-inline-block right-input-icon search" href="#">
+                                <div class="icon ion-ios-search"></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
+
                 <div id="grid">
                     {{#each products}}
                         <div class="group-block">
                             <a class="w-inline-block">
-                                <img class="square-crop grid__item" src="{{image}}" data-id="{{_id}}">
-                                <div class="title-price">${{price}}</div>
                                 <div class="ui image">
-                                    <img class="square-crop grid__item" src="{{image}}">
+                                    <img class="square-crop grid__item" src="{{image}}" data-id="{{_id}}">
                                     <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
                                 </div>
                                 <div class="group-title">
-                                    <div class="title-text"><b>{{title}}</b></div>
-                                    <div style="position: absolute; top: 235px;">
-                                        <div class="product-subtitle">
-                                            <i style="font-size: 20px;" class="icon ion-ios-heart custom-icon"></i>
-                                            <span>{{likes}}</span>
-                                            <span style="margin-left: 30px" class="rateit"
-                                                  data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
-                                                  data-rateit-readonly="true"></span>
-                                        </div>
+                                    <div class="title-text">{{title}}</div>
+                                    <div class="product-subtitle">
+                                        <span class="likes"><i class="icon ion-ios-heart custom-icon"></i> {{likes}}</span>
+                                        <span class="rateit"
+                                              data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
+                                              data-rateit-readonly="true"></span>
                                     </div>
                                 </div>
 
