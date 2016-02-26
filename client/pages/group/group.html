@@ -39,21 +39,6 @@
             padding: 10px;
             padding-bottom: 40px;
         }
-        .footer {
-            position: fixed;
-            height: 40px;
-            width: 100%;
-            background-color: #102a3b;
-            z-index: 1;
-            bottom: 0;
-            left: 0;
-            padding: 5px;
-        }
-        .footer-btn {
-            display: inline-block;
-            width: calc(50% - 2px);
-            height: 100%
-        }
         .notification-badge {
             position: absolute;
             right: 7px;
@@ -70,26 +55,29 @@
 
     <div class="page-content">
         <div class="group-header animated fadeInDown">
-            <h4 class="product-title">{{getFirstName currentUser.profile.name}}'s Birthday</h4>
+            <h4 class="product-title">{{getFirstName receiver.profile.name}}'s {{group.eventName}}</h4>
             <div class="product-subtitle">
                 <img style="height: 20px" src="/icons/calendar-48.png">
-                <span>12 July 2015</span>
+                <span>{{moCalendarDetailed group.eventDate}}</span>
             </div>
             <div class="ch-item-container small">
-                <img class="ch-item drop-shadow" src="{{currentUser.profile.avatar}}">
+                <img class="ch-item drop-shadow" src="{{receiver.profile.avatar}}">
             </div>
             <div class="side-btn"><i class="fa fa-cog fa-lg"></i></div>
         </div>
 
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeInUp{{/if}}">
             <div class="ch-grid">
+                {{#each giftIdeas}}
+                    <div class="ch-item-container">
+                        <div class="ch-item" style="background-image: url({{image}})"></div>
+                    </div>
+                {{/each}}
                 <div class="ch-item-container">
                     <div class="ch-item" style="color: rgba(168, 255, 65, 0.4); background-image: url(http://g02.a.alicdn.com/kf/HTB1kmFrIXXXXXcZXpXXq6xXFXXXA/-font-b-Navy-b-font-Blue-font-b-Burgundy-b-font-Stripe-3-4-Silk.jpg)"></div>
                     <div class="notification-badge">3</div>
                 </div>
-                <div class="ch-item-container">
-                    <div class="ch-item" style="background-image: url(https://s-media-cache-ak0.pinimg.com/736x/f5/eb/62/f5eb626b6114eea08891104bc0585472.jpg)"></div>
-                </div>
+
                 <div class="ch-item-container">
                     <div class="ch-item" style="background-image: url(http://cnet4.cbsistatic.com/hub/i/r/2014/03/18/adf02390-b0b9-11e3-a24e-d4ae52e62bcc/resize/1170xauto/bda817d4a2f7f30a562a88cbd1c510f2/Beats_Studio_Wireless_35834962-03_1.jpg)"></div>
                 </div>
@@ -104,9 +92,6 @@
             </div>
         </div>
 
-        <div class="footer animated fadeInUp">
-            <button class="footer-btn btn-light">Suggest Idea</button>
-            <button class="footer-btn btn-light" style="float: right">Suggest Idea</button>
-        </div>
+        <div id="suggest-btn" class="footer-btn animated fadeInUp">Suggest Gifts</div>
     </div>
 </template>

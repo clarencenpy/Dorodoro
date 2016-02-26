@@ -34,3 +34,6 @@ dandv:jquery-rateit
 digilord:faker
 accounts-password
 reactive-var
+lbee:moment-helpers
+momentjs:moment
+meteorhacks:search-source

@@ -1,0 +1,244 @@
+<template name="store">
+    <style>
+
+        /*Gift Selection Mode*/
+        .selection-container {
+            position: relative;
+            height: 120px;
+            width: 100%;
+            background-color: #fd4c58;
+            position: fixed;
+            padding: 10px;
+            bottom: 0;
+            z-index: 1;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .selection-label {
+            display: inline;
+            padding-right: 60px;
+            line-height: 30px;
+            font-size: 16px;
+        }
+
+        .selection-done-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            line-height: 30px;
+            height: 30px;
+            border-radius: 4px;
+            background: #d9424d;
+            text-align: center;
+        }
+
+        #selection-droparea {
+            margin-top: 5px;
+            width: 100%;
+            height: 65px;
+            border-radius: 5px;
+            border: 2px dashed antiquewhite;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+
+        .droparea-placeholder {
+            padding-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            color: antiquewhite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .selection-product-icon {
+            margin: 5px 0 5px 5px;
+            display: inline;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            object-fit: cover;
+            object-position: 50%;
+        }
+
+        /*-------------------*/
+
+        #grid {
+            padding: 10px 5px 0px 5px;
+        }
+
+        img.square-crop {
+            object-fit: cover;
+            object-position: center; /* Center the image within the element */
+            width: calc((100vw - 30px) / 2);
+            height: 164px !important;
+        }
+
+        .product-subtitle .likes {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            font-size: 14px;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+        .product-subtitle .likes i {
+            font-size: 20px;
+        }
+        .product-subtitle .rateit {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+        }
+
+        #custom-ribbon {
+            width: 100px !important;
+            border-color: #ff274a;
+            background-color: #fd4c58;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        /*store products*/
+        .container {
+            margin-top: 38px;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+            background-color: rgb(44,44,44);
+        }
+
+        .container.is-selecting {
+            height: calc(100vh - 60px - 120px);
+        }
+
+        #search-bar {
+            position: fixed;
+            top: 60px;
+            z-index: 1;
+            width: 100%;
+        }
+
+        #search-bar .search-input {
+            margin-bottom: 0;
+        }
+
+        #search-btn, #filter-btn {
+            color: #848484
+        }
+
+        #filter-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+
+        #search-btn {
+            position: absolute;
+            top: 0px;
+            right: 38px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+        }
+
+    </style>
+
+    <div class="page-content">
+        <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
+            <div id="drop-area" class="drop-area">
+                <div>
+                    <div class="drop-area__item">
+                        <div class="drop-area__label">Bros</div>
+                    </div>
+                    <div class="drop-area__item">
+                        <div class="drop-area__label">Girlfriend</div>
+                    </div>
+                    <div class="drop-area__item">
+                        <div class="drop-area__label">Funny</div>
+                    </div>
+                    <div class="drop-area__item">
+                    </div>
+                    <div class="drop-area__item">
+                    </div>
+                    <div class="drop-area__spacer"></div>
+                </div>
+            </div>
+            <div class="drop-overlay"></div>
+
+
+            <div class="container {{#if isSelecting}} is-selecting {{/if}}">
+
+                <div id="search-bar" class="drop-shadow">
+                    <div class="row-input-list search">
+                        <div class="block-input-combined">
+                            <input class="w-input input-form search-input" id="Search" type="text" placeholder="Search"
+                                   name="Search" data-name="Search" required="required">
+                            <a id="search-btn">
+                                <div class="icon ion-search"></div>
+                            </a>
+                            <a id="filter-btn">
+                                <div class="icon ion-funnel"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="grid">
+                    {{#each products}}
+                        <div class="group-block">
+                            <a class="w-inline-block">
+                                <div class="ui image">
+                                    <img class="square-crop grid__item" src="{{image}}" data-id="{{_id}}">
+                                    <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
+                                </div>
+                                <div class="group-title">
+                                    <div class="title-text">{{title}}</div>
+                                    <div class="product-subtitle">
+                                        <span class="likes"><i class="icon ion-ios-heart custom-icon"></i> {{likes}}</span>
+                                        <span class="rateit"
+                                              data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
+                                              data-rateit-readonly="true"></span>
+                                    </div>
+                                </div>
+
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        {{#if selectedProduct}}
+            {{>productModal product=selectedProduct}}
+        {{/if}}
+
+        {{#if isSelecting}}
+        <div class="selection-container animated fadeInUp drop-shadow-upwards">
+            <div class="selection-label">Suggest Gifts for {{getFirstName receiverName}}</div>
+            <div id="selection-droparea">
+                {{#each selection}}
+                    <img class="selection-product-icon animated fadeIn" src="{{image}}">
+                {{else}}
+                    <div class="droparea-placeholder">Drag Gifts Here!</div>
+                {{/each}}
+            </div>
+            <div class="selection-done-btn">Done</div>
+        </div>
+        {{/if}}
+
+    </div>
+</template>
