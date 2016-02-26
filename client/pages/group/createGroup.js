@@ -1,5 +1,5 @@
 Template.createGroup.onCreated(function() {
-    Session.set('header', 'Group Details')
+    Session.set('header', 'Create Group')
     const template = this
     let group = Session.get('createGroup')
     let receiverId = group ? group.receiver : undefined

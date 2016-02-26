@@ -12,6 +12,16 @@
             height: 164px;
         }
 
+        /*store products*/
+        .container {
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        .container.is-selecting {
+            height: calc(100vh - 60px - 120px);
+        }
+
     </style>
 
     <div class="page-content">
@@ -42,12 +52,12 @@
             </div>
             <div class="drop-overlay"></div>
 
-            <div class="container">
+            <div class="container {{#if isSelecting}} is-selecting {{/if}}">
                 <div id="grid">
                     {{#each products}}
                         <div class="group-block">
                             <a class="w-inline-block">
-                                <img class="square-crop grid__item" src="{{image}}">
+                                <img class="square-crop grid__item" src="{{image}}" data-id="{{_id}}">
                                 <div class="title-price">${{price}}</div>
                                 <div class="group-title">
                                     <div class="title-text">{{title}}</div>
@@ -58,5 +68,18 @@
                 </div>
             </div>
         </div>
+
+        {{#if isSelecting}}
+        <div class="selection-container animated fadeInUp">
+            <div class="selection-label">Suggest Gifts for {{getFirstName receiverName}}</div>
+            <div id="selection-droparea">
+                {{#each selection}}
+                    <img class="selection-product-icon animated fadeIn" src="{{image}}">
+                {{/each}}
+            </div>
+            <div class="selection-done-btn">Done</div>
+        </div>
+        {{/if}}
+
     </div>
 </template>

@@ -17,7 +17,13 @@ Template.group.helpers({
 })
 
 Template.group.events({
-
+    'click #suggest-btn'() {
+        Session.set('giftSelection', {
+            group: Groups.findOne(FlowRouter.getParam('id')),
+            selection: []
+        })
+        FlowRouter.go('store')
+    }
 })
 
 Template.group.onDestroyed(function() {

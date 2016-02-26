@@ -1,7 +1,6 @@
 .container {
 	position: relative;
 	z-index: 1;
-	min-height: calc(100vh - 60px);
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
 }
