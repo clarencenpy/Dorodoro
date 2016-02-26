@@ -13,6 +13,15 @@ Template.group.helpers({
     receiver() {
         let group = Groups.findOne(FlowRouter.getParam('id'))
         return Meteor.users.findOne(group.receiver)
+    },
+    giftIdeas() {
+        let group = Groups.findOne(FlowRouter.getParam('id'))
+        return _.map(group.giftIdeas, function (idea) {
+            let product = Products.findOne(idea.productId)
+            return {
+                image: product.image
+            }
+        })
     }
 })
 

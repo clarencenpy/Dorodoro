@@ -147,6 +147,32 @@ Template.store.helpers({
 Template.store.events({
     'click .group-block'() {
         Session.set('selectedProduct', this)
+    },
+    'click .selection-done-btn'() {
+        let gs = Session.get('giftSelection')
+        let ideas = []
+
+        //query for the group, so that we can prevent adding duplicate ideas
+        let group = Groups.findOne(gs.group._id)
+        let giftIdeas = group.giftIdeas;
+
+        _.each(gs.selection, function (product) {
+            //check that it has not been added before
+            let addedBefore = false
+            _.each(giftIdeas, function (idea) {
+                if (idea.productId === product._id) addedBefore = true
+            })
+            if (!addedBefore) {
+                ideas.push({
+                    contributor: Meteor.userId(),
+                    date: new Date(),
+                    productId: product._id
+                })
+            }
+        })
+        Groups.update(gs.group._id, {$push: {giftIdeas: {$each: ideas}}})
+        Session.set('giftSelection', null)
+        FlowRouter.go('group', {id: gs.group._id})
     }
 })
 
