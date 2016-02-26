@@ -19,7 +19,8 @@ Template.group.helpers({
         return _.map(group.giftIdeas, function (idea) {
             let product = Products.findOne(idea.productId)
             return {
-                image: product.image
+                image: product.image,
+                _id: product._id
             }
         })
     }
@@ -32,6 +33,12 @@ Template.group.events({
             selection: []
         })
         FlowRouter.go('store')
+    },
+    'click .ch-item'() {
+        let pageStack = Session.get('pageStack') || []
+        pageStack.push(FlowRouter.current().path)
+        Session.set('pageStack', pageStack)
+        FlowRouter.go('chat', {groupId: FlowRouter.getParam('id'), productId: this._id})
     }
 })
 

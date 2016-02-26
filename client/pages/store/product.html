@@ -1,0 +1,122 @@
+<template name="product">
+
+    <style>
+        #custom-ribbon.long-ribbon {
+            width: 150px !important;
+            border-color: #ff274a;
+            background-color: #fd4c58;
+            color: #fff;
+            z-index: 5;
+        }
+        #close-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+        .like-container {
+            width: 100%;
+            height: 40px;
+            position: relative;
+        }
+        .like-container .rateit {
+            position: absolute;
+            right: 0;
+        }
+        .like-container .likes {
+            display: inline;
+            font-size: 16px;
+        }
+        .like-container .likes i {
+            font-size: 22px;
+        }
+
+        .location-container {
+            width: 100%;
+            min-height: 80px;
+            position: relative;
+        }
+        .location-container .location-text {
+            position: absolute;
+            left: 60px;
+        }
+        .location-container img {
+            position: absolute;
+        }
+
+    </style>
+
+    <div class="page-content">
+        <div class="idea-header animated slideInRight">
+            <div class="grey-header">
+                <h2 class="grey-heading-title">{{product.title}}</h2>
+                <a id="close-btn">
+                    <div class="icon ion-close"></div>
+                </a>
+            </div>
+            <div class="text-new no-borders">
+                <div>
+                    <div class="ui fluid image">
+                        <a id="custom-ribbon" class="long-ribbon ui big right ribbon label">${{product.price}}</a>
+                        <img class="grid__item" src="{{product.image}}" data-id="{{product._id}}">
+                    </div>
+                    <div class="separator-button"></div>
+                    <div class="like-container">
+                        <div class="likes">
+                            <i class="icon ion-ios-heart custom-icon"></i> {{product.likes}} likes
+                        </div>
+                        <div class="rateit"
+                             data-rateit-value={{productRating product.rating}} data-rateit-ispreset="true"
+                             data-rateit-readonly="true">
+                        </div>
+                    </div>
+                    <div class="separator-fields"></div>
+                    <hr>
+                    <span class="description-new.larger">{{product.description}}</span>
+                    <hr>
+                    <div class="separator-button"></div>
+                </div>
+
+                <div class="location-container">
+                    <img src="/icons/shop-48.png">
+                    <div class="location-text">
+                        <div style="font-weight: 700; color: #fd4c58">{{product.location.name}}</div>
+                        <div style="font-weight: 400">{{product.location.vicinity}}</div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    {{> googleMap name="map" options=mapOptions}}
+                </div>
+
+            </div>
+
+            <div class="grey-header" style="background-color: #fd4c58; color: #fff">
+                <h2 class="grey-heading-title">Reviews</h2>
+            </div>
+            {{#each product.comments}}
+                <ul class="list list-messages">
+                    <li class="list-message" data-ix="list-item">
+                        <a class="w-clearfix w-inline-block" href="chat.html" data-load="1">
+                            <div class="w-clearfix column-left">
+                                <div class="image-message"><img
+                                        src="http://semantic-ui.com/images/avatar2/large/patrick.png"></div>
+                            </div>
+                            <div class="column-right">
+                                <div class="message-title">{{name}}</div>
+                                <div class="message-text">{{comment}}</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            {{/each}}
+        </div>
+    </div>
+
+</template>

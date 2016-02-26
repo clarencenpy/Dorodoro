@@ -166,7 +166,8 @@ Template.store.events({
                 ideas.push({
                     contributor: Meteor.userId(),
                     date: new Date(),
-                    productId: product._id
+                    productId: product._id,
+                    votes: 0
                 })
             }
         })
