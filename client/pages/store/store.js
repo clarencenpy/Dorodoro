@@ -131,20 +131,22 @@ Template.store.helpers({
             return gs.selection
         }
     },
+
+
+
     productRating(arr){
         return _.reduce(arr, function(memo, num) {
                 return memo + num;
             }, 0) / (arr.length === 0 ? 1 : arr.length);
+    },
+    selectedProduct() {
+        return Session.get('selectedProduct')
     }
 })
 
 Template.store.events({
     'click .group-block'() {
-        let pid = this._id
-        let pageStack = Session.get('pageStack') || []
-        pageStack.push(FlowRouter.getRouteName())
-        Session.set('pageStack', pageStack)
-        FlowRouter.go('product', {id: pid})
+        Session.set('selectedProduct', this)
     }
 })
 

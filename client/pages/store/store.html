@@ -12,7 +12,7 @@
             height: 164px !important;
         }
 
-        .likes {
+        .product-subtitle .likes {
             position: absolute;
             bottom: 10px;
             left: 15px;
@@ -20,10 +20,10 @@
             vertical-align: middle;
             line-height: 20px;
         }
-        .likes i {
+        .product-subtitle .likes i {
             font-size: 20px;
         }
-        .rateit {
+        .product-subtitle .rateit {
             position: absolute;
             bottom: 10px;
             right: 15px;
@@ -93,7 +93,7 @@
     </style>
 
     <div class="page-content">
-        <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
+        <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
             <div id="drop-area" class="drop-area">
                 <div>
                     <div class="drop-area__item">
@@ -156,6 +156,10 @@
                 </div>
             </div>
         </div>
+
+        {{#if selectedProduct}}
+            {{>productModal product=selectedProduct}}
+        {{/if}}
 
         {{#if isSelecting}}
         <div class="selection-container animated fadeInUp drop-shadow-upwards">
