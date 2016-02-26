@@ -9,11 +9,17 @@
             object-fit: cover;
             object-position: center; /* Center the image within the element */
             width: 100%;
-            height: 164px;
+            height: 164px !important;
+        }
+
+        #custom-ribbon {
+            width: 100px !important;
+            border-color: #ff274a;
+            background-color: #fd4c58;
+            color: #fff;
         }
 
     </style>
-
     <div class="page-content">
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeIn{{/if}}">
             <div id="drop-area" class="drop-area">
@@ -43,15 +49,36 @@
             <div class="drop-overlay"></div>
 
             <div class="container">
+                <div class="row-input-list search">
+                    <div class="block-input-combined">
+                        <input class="w-input input-form search-input" id="Search" type="text" placeholder="Search"
+                               name="Search" data-name="Search" required="required">
+                        <a class="w-inline-block right-input-icon search" href="#">
+                            <div class="icon ion-ios-search"></div>
+                        </a>
+                    </div>
+                </div>
                 <div id="grid">
                     {{#each products}}
                         <div class="group-block">
                             <a class="w-inline-block">
-                                <img class="square-crop grid__item" src="{{image}}">
-                                <div class="title-price">${{price}}</div>
-                                <div class="group-title">
-                                    <div class="title-text">{{title}}</div>
+                                <div class="ui image">
+                                    <img class="square-crop grid__item" src="{{image}}">
+                                    <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
                                 </div>
+                                <div class="group-title">
+                                    <div class="title-text"><b>{{title}}</b></div>
+                                    <div style="position: absolute; top: 235px;">
+                                        <div class="product-subtitle">
+                                            <i style="font-size: 20px;" class="icon ion-ios-heart custom-icon"></i>
+                                            <span>{{likes}}</span>
+                                            <span style="margin-left: 30px" class="rateit"
+                                                  data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
+                                                  data-rateit-readonly="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </a>
                         </div>
                     {{/each}}
