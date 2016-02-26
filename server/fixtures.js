@@ -1118,7 +1118,8 @@ if (Meteor.users.find().count() < 25) {
 }
 
 
-if (Groups.find().count() === 0) {
+//if (Groups.find().count() === 0) {
+if (false) {
     let users = Meteor.users.find().fetch();
     let group = {}
     /*let u1 = Meteor.users.findOne({'profile.name': 'Esther Dietrich'})
@@ -1148,6 +1149,7 @@ if (Groups.find().count() === 0) {
         {
             contributor: u2._id,
             productId: p1._id,
+            date: new Date(),
             comments: [
                 {
                     'userId': u3._id,

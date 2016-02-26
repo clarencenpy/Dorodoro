@@ -20,3 +20,8 @@ Template.registerHelper('moCalendarDetailed', function (time) {
         });
     }
 });
+
+Template.registerHelper('getAvatar', function (userId) {
+    let user = Meteor.users.findOne(userId)
+    return user ? user.profile.avatar : undefined
+})

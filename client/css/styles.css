@@ -298,8 +298,7 @@ a {
   border-top: 1px solid #e7e7e9;
 }
 .list.list-chats {
-  padding-top: 24px;
-  padding-bottom: 65px;
+  padding: 20px 0;
 }
 .list-item {
   overflow-x: hidden;

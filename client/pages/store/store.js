@@ -66,6 +66,7 @@ Template.store.onRendered(function () {
 
     // initialize draggable(s)
     [].slice.call(document.querySelectorAll('#grid .grid__item')).forEach(function (el) {
+
         new Draggable(el, droppableArr, {
             //draggabilly: {containment: dropArea},
             scroll : true,
@@ -172,6 +173,15 @@ Template.store.events({
             }
         })
         Groups.update(gs.group._id, {$push: {giftIdeas: {$each: ideas}}})
+
+        //for each idea, create a chat!
+        _.each(ideas, function (idea) {
+            Chats.insert({
+                groupId: gs.group._id,
+                productId: idea.productId
+            })
+        })
+
         Session.set('giftSelection', null)
         FlowRouter.go('group', {id: gs.group._id})
     }
