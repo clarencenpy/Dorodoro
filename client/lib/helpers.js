@@ -2,6 +2,11 @@ Template.registerHelper('getFirstName', function (fullName) {
     return fullName.split(' ')[0]
 })
 
+Template.registerHelper('getFirstNameFromId', function (userId) {
+    let user = Meteor.users.findOne(userId)
+    return user ? user.profile.name.split(' ')[0] : undefined
+})
+
 
 Template.registerHelper('moCalendarDetailed', function (time) {
     if (time !== undefined) {

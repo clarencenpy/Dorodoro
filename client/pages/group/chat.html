@@ -50,7 +50,7 @@
             <h4 class="product-title">{{product.title}}</h4>
             <div class="product-subtitle">
                 <img style="height: 17px" src="/icons/voice_presentation-48.png"> <span>{{getFirstName giftIdea.contributorName}}</span>
-                <i style="margin-left: 10px" class="icon ion-ios-heart custom-icon"></i> <span>{{giftIdea.votes}}</span>
+                <img style="height: 15px" src="/icons/thumbs_up.png"> <span>{{giftIdea.votes.length}}</span>
             </div>
             <div class="ch-item-container small">
                 <img class="ch-item drop-shadow" src="{{product.image}}">
@@ -93,7 +93,7 @@
         <div class="input-chat-block">
             <div class="w-form">
                 <input class="w-input input-chat" id="chat-message" type="text" placeholder="Your message">
-                <input id="send-btn" class="w-button chat-button" value="Send" style="text-align: center;">
+                <div id="send-btn" class="w-button chat-button" style="text-align: center;">Send</div>
             </div>
         </div>
     </div>

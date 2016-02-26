@@ -40,7 +40,7 @@ Template.createGroup.events({
         Session.set('createGroup', group)
 
         let pageStack = Session.get('pageStack') || []
-        pageStack.push(FlowRouter.getRouteName())
+        pageStack.push(FlowRouter.current().path)
         Session.set('pageStack', pageStack)
 
         FlowRouter.go('addMembers')

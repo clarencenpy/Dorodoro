@@ -1,0 +1,22 @@
+<template name="groups">
+    <div class="page-content">
+        <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
+
+            <ul class="list list-messages">
+                {{#each groups}}
+                    <li class="list-message">
+                        <a class="w-clearfix w-inline-block">
+                            <div class="w-clearfix column-left">
+                                <div class="image-message"><img src="{{getAvatar receiver}}"></div>
+                            </div>
+                            <div class="column-right">
+                                <div class="message-title">{{getFirstNameFromId receiver}}'s {{eventName}}</div>
+                                <div class="message-text">{{addOne members.length}} members</div>
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>
