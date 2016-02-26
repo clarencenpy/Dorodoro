@@ -136,7 +136,7 @@ const inventory = [
         }
     },
     {
-        "title": "A Woven Silk Burgundy Tie",
+        "title": "Silk Burgundy Tie",
         "description": "Modern and chic, a woven silk tie will lift even the most boring suit and shirt combinations.",
         "category": ["Fashion", "For Him"],
         "price": 78.90,
@@ -200,7 +200,7 @@ const inventory = [
         }
     },
     {
-        "title": "Zac Posen Eartha Top-Handle Bag",
+        "title": "Top-Handle Bag",
         "description": "This gorgeous handbag is great for the woman who has everything, and needs a great bag to carry it all around.",
         "category": ["Fashion", "For Her"],
         "price": 495.00,
@@ -268,7 +268,7 @@ const inventory = [
         }
     },
     {
-        "title": "Kate Middleton Wardrobe Dress",
+        "title": "Kate Middleton Dress",
         "description": "TEMPERLEY LONDON Amoret Lace Dress",
         "category": ["Fashion", "For Her"],
         "price": 4050.00,
@@ -304,7 +304,7 @@ const inventory = [
         }
     },
     {
-        "title": "NAKETANO Jennifer Hart",
+        "title": "Jennifer Hart",
         "description": "Hooded Jacket for Women. Fabric: 65% Cotton, 35% Polyester.",
         "category": ["Fashion", "For Her"],
         "price": 15.60,
@@ -408,7 +408,7 @@ const inventory = [
         }
     },
     {
-        "title": "Leica Adventure Camera",
+        "title": "Adventure Camera",
         "description": "Lecia’s new camera is the first they’ve designed for outdoor and underwater use.",
         "category": ["Gadgets"],
         "price": 2950,
@@ -448,7 +448,7 @@ const inventory = [
         }
     },
     {
-        "title": "Behmor Connected 8 Cup Coffee Maker",
+        "title": "8 Cup Coffee Maker",
         "description": "Truly modern brewing, made possible through a mobile app that runs from your Apple or Android smart phone so you can wake up to fresh-brewed coffee or hot water—and texts you when your beverage is ready.",
         "category": ["Gadgets"],
         "price": 349,
@@ -488,7 +488,7 @@ const inventory = [
         }
     },
     {
-        "title": "Tria Beauty Hair Removal Laser 4X",
+        "title": "Hair Removal Laser",
         "description": "Tria is the first FDA-cleared laser available for home use.",
         "category": ["Gadgets", "For Her"],
         "price": 67.46,
@@ -560,7 +560,7 @@ const inventory = [
         }
     },
     {
-        "title": "Beats Studio Wireless Over-Ear Headphone",
+        "title": "Wireless Headphone",
         "description": "The Beats Acoustic Engine(TM) makes your listening experience personal and real. ",
         "category": ["Gadgets"],
         "price": 490,
@@ -600,7 +600,7 @@ const inventory = [
         }
     },
     {
-        "title": "Anker PowerCore+ Lipstick-Sized Portable Charger",
+        "title": "Anker Portable Charger",
         "description": "Fast Charging Technology: PowerIQ detects your device to deliver its fastest possible charge speed up to 1 amp.",
         "category": ["Gadgets"],
         "price": 56.80,
@@ -640,7 +640,7 @@ const inventory = [
         }
     },
     {
-        "title": "Portable Ultrasonic Cool Mist Aroma Humidifier",
+        "title": "Aroma Humidifier",
         "description": "Whisper-Quiet Ultrasonic Operation - humidify your living space to prevent dry, stuffy air and flu/cold germs infecting your loved ones. Prevent dry and chapped skin in dry winter months.",
         "category": ["Gadgets", "For Her"],
         "price": 69.70,
@@ -676,7 +676,7 @@ const inventory = [
         }
     },
     {
-        "title": "AcousticSheep Classic Sleep Headphones",
+        "title": "Sleep Headphones",
         "description": "SleepPhones Classic are traditional headphones made bed-friendly! Unwind with our ultra-slim, patented soft and comfortable “headphones in a headband” that make listening to audio in bed a dream. ",
         "category": ["Gadgets"],
         "price": 39.90,
@@ -712,7 +712,7 @@ const inventory = [
         }
     },
     {
-        "title": "Boosted Electric Skateboard 2000W",
+        "title": "Electric Skateboard",
         "description": "Accelerate like a sports car. A revolutionary 2,000 watts of power means a completely new riding experience. The world's only dual-drive system lets you accelerate up any hill and brake to a complete stop on the way back down.",
         "category": ["Sport", "Gadgets"],
         "price": 1105,
@@ -752,7 +752,7 @@ const inventory = [
         }
     },
     {
-        "title": "Electric Hoverboard Scooter",
+        "title": "Hoverboard Scooter",
         "description": "sport gift hover board two 2 wheel self board balance scooters rock board hover led 8 inch electronic skateboard scooter.",
         "category": ["Sport"],
         "price": 399.00,
@@ -828,7 +828,7 @@ const inventory = [
         }
     },
     {
-        "title": "Everlast Boxing Gloves",
+        "title": "Boxing Gloves",
         "description": "Design to accustom your knuckles to harder impact",
         "category": ["Sport"],
         "price": 24.95,
@@ -868,7 +868,7 @@ const inventory = [
         }
     },
     {
-        "title": "Nike Soccer Shoes",
+        "title": "Soccer Shoes",
         "description": "Limited edition, design to give you better performance",
         "category": ["Sport", "For Him"],
         "price": 135.92,
@@ -900,7 +900,7 @@ const inventory = [
         }
     },
     {
-        "title": "Herschel Black Bagpack",
+        "title": "Black Bagpack",
         "description": "A high quality backpack for school.",
         "category": ["Fashion", "For Him"],
         "price": 105.58,
@@ -976,7 +976,7 @@ const inventory = [
         }
     },
     {
-        "title": "YONEX Nylon Shuttlecocks",
+        "title": "Nylon Shuttlecocks",
         "description": "Developed using the flight timing of feather shuttlecocks, MAVIS Nylon shuttlecocks are precision designed and manufactured to provide accurate flight performance.",
         "category": ["Sport"],
         "price": 12,
@@ -1012,7 +1012,7 @@ const inventory = [
         }
     },
     {
-        "title": "NIKE VAPOR 360 BF1665 BASEBALL GLOVE",
+        "title": "Baseball Glove",
         "description": "Designed with insight from Carlos Gonzalez, one of baseball's most exciting defensive outfielders, the Nike Vapor 360 Men's Fielding Glove blends Hyperfuse construction, dynamic Nike Flywire and an engineered leather palm to achieve the first lightweight, ultra-responsive glove that is game-ready right out of the box.",
         "category": ["Sport"],
         "price": 57.98,
