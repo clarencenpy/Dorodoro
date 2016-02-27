@@ -43,6 +43,15 @@
             width: 100%;
             overflow-y: scroll;
         }
+        .list-chat:last-child:before {
+            height: 20px;
+            content: ' ';
+            display: block;
+        }
+        .product-subtitle span {
+            line-height: 22px;
+            vertical-align: middle;
+        }
     </style>
 
     <div class="page-content">
@@ -61,8 +70,7 @@
         </div>
         <div class="body animated {{#if goingBack}}fadeInLeft{{else}}fadeInRight{{/if}}">
 
-            <div class="chat-container">
-            <ul class="list list-chats">
+            <ul class="list list-chats chat-container">
 
                 {{#each messages}}
                     {{#if isOwner userId}}
@@ -88,7 +96,6 @@
                 {{/each}}
 
             </ul>
-            </div>
         </div>
         <div class="input-chat-block">
             <div class="w-form">
