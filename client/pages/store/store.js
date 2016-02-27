@@ -87,7 +87,9 @@ Template.store.onRendered(function () {
     [].slice.call(document.querySelectorAll('#grid .grid__item')).forEach(function (el) {
 
         new Draggable(el, droppableArr, {
-            //draggabilly: {containment: dropArea},
+            draggabilly: {
+                handle: '.drag-handle'
+            },
             scroll : true,
             scrollable : '#drop-area',
             scrollSpeed : 40,

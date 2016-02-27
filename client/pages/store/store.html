@@ -77,6 +77,20 @@
             height: 164px !important;
         }
 
+        .drag-handle {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: white;
+            line-height: 40px;
+            font-size: 20px;
+            height: 40px;
+            width: 40px;
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+            border-top-left-radius: 20px;
+        }
+
         .product-subtitle .likes {
             position: absolute;
             bottom: 10px;
@@ -193,9 +207,10 @@
                     {{#each products}}
                         <div class="group-block">
                             <a class="w-inline-block">
-                                <div class="ui image">
-                                    <img class="square-crop grid__item" src="{{image}}" data-id="{{_id}}">
+                                <div class="ui image grid__item" style="position: relative" data-id="{{_id}}">
+                                    <img class="square-crop" src="{{image}}">
                                     <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
+                                    <div class="drag-handle"><i class="fa fa-hand-paper-o"></i></div>
                                 </div>
                                 <div class="group-title">
                                     <div class="title-text">{{title}}</div>
