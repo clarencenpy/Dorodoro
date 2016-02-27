@@ -32,12 +32,13 @@
             right: 13px;
             top: 23px;
         }
-        .body {
-            min-height: calc(100vh - 60px - 70px);
-            margin-top: calc(60px + 70px);
+        .container {
+            height: calc(100vh - 60px - 70px - 40px);
+            margin-top: 70px;
             background: #edfaff;
             padding: 10px;
-            padding-bottom: 40px;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
         }
         .notification-badge {
             position: absolute;
@@ -70,6 +71,7 @@
         </div>
 
         <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
+            <div class="container">
             <div class="ch-grid">
                 {{#each giftIdeas}}
                     <div class="ch-item-container">
@@ -77,6 +79,7 @@
                         <div class="notification-badge {{#if hasVoted idea.votes}} voted {{/if}}">{{idea.votes.length}}</div>
                     </div>
                 {{/each}}
+            </div>
             </div>
         </div>
 
