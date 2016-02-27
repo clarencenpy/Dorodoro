@@ -148,6 +148,7 @@ a {
   background-color: transparent;
 }
 .mobile-wrapper {
+  overflow-x: hidden;
   position: relative;
   width: 342px;
   min-height: 100vh;
