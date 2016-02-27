@@ -44,11 +44,13 @@ Template.chat.events({
         FlowRouter.go('product', {id: pid})
     },
     'click #send-btn'(event, template) {
-        let message = template.$('#chat-message').val()
+        let $chatInput = template.$('#chat-message')
+        let message = $chatInput.val()
 
         if (message.length === 0) return
 
-        template.$('#chat-message').val('')
+        $chatInput.val('')
+        $chatInput.focus()
 
         let chatId = Chats.findOne({
             groupId: FlowRouter.getParam('groupId'),
