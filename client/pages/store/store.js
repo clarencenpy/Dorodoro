@@ -162,12 +162,18 @@ Template.store.helpers({
     },
     selectedProduct() {
         return Session.get('selectedProduct')
+    },
+    filter(){
+        return Session.get('searchFilter')
     }
 })
 
 Template.store.events({
     'click .group-block'() {
         Session.set('selectedProduct', this)
+    },
+    'click .search-filter'() {
+        Session.set('searchFilter', this)
     },
     'click .selection-done-btn'() {
         let gs = Session.get('giftSelection')

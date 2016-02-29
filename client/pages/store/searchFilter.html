@@ -1,0 +1,89 @@
+<template name="searchFilter">
+    <style>
+        .img-circle {
+            border-radius: 50%;
+        }
+
+        #close-btn {
+            top: 0px;
+            float: right;
+            right: 0px;
+            display: inline-block;
+            width: 15px;
+            height: auto;
+            font-size: 8px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+
+        .modal-container {
+            width: 100%;
+            height: calc(100vh - 60px);
+            position: fixed;
+            bottom: 0;
+            background: white;
+            z-index: 2;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+    <div class="modal-container animated slideInUp">
+        <div class="text-new no-borders">
+                <h2 class="ui center aligned icon header">
+                    Price
+                    <a id="close-btn">
+                        <div class="icon ion-close"></div>
+                    </a>
+                </h2>
+                <!-- ionden range.slider -->
+                <input type="text" id="example_id" name="example_name" value=""/>
+                <p>asdsadasdsadas</p>
+                <div class="separator-fields"></div>
+                <h2 class="ui center aligned icon header">
+                    Category
+                </h2>
+                <div>
+                    <div style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/sport.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 5px;">
+                        <h4 style="margin-left: 25px">Sport</h4>
+                    </div>
+                    <div style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/fashion.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
+                        <h4 style="margin-left: 25px">Fashion</h4>
+                    </div>
+                    <div style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/gadget.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
+                        <h4 style="margin-left: 25px">Gadget</h4>
+                    </div>
+                    <div style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/home&living.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 5px;">
+                        <h4 style="margin-left: 25px">Living</h4>
+                    </div>
+                    <div style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/book.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
+                        <h4 style="margin-left: 25px">Book</h4>
+                    </div>
+                    <div style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/game.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
+                        <h4 style="margin-left: 25px">Game</h4>
+                    </div>
+                </div>
+                <div class="separator-fields"></div>
+                <input class="w-button action-button" type="submit" value="Search" data-wait="Please wait...">
+
+        </div>
+    </div>
+</template>

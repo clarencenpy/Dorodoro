@@ -197,7 +197,7 @@
                             <a id="search-btn">
                                 <div class="icon ion-search"></div>
                             </a>
-                            <a id="filter-btn">
+                            <a id="filter-btn" class="search-filter">
                                 <div class="icon ion-funnel"></div>
                             </a>
                         </div>
@@ -232,6 +232,10 @@
 
         {{#if selectedProduct}}
             {{>productModal product=selectedProduct}}
+        {{/if}}
+
+        {{#if filter}}
+            {{>searchFilter}}
         {{/if}}
 
         {{#if isSelecting}}

@@ -37,3 +37,4 @@ reactive-var
 lbee:moment-helpers
 momentjs:moment
 meteorhacks:search-source
+postrednik:meteor-rangeslider
