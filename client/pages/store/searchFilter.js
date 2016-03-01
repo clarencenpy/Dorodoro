@@ -6,6 +6,26 @@ Template.searchFilter.onCreated(function () {
         {
             name: 'Sport',
             image: '/images/sport.png'
+        },
+        {
+            name: 'Fashion',
+            image: '/images/fashion.png'
+        },
+        {
+            name: 'Gadget',
+            image: '/images/gadget.png'
+        },
+        {
+            name: 'Living',
+            image: '/images/home&living.png'
+        },
+        {
+            name: 'Book',
+            image: '/images/book.png'
+        },
+        {
+            name: 'Game',
+            image: '/images/game.png'
         }
     ]
 })
