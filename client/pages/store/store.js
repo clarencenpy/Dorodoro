@@ -163,8 +163,8 @@ Template.store.helpers({
     selectedProduct() {
         return Session.get('selectedProduct')
     },
-    filter(){
-        return Session.get('searchFilter')
+    showFilter(){
+        return Session.get('showFilter')
     }
 })
 
@@ -173,7 +173,7 @@ Template.store.events({
         Session.set('selectedProduct', this)
     },
     'click .search-filter'() {
-        Session.set('searchFilter', this)
+        Session.set('showFilter', true)
     },
     'click .selection-done-btn'() {
         let gs = Session.get('giftSelection')

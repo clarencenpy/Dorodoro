@@ -47,9 +47,9 @@ Template.searchFilter.helpers({
 
 Template.searchFilter.events({
     'click #close-btn'(event, template) {
-        template.$('.modal-container').addClass('slideOutDown')
+        template.$('.modal-container').addClass('slideOutUp')
         Meteor.setTimeout(function () {
-            Session.set('selectedProduct', null)
+            Session.set('showFilter', false)
         }, 1000)
     }
 })
