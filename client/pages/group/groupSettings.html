@@ -1,0 +1,79 @@
+<template name="groupSettings">
+    <style>
+        .modal-container {
+            width: 100%;
+            height: calc(100vh - 60px);
+            position: fixed;
+            bottom: 0;
+            background: white;
+            z-index: 2;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+
+        .voting-status {
+            width: 100%;
+            text-align: center;
+            background-color: darkgreen;
+            color: white;
+            padding: 10px;
+        }
+        .voting-status.closed {
+            background-color: darkred;
+        }
+        .voting-status .title {
+            font-size: 16px;
+        }
+        .voting-status .subtitle {
+            font-size: 12px;
+            line-height: 12px;
+        }
+        .endVoting-btn {
+            background: #f36e00;
+        }
+
+    </style>
+
+    <div class="modal-container animated slideInRight">
+        <div class="grey-header">
+            <h2 class="grey-heading-title">Group Settings</h2>
+            <a id="close-btn">
+                <div class="icon ion-close"></div>
+            </a>
+        </div>
+        <div style="padding: 20px">
+            {{#if votingClosed}}
+                <div class="voting-status closed">
+                    <div class="title">Voting has Closed</div>
+                    <div class="subtitle">Check out the winning gift!</div>
+                </div>
+            {{else}}
+                {{#if isAdmin}}
+                    <div class="voting-status endVoting-btn">
+                        <div class="title">Click to End Brainstorming</div>
+                        <div class="subtitle">And decide on the winning gift</div>
+                    </div>
+                {{else}}
+                    <div class="voting-status">
+                        <div class="title">Brainstorming is In Progress</div>
+                        <div class="subtitle">Contribute ideas and vote!</div>
+                    </div>
+                {{/if}}
+            {{/if}}
+            <div>Members</div>
+        </div>
+    </div>
+</template>

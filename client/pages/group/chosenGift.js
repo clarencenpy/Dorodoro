@@ -1,9 +1,33 @@
-Template.chosenGift.onRendered(function () {
-    $('#circle').circleProgress({
-        value: 0.75,
-        size: 80,
-        fill: {
-            gradient: ["red", "orange"]
-        }
-    });
+Template.chosenGift.onCreated(function() {
+
 })
+
+Template.chosenGift.onRendered(function() {
+
+})
+
+Template.chosenGift.helpers({
+    winner() {
+        let groupId = FlowRouter.getParam('id')
+        let ideas = Groups.findOne(groupId).giftIdeas
+        //find the idea with the most votes
+        let winner
+        let maxVotes = 0
+        _.each(ideas, function (idea) {
+            if (idea.votes.length > maxVotes) {
+                maxVotes = idea.votes.length
+                winner = idea
+            }
+        })
+        return Products.findOne(winner.productId)
+    }
+})
+
+Template.chosenGift.events({
+
+})
+
+Template.chosenGift.onDestroyed(function() {
+
+})
+

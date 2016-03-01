@@ -8,6 +8,13 @@ Template.registerHelper('getFirstNameFromId', function (userId) {
 })
 
 
+Template.registerHelper('getFirstNameFromIdUnlessYourself', function (userId) {
+    if (Meteor.userId() === userId) return 'I'
+    let user = Meteor.users.findOne(userId)
+    return user ? user.profile.name.split(' ')[0] : undefined
+})
+
+
 Template.registerHelper('moCalendarDetailed', function (time) {
     if (time !== undefined) {
         let now = moment()
@@ -29,4 +36,8 @@ Template.registerHelper('moCalendarDetailed', function (time) {
 Template.registerHelper('getAvatar', function (userId) {
     let user = Meteor.users.findOne(userId)
     return user ? user.profile.avatar : undefined
+})
+
+Template.registerHelper('log', function (obj) {
+    console.log(obj)
 })

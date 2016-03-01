@@ -14,20 +14,20 @@
             padding-left: 20px;
             border-bottom: 1px solid #e7e7e9;
         }
-        .product-title {
+        .product-header-title {
             position: absolute;
             left: 110px;
             font-size: 16px;
             font-weight: 400;
         }
-        .product-subtitle {
+        .product-header-subtitle {
             position: absolute;
             left: 110px;
             top: 38px;
             font-size: 13px;
             font-weight: 400;
         }
-        .side-btn {
+        .settings-btn {
             position: absolute;
             right: 13px;
             top: 23px;
@@ -40,49 +40,126 @@
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
         }
-        .notification-badge {
-            position: absolute;
-            right: 7px;
-            top: 0px;
-            color: white;
-            background: #d24052;
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            padding-top: 4px;
+
+        img.square-crop {
+            object-fit: cover;
+            object-position: center; /* Center the image within the element */
+            width: calc((100vw - 30px) / 2);
+            height: 164px !important;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .group-title {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            height: 75px;
+            background: #eacbf8;
+        }
+        #custom-ribbon {
+            width: 100px !important;
+            border-color: #ff274a;
+            background-color: #fd4c58;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .suggestedBy {
+            font-size: 10px;
+            line-height: 12px;
+        }
+        .status {
+            width: 100%;
+            height: 20px;
+            background: rgba(0,0,0,0.5);
             text-align: center;
+            line-height: 20px;
+            font-size: 11px;
+            font-weight: 400;
+            position: absolute;
+            bottom: 0;
+            color: white;
         }
-        .notification-badge.voted {
-            background: green;
+        .group-buttons {
+            display: flex;
+            margin-top: 5px;
         }
+        .group-buttons button.vote-btn {
+            width: 50px;
+            height: 25px;
+            font-size: 12px;
+            color: white;
+            background: orangered;
+            border-radius: 3px;
+            border-bottom-left-radius: 12px;
+            margin-right: 5px;
+        }
+        .group-buttons button.comment-btn {
+            width: calc(100% - 55px);
+            height: 25px;
+            font-size: 12px;
+            color: white;
+            background: #151d31;
+            border-radius: 3px;
+            border-bottom-right-radius: 12px;
+        }
+
     </style>
 
     <div class="page-content">
         <div class="group-header animated fadeInDown">
-            <h4 class="product-title">{{getFirstName receiver.profile.name}}'s {{group.eventName}}</h4>
-            <div class="product-subtitle">
+            <h4 class="product-header-title">{{getFirstName receiver.profile.name}}'s {{group.eventName}}</h4>
+            <div class="product-header-subtitle">
                 <img style="height: 20px" src="/icons/calendar-48.png">
                 <span>{{moCalendarDetailed group.eventDate}}</span>
             </div>
             <div class="ch-item-container small">
                 <img class="ch-item drop-shadow" src="{{receiver.profile.avatar}}">
             </div>
-            <div class="side-btn"><i class="fa fa-cog fa-lg"></i></div>
+            <div class="settings-btn"><i class="fa fa-cog fa-lg"></i></div>
         </div>
 
         <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
-            <div class="container">
-            <div class="ch-grid">
-                {{#each giftIdeas}}
-                    <div class="ch-item-container">
-                        <div class="ch-item" style="background-image: url({{image}})"></div>
-                        <div class="notification-badge {{#if hasVoted idea.votes}} voted {{/if}}">{{idea.votes.length}}</div>
+            {{#if votingClosed}}
+                {{>chosenGift}}
+            {{else}}
+                <div class="container">
+                    <div class="ch-grid">
+                        {{#each giftIdeas}}
+                            <div class="group-block">
+                                <a class="w-inline-block">
+                                    <div class="ui image" style="position: relative" data-id="{{product._id}}">
+                                        <img class="square-crop" src="{{product.image}}">
+                                        <a id="custom-ribbon" class="ui small left ribbon label">${{product.price}}</a>
+                                        <div class="status">{{idea.votes.length}} Voted Yes</div>
+                                    </div>
+                                    <div class="group-title">
+                                        <div class="suggestedBy">{{getFirstNameFromIdUnlessYourself idea.contributor}} suggested:</div>
+                                        <div class="title-text">{{product.title}}</div>
+                                        <div class="group-buttons">
+                                            <button class="vote-btn">{{#if hasVoted idea.votes}}Undo{{else}}Yes!{{/if}}</button>
+                                            <button class="comment-btn">Comment</button>
+                                        </div>
+                                    </div>
+
+
+                                </a>
+                            </div>
+                        {{/each}}
                     </div>
-                {{/each}}
-            </div>
-            </div>
+                </div>
+            {{/if}}
         </div>
 
-        <div id="suggest-btn" class="footer-btn animated fadeInUp">Suggest Gifts</div>
+        {{#if votingClosed}}
+            <div id="volunteer-btn" class="footer-btn animated fadeInUp">Volunteer To Buy</div>
+        {{else}}
+            <div id="suggest-btn" class="footer-btn animated fadeInUp">Suggest Gifts</div>
+        {{/if}}
+
+
+
+        {{#if showSettings}}
+            {{>groupSettings}}
+        {{/if}}
     </div>
 </template>

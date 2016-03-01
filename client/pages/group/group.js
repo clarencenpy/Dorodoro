@@ -1,11 +1,9 @@
 Template.group.onCreated(function() {
-    Session.set('header', 'Brainstorm Gifts')
+    Session.set('header', 'Gift Suggestions')
 })
 
 Template.group.onRendered(function() {
     const template = this
-
-    //template.$('.ch-item').on('doubleTap')
 })
 
 Template.group.helpers({
@@ -21,11 +19,8 @@ Template.group.helpers({
         return _.map(group.giftIdeas, function (idea) {
             let product = Products.findOne(idea.productId)
             return {
-                image: product.image,
-                _id: product._id,
-                idea: _.find(group.giftIdeas, function (idea) {
-                    return idea.productId === product._id
-                })
+                product: product,
+                idea: idea
             }
         })
     },
@@ -33,6 +28,14 @@ Template.group.helpers({
         return !!_.find(votes, function (vote) {
             return Meteor.userId() === vote
         })
+    },
+    showSettings() {
+        return Session.get('showSettings');
+    },
+    votingClosed() {
+        let groupId = FlowRouter.getParam('id')
+        let group = Groups.findOne(groupId)
+        return group.votingClosed
     }
 })
 
@@ -44,17 +47,19 @@ Template.group.events({
         })
         FlowRouter.go('store')
     },
-    'singletap .ch-item'() {
+    'click .comment-btn, click .image'() {
         let pageStack = Session.get('pageStack') || []
         pageStack.push(FlowRouter.current().path)
         Session.set('pageStack', pageStack)
-        FlowRouter.go('chat', {groupId: FlowRouter.getParam('id'), productId: this._id})
+        FlowRouter.go('chat', {groupId: FlowRouter.getParam('id'), productId: this.product._id})
     },
-    'doubletap .ch-item'() {
-        let pid = this._id
+    'click .vote-btn'() {
+        let pid = this.product._id
         let groupId = FlowRouter.getParam('id')
         Meteor.call('vote', pid, groupId, Meteor.userId())
-
+    },
+    'click .settings-btn'() {
+        Session.set('showSettings', true)
     }
 })
 
