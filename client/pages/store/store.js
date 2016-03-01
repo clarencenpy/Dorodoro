@@ -151,7 +151,7 @@ Template.store.helpers({
         if (sq.categories.length > 0) queryParams.category  = {$in: sq.categories}
         queryParams.price = {$lt: sq.to, $gt: sq.from}
 
-        return Products.find(queryParams)
+        return Products.find(queryParams, {sort: { likes: -1 }})
     },
 
     //single selection mode
