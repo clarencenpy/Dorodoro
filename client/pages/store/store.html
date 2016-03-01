@@ -120,7 +120,7 @@
         /*store products*/
         .container {
             margin-top: 38px;
-            height: calc(100vh - 60px);
+            height: calc(100vh - 60px - 38px);
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
             background-color: rgb(44,44,44);
@@ -186,46 +186,42 @@
             </div>
             <div class="drop-overlay"></div>
 
-
-            <div class="container {{#if isSelecting}} is-selecting {{/if}}">
-
-                <div id="search-bar" class="drop-shadow">
-                    <div class="row-input-list search">
-                        <div class="block-input-combined">
-                            <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search">
-                            <a id="search-btn">
-                                <div class="icon ion-search"></div>
-                            </a>
-                            <a id="filter-btn" class="search-filter">
-                                <div class="icon ion-funnel"></div>
-                            </a>
-                        </div>
+            <div id="search-bar" class="drop-shadow">
+                <div class="row-input-list search">
+                    <div class="block-input-combined">
+                        <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search">
+                        <a id="search-btn">
+                            <div class="icon ion-search"></div>
+                        </a>
+                        <a id="filter-btn" class="search-filter">
+                            <div class="icon ion-funnel"></div>
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <div id="grid">
-                    {{#each products}}
-                        <div class="group-block">
-                            <a class="w-inline-block">
-                                <div class="ui image grid__item" style="position: relative" data-id="{{_id}}">
-                                    <img class="square-crop" src="{{image}}">
-                                    <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
-                                    <div class="drag-handle"><i class="fa fa-hand-paper-o"></i></div>
+            <div id="grid" class="container {{#if isSelecting}} is-selecting {{/if}}">
+                {{#each products}}
+                    <div class="group-block">
+                        <a class="w-inline-block">
+                            <div class="ui image grid__item" style="position: relative" data-id="{{_id}}">
+                                <img class="square-crop" src="{{image}}">
+                                <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
+                                <div class="drag-handle"><i class="fa fa-hand-paper-o"></i></div>
+                            </div>
+                            <div class="group-title">
+                                <div class="title-text">{{title}}</div>
+                                <div class="product-subtitle">
+                                    <span class="likes"><i class="icon ion-ios-heart custom-icon"></i> {{likes}}</span>
+                                    <span class="rateit"
+                                          data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
+                                          data-rateit-readonly="true"></span>
                                 </div>
-                                <div class="group-title">
-                                    <div class="title-text">{{title}}</div>
-                                    <div class="product-subtitle">
-                                        <span class="likes"><i class="icon ion-ios-heart custom-icon"></i> {{likes}}</span>
-                                        <span class="rateit"
-                                              data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
-                                              data-rateit-readonly="true"></span>
-                                    </div>
-                                </div>
+                            </div>
 
-                            </a>
-                        </div>
-                    {{/each}}
-                </div>
+                        </a>
+                    </div>
+                {{/each}}
             </div>
         </div>
 

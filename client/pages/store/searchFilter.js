@@ -13,8 +13,6 @@ Template.searchFilter.onCreated(function () {
 Template.searchFilter.onRendered(function () {
     const template = this
 
-    Session.set('header', 'Search Filter')
-
     $('#slider').ionRangeSlider({
         min: template.minPrice,
         max: template.maxPrice,
