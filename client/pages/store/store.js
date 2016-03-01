@@ -147,7 +147,7 @@ Template.store.helpers({
     products() {
         let queryParams = {}
         let sq = Session.get('searchQuery')
-        if (sq.title.length > 0) queryParams.title = {$regex: sq.title}
+        if (sq.title.length > 0) queryParams.title = {$regex: sq.title, $options: 'i'}
         if (sq.categories.length > 0) queryParams.category  = {$in: sq.categories}
         queryParams.price = {$lt: sq.to, $gt: sq.from}
 
