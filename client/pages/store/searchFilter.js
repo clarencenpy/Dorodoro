@@ -1,5 +1,13 @@
 Template.searchFilter.onCreated(function () {
     const template = this
+    template.maxPrice = 5000
+    template.minPrice = 1000
+    template.categories = [
+        {
+            name: 'Sport',
+            image: '/images/sport.png'
+        }
+    ]
 })
 
 Template.searchFilter.onRendered(function () {
@@ -7,42 +15,45 @@ Template.searchFilter.onRendered(function () {
 
     Session.set('header', 'Search Filter')
 
-    $("#example_id").ionRangeSlider({
-        min: 0,
-        max: 5000,
-        from: 1000,
-        to: 3500,
+    $('#slider').ionRangeSlider({
+        min: template.minPrice,
+        max: template.maxPrice,
+        from: template.minPrice + 100,
+        to: template.maxPrice - 100,
         type: 'double',
         prefix: "$",
-        onStart: function (data) {
-            console.log(data);
-        },
-        onChange: function (data) {
-            console.log(data);
-        },
+
         onFinish: function (data) {
-            console.log(data);
-        },
-        onUpdate: function (data) {
-            console.log(data);
+            let sq = Session.get('searchQuery')
+            if (sq) {
+                sq.to = data.to
+                sq.from = data.from
+            } else {
+                sq = {
+                    to: data.to,
+                    from: data.from
+                }
+            }
+            Session.set('searchQuery', sq)
         }
     });
 })
 
 Template.searchFilter.helpers({
-    /*function() {
-     $( "#slider-range" ).slider({
-     range: true,
-     min: 0,
-     max: 500,
-     values: [ 75, 300 ],
-     slide: function( event, ui ) {
-     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-     }
-     });
-     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-     }*/
+    categories() {
+        return Template.instance().categories
+    },
+    gender() {
+        return {
+            male: 'm',
+            female: 'f'
+        }
+    },
+    isCategorySelected(category) {
+        return _.find(Session.get('searchQuery').categories, function (cat) {
+            return cat === category
+        })
+    }
 })
 
 Template.searchFilter.events({
@@ -51,6 +62,37 @@ Template.searchFilter.events({
         Meteor.setTimeout(function () {
             Session.set('showFilter', false)
         }, 1000)
+    },
+    'click .category-btn'() {
+        let name = this.name
+        let sq = Session.get('searchQuery')
+        if (!_.find(sq.categories, function (category) {
+                return category === name
+            })) {
+            sq.categories.push(name)
+        } else {
+            sq.categories = _.without(sq.categories, name)
+        }
+        Session.set('searchQuery', sq)
+
+    },
+    'click .gender-btn'() {
+        let gender = this.toString()
+        gender = gender === 'm' ? 'For Him' : 'For Her'
+        let sq = Session.get('searchQuery')
+        if (!_.find(sq.categories, function (category) {
+                return category === gender
+            })) {
+            sq.categories.push(gender)
+        } else {
+            sq.categories = _.without(sq.categories, gender)
+        }
+        Session.set('searchQuery', sq)
+    },
+
+
+    'click #search-btn': function (event, template) {
+
     }
 })
 

@@ -27,6 +27,11 @@
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
         }
+
+        .filterOn img {
+            background-color: #34aa3b !important;
+        }
+
     </style>
     <div class="modal-container animated slideInDown">
         <div class="text-new no-borders">
@@ -37,68 +42,44 @@
                 </a>
             </h2>
             <!-- ionden range.slider -->
-            <input type="text" id="example_id" name="example_name" value=""/>
+            <input type="text" id="slider" name="example_name" value=""/>
             <div class="separator-fields"></div>
             <h2 class="ui center aligned icon header">
                 Gender
             </h2>
             <div>
-                <div style="display: inline-block;">
+                {{#with gender.male}}
+                <div class="gender-btn {{#if isCategorySelected 'For Him'}}filterOn{{/if}}" style="display: inline-block;">
                     <img class="img-circle"
                          src="/images/male.png"
                          style="background-color: #df3e49; width: 100px; height: auto; margin-left: 40px;">
                     <h4 style="margin-left: 70px">Male</h4>
                 </div>
-                <div style="display: inline-block;">
+                {{/with}}
+                {{#with gender.female}}
+                <div class="gender-btn {{#if isCategorySelected 'For Her'}}filterOn{{/if}}" style="display: inline-block;">
                     <img class="img-circle"
                          src="/images/female.png"
                          style="background-color: #df3e49; width: 100px; height: auto; margin-left: 50px;">
                     <h4 style="margin-left: 65px">Female</h4>
                 </div>
+                {{/with}}
             </div>
             <h2 class="ui center aligned icon header">
                 Category
             </h2>
-            <div>
-                <div style="display: inline-block;">
+            <div class="category-container">
+                {{#each categories}}
+                <div class="category-btn {{#if isCategorySelected name}}filterOn{{/if}}" style="display: inline-block;">
                     <img class="img-circle"
-                         src="/images/sport.png"
+                         src="{{image}}"
                          style="background-color: #df3e49; width: 100px; height: auto; margin-left: 5px;">
-                    <h4 style="margin-left: 25px">Sport</h4>
+                    <h4 style="text-align: center">{{name}}</h4>
                 </div>
-                <div style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/fashion.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
-                    <h4 style="margin-left: 25px">Fashion</h4>
-                </div>
-                <div style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/gadget.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
-                    <h4 style="margin-left: 25px">Gadget</h4>
-                </div>
-                <div style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/home&living.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 5px;">
-                    <h4 style="margin-left: 25px">Living</h4>
-                </div>
-                <div style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/book.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
-                    <h4 style="margin-left: 25px">Book</h4>
-                </div>
-                <div style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/game.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 10px;">
-                    <h4 style="margin-left: 25px">Game</h4>
-                </div>
+                {{/each}}
             </div>
             <div class="separator-fields"></div>
-            <input class="w-button action-button" type="submit" value="Search" data-wait="Please wait...">
+            <button id="filter-done-btn" class="w-button action-button">Search</button>
 
         </div>
     </div>

@@ -6,6 +6,14 @@ Template.store.onCreated(function () {
     //    group:
     //    selection: [products]
     //}
+
+
+    Session.set('searchQuery', {
+        title: '',
+        to: 5000,
+        from: 0,
+        categories: []
+    })
 })
 
 Template.store.onRendered(function () {
@@ -16,6 +24,12 @@ Template.store.onRendered(function () {
     this.$('.rateit').rateit();
 
     let gs = Session.get('giftSelection')
+    
+    //add listener to search input
+    let $search = template.$('#search-input')
+    $search.on('keyup', function (event) {
+        let query = $search.val()
+    })
 
     /** Draggable Code **/
     dragdrop()
@@ -131,7 +145,13 @@ Template.store.onRendered(function () {
 
 Template.store.helpers({
     products() {
-        return Products.find()
+        let queryParams = {}
+        let sq = Session.get('searchQuery')
+        if (sq.title.length > 0) queryParams.title = {$regex: sq.title}
+        if (sq.categories.length > 0) queryParams.category  = {$in: sq.categories}
+        queryParams.price = {$lt: sq.to, $gt: sq.from}
+
+        return Products.find(queryParams)
     },
 
     //single selection mode
@@ -210,7 +230,14 @@ Template.store.events({
 
         Session.set('giftSelection', null)
         FlowRouter.go('group', {id: gs.group._id})
+    },
+    'keyup #search-input'(event) {
+        let title = $(event.target).val()
+        let sq = Session.get('searchQuery') || {}
+        sq.title = title
+        Session.set('searchQuery', sq)
     }
+
 })
 
 Template.store.onDestroyed(function () {
