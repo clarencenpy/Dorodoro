@@ -1,7 +1,7 @@
 Template.searchFilter.onCreated(function () {
     const template = this
     template.maxPrice = 5000
-    template.minPrice = 1000
+    template.minPrice = 0
     template.categories = [
         {
             name: 'Sport',
