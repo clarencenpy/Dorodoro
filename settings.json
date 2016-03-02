@@ -1,0 +1,8 @@
+{
+    "galaxy.meteor.com": {
+        "env": {
+            "ROOT_URL": "http://dorodoro.meteorapp.com",
+            "MONGO_URL": "mongodb://clarencenpy:32thZLbWXqmvxB@ds019048.mlab.com:19048/dorodoro"
+        }
+    }
+}
