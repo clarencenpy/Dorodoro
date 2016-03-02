@@ -72,7 +72,7 @@ const inventory = [
         }
     },
     {
-        "title": "A Pale Blue Shirt",
+        "title": "Formal Blue Shirt",
         "description": "An essential workaday item, this. Wear with a beige, grey or navy suit, a tie in a darker shade of blue and wait patiently for your promotion.",
         "category": ["Fashion", "For Him"],
         "price": 89.50,
@@ -136,7 +136,7 @@ const inventory = [
         }
     },
     {
-        "title": "Silk Burgundy Tie",
+        "title": "Silk Tie",
         "description": "Modern and chic, a woven silk tie will lift even the most boring suit and shirt combinations.",
         "category": ["Fashion", "For Him"],
         "price": 78.90,
@@ -268,7 +268,7 @@ const inventory = [
         }
     },
     {
-        "title": "Kate Middleton Dress",
+        "title": "Lace Dress",
         "description": "TEMPERLEY LONDON Amoret Lace Dress",
         "category": ["Fashion", "For Her"],
         "price": 4050.00,
@@ -408,7 +408,7 @@ const inventory = [
         }
     },
     {
-        "title": "Adventure Camera",
+        "title": "Lecia Camera",
         "description": "Lecia’s new camera is the first they’ve designed for outdoor and underwater use.",
         "category": ["Gadgets"],
         "price": 2950,
@@ -448,7 +448,7 @@ const inventory = [
         }
     },
     {
-        "title": "8 Cup Coffee Maker",
+        "title": "Coffee Maker",
         "description": "Truly modern brewing, made possible through a mobile app that runs from your Apple or Android smart phone so you can wake up to fresh-brewed coffee or hot water—and texts you when your beverage is ready.",
         "category": ["Gadgets"],
         "price": 349,
@@ -488,7 +488,7 @@ const inventory = [
         }
     },
     {
-        "title": "Hair Removal Laser",
+        "title": "Tria Laser",
         "description": "Tria is the first FDA-cleared laser available for home use.",
         "category": ["Gadgets", "For Her"],
         "price": 67.46,
@@ -560,7 +560,7 @@ const inventory = [
         }
     },
     {
-        "title": "Wireless Headphone",
+        "title": "Beats Headphone",
         "description": "The Beats Acoustic Engine(TM) makes your listening experience personal and real. ",
         "category": ["Gadgets"],
         "price": 490,
@@ -600,7 +600,7 @@ const inventory = [
         }
     },
     {
-        "title": "Anker Portable Charger",
+        "title": "Portable Charger",
         "description": "Fast Charging Technology: PowerIQ detects your device to deliver its fastest possible charge speed up to 1 amp.",
         "category": ["Gadgets"],
         "price": 56.80,
@@ -640,7 +640,7 @@ const inventory = [
         }
     },
     {
-        "title": "Aroma Humidifier",
+        "title": "Humidifier",
         "description": "Whisper-Quiet Ultrasonic Operation - humidify your living space to prevent dry, stuffy air and flu/cold germs infecting your loved ones. Prevent dry and chapped skin in dry winter months.",
         "category": ["Gadgets", "For Her"],
         "price": 69.70,
@@ -676,7 +676,7 @@ const inventory = [
         }
     },
     {
-        "title": "Sleep Headphones",
+        "title": "SleepPhones",
         "description": "SleepPhones Classic are traditional headphones made bed-friendly! Unwind with our ultra-slim, patented soft and comfortable “headphones in a headband” that make listening to audio in bed a dream. ",
         "category": ["Gadgets"],
         "price": 39.90,
@@ -712,7 +712,7 @@ const inventory = [
         }
     },
     {
-        "title": "Electric Skateboard",
+        "title": "Skateboard",
         "description": "Accelerate like a sports car. A revolutionary 2,000 watts of power means a completely new riding experience. The world's only dual-drive system lets you accelerate up any hill and brake to a complete stop on the way back down.",
         "category": ["Sport", "Gadgets"],
         "price": 1105,
@@ -752,7 +752,7 @@ const inventory = [
         }
     },
     {
-        "title": "Hoverboard Scooter",
+        "title": "Hoverboard",
         "description": "sport gift hover board two 2 wheel self board balance scooters rock board hover led 8 inch electronic skateboard scooter.",
         "category": ["Sport"],
         "price": 399.00,
@@ -792,7 +792,7 @@ const inventory = [
         }
     },
     {
-        "title": "Nike Golf Ball",
+        "title": "Golf Ball",
         "description": "High quality Nike golf ball",
         "category": ["Sport"],
         "price": 24,
@@ -936,7 +936,7 @@ const inventory = [
         }
     },
     {
-        "title": "MCL Knee Brace",
+        "title": "Knee Brace",
         "description": "MCL knee braces is used to treat patellar subluxation, instability, tendonitis, and post-fracture conditions, and offers compression and protection for post-op phases, as well as passive support and protection during the rehab phase.",
         "category": ["Sport"],
         "price": 24.95,
@@ -976,7 +976,7 @@ const inventory = [
         }
     },
     {
-        "title": "Nylon Shuttlecocks",
+        "title": "Shuttlecocks",
         "description": "Developed using the flight timing of feather shuttlecocks, MAVIS Nylon shuttlecocks are precision designed and manufactured to provide accurate flight performance.",
         "category": ["Sport"],
         "price": 12,
