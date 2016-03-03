@@ -106,6 +106,33 @@
             border-bottom-right-radius: 12px;
         }
 
+
+        .camera-btn {
+            position: fixed;
+            bottom: 5px;
+            right: 5px;
+            z-index: 2;
+            height: 30px;
+            width: 60px;
+            background: #d5424b;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .camera-btn input#camera-input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            height: 30px;
+            width: 60px;
+        }
+
     </style>
 
     <div class="page-content">
@@ -157,12 +184,20 @@
             <div id="volunteer-btn" class="footer-btn animated fadeInUp">Volunteer To Buy</div>
         {{else}}
             <div id="suggest-btn" class="footer-btn animated fadeInUp">Suggest Gifts</div>
+            <div class="camera-btn animated fadeInUp">
+                <span><i class="fa fa-camera fa-lg"></i></span>
+                <input id="camera-input" type="file" accept="image/*;capture=camera">
+            </div>
         {{/if}}
 
 
 
         {{#if showSettings}}
             {{>groupSettings}}
+        {{/if}}
+
+        {{#if showPhoto}}
+            {{>addPhoto}}
         {{/if}}
     </div>
 </template>

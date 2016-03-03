@@ -150,7 +150,7 @@ Template.store.helpers({
         if (sq.title.length > 0) queryParams.title = {$regex: sq.title, $options: 'i'}
         if (sq.categories.length > 0) queryParams.category  = {$in: sq.categories}
         queryParams.price = {$lt: sq.to, $gt: sq.from}
-
+        queryParams.isUserSubmitted = {$in: [null, undefined, false]}
         return Products.find(queryParams, {sort: { likes: -1 }})
     },
 

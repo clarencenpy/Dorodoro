@@ -1,0 +1,76 @@
+<template name="addPhoto">
+    <style>
+        .modal-container {
+            width: 100%;
+            height: calc(100vh - 60px);
+            position: fixed;
+            bottom: 0;
+            background: white;
+            z-index: 2;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+        .w-form {
+            padding: 20px;
+        }
+        .w-form img {
+            height: 50vw;
+            width: 50vw;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10%;
+            margin-bottom: 40px;
+            object-fit: cover;
+            object-position: 50%;
+        }
+    </style>
+
+    <div class="modal-container animated fadeIn">
+        <div class="grey-header">
+            <h2 class="grey-heading-title">Add Photo Suggestion</h2>
+            <a id="close-btn">
+                <div class="icon ion-close"></div>
+            </a>
+        </div>
+
+        <div class="w-form">
+            <img src="{{photo}}" class="drop-shadow">
+            <div class="row-input-list">
+                <label class="label-form" for="name">What is it?</label>
+                <input class="w-input input-form" id="name" type="text" required>
+                <div class="separator-fields"></div>
+            </div>
+            <div class="row-input-list">
+                <label class="label-form" for="price">How much does it cost?</label>
+                <input class="w-input input-form" id="price" type="number" required>
+                <div class="separator-fields"></div>
+            </div>
+            <div class="row-input-list">
+                <label class="label-form" for="desc">Any additional details?</label>
+                <input class="w-input input-form" id="desc" type="text" required>
+                <div class="separator-fields"></div>
+            </div>
+            <div class="row-input-list">
+                <label class="label-form" for="location">Where to buy?</label>
+                <input class="w-input input-form" id="location" type="text" required>
+                <div class="separator-fields"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="submit-btn" class="footer-btn animated fadeInUp" style="z-index: 6">Suggest this to Group</div>
+</template>

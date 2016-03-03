@@ -30,12 +30,15 @@ Template.group.helpers({
         })
     },
     showSettings() {
-        return Session.get('showSettings');
+        return Session.get('showSettings')
     },
     votingClosed() {
         let groupId = FlowRouter.getParam('id')
         let group = Groups.findOne(groupId)
         return group.votingClosed
+    },
+    showPhoto() {
+        return Session.get('showPhoto')
     }
 })
 
@@ -60,10 +63,26 @@ Template.group.events({
     },
     'click .settings-btn'() {
         Session.set('showSettings', true)
+    },
+    'change #camera-input': function (event, template) {
+        FS.Utility.eachFile(event, function(file) {
+            Images.insert(file, function (err, fileObj) {
+                if (err){
+                    console.log('error saving image')
+                } else {
+                    Session.set('photo', '/cfs/files/images/' + fileObj._id)
+                    Session.set('tempPhoto', URL.createObjectURL(event.target.files[0]))
+                    Session.set('showPhoto', true)
+                }
+            });
+        });
+
     }
 })
 
 Template.group.onDestroyed(function() {
     Session.set('header', null)
+    Session.set('showSettings', null)
+    Session.set('showPhoto', null)
 })
 

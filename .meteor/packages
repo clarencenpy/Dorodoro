@@ -38,3 +38,5 @@ lbee:moment-helpers
 momentjs:moment
 meteorhacks:search-source
 postrednik:meteor-rangeslider
+cfs:standard-packages
+cfs:gridfs

@@ -45,6 +45,6 @@ Template.groupSettings.events({
 })
 
 Template.groupSettings.onDestroyed(function() {
-
+    Session.set('showSettings', null)
 })
 
