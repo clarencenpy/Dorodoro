@@ -69,7 +69,7 @@ Template.store.onRendered(function () {
                                     productId: pid,
                                     contributor: Meteor.userId(),
                                     date: new Date(),
-                                    votes: [Meteor.userId()] //self auto votes
+                                    votes: []
                                 }
                             }
                         })
@@ -232,7 +232,7 @@ Template.store.events({
                     contributor: Meteor.userId(),
                     date: new Date(),
                     productId: product._id,
-                    votes: [Meteor.userId()] //self auto votes
+                    votes: []
                 })
             }
         })

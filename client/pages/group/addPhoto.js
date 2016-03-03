@@ -33,9 +33,9 @@ Template.addPhoto.events({
         let groupId = FlowRouter.getParam('id')
         Groups.update(groupId, {$push: {giftIdeas: {
             contributor: Meteor.userId(),
-            votes: [Meteor.userId()],
             date: new Date(),
-            productId: pid
+            productId: pid,
+            votes: []
         }}})
 
         Session.set('showPhoto', false)
