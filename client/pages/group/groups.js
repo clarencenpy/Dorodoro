@@ -26,6 +26,13 @@ Template.groups.events({
         Session.set('pageStack', pageStack)
 
         FlowRouter.go('group', {id: this._id})
+    },
+    'click .footer-btn'() {
+        let pageStack = Session.get('pageStack') || []
+        pageStack.push(FlowRouter.current().path)
+        Session.set('pageStack', pageStack)
+
+        FlowRouter.go('createGroup')
     }
 })
 

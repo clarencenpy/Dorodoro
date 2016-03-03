@@ -64,6 +64,17 @@ Template.group.events({
     'click .settings-btn'() {
         Session.set('showSettings', true)
     },
+    'click #volunteer-btn'() {
+        let groupId = FlowRouter.getParam('id')
+        Groups.update(groupId, {$set: {boughtBy: Meteor.userId()}})
+
+        let pageStack = Session.get('pageStack') || []
+        pageStack.push(FlowRouter.current().path)
+        Session.set('pageStack', pageStack)
+
+        FlowRouter.go('collectMoney', {id: groupId})
+    },
+
     'change #camera-input': function (event, template) {
         FS.Utility.eachFile(event, function(file) {
             Images.insert(file, function (err, fileObj) {

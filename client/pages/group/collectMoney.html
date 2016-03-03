@@ -1,0 +1,109 @@
+<template name="collectMoney">
+
+    <style>
+        .group-header {
+            position: fixed;
+            height: 70px;
+            width: 100%;
+            background-color: #fafafa;
+            color: #102a3b;
+            z-index: 1;
+            top: 60px;
+            left: 0;
+            padding-top: 10px;
+            padding-left: 20px;
+            border-bottom: 1px solid #e7e7e9;
+        }
+        .product-header-title {
+            position: absolute;
+            left: 110px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .product-header-subtitle {
+            position: absolute;
+            left: 110px;
+            top: 38px;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        .container {
+            height: calc(100vh - 60px - 70px);
+            margin-top: 70px;
+            background: #edfaff;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .price-display {
+            padding: 10px;
+            text-align: right;
+            background: white;
+        }
+        .price-display .total-price {
+            font-size: 16px;
+        }
+        .price-display .each-price {
+            font-size: 20px;
+        }
+        .price-display .each-price strong {
+            color: #ff274a;
+        }
+        .price-display .has-paid {
+            margin-top: 2px;
+            font-size: 14px;
+        }
+
+        .list-item {
+            position: relative;
+        }
+        .remind-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 12px;
+            color: darkblue;
+        }
+    </style>
+
+    <div class="page-content">
+
+        <div class="group-header animated fadeInDown">
+            <h4 class="product-header-title">{{getFirstName receiver.profile.name}}'s {{group.eventName}}</h4>
+            <div class="product-header-subtitle">
+                <img style="height: 20px" src="/icons/calendar-48.png">
+                <span>{{moCalendarDetailed group.eventDate}}</span>
+            </div>
+            <div class="ch-item-container small">
+                <img class="ch-item drop-shadow" src="{{receiver.profile.avatar}}">
+            </div>
+        </div>
+
+        <div class="body animated fadeIn">
+            <div class="container">
+                <div class="price-display">
+                    <div class="total-price">Total Price: <strong>${{winner.price}}</strong></div>
+                    <div class="each-price">Each Pays: <strong>${{divide winner.price}}0</strong></div>
+                    <div class="has-paid"><strong>{{paidPercent}}</strong> has paid</div>
+                    <hr>
+                </div>
+
+                <ul class="contact-list list">
+                    {{#each members}}
+                        <li class="list-item {{#if hasPaid}} highlighted {{else}} grey {{/if}}">
+                            <a class="w-clearfix w-inline-block">
+                                <div class="icon-list">
+                                    <div class="icon ion-ios-checkmark-empty"></div>
+                                </div>
+                                <div class="title-list">{{profile.name}}</div>
+                                {{#unless hasPaid}}<div class="remind-btn">Remind</div>{{/unless}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</template>
