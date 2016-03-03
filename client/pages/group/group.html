@@ -181,7 +181,15 @@
         </div>
 
         {{#if votingClosed}}
-            <div id="volunteer-btn" class="footer-btn">Volunteer To Buy</div>
+            {{#if buyer}}
+                {{#if isBuyer}}
+                    <div id="volunteer-btn" class="footer-btn">Collect Money</div>
+                {{else}}
+                    <div class="footer-btn">Pay {{getFirstNameFromId buyer}}</div>
+                {{/if}}
+            {{else}}
+                <div id="volunteer-btn" class="footer-btn">Volunteer To Buy</div>
+            {{/if}}
         {{else}}
             <div id="suggest-btn" class="footer-btn animated fadeInUp">Suggest Gifts</div>
             <div class="camera-btn animated fadeInUp">

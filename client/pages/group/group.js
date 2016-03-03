@@ -39,6 +39,16 @@ Template.group.helpers({
     },
     showPhoto() {
         return Session.get('showPhoto')
+    },
+    buyer() {
+        let groupId = FlowRouter.getParam('id')
+        let group = Groups.findOne(groupId)
+        return group.boughtBy
+    },
+    isBuyer() {
+        let groupId = FlowRouter.getParam('id')
+        let group = Groups.findOne(groupId)
+        return group.boughtBy === Meteor.userId()
     }
 })
 
@@ -87,7 +97,6 @@ Template.group.events({
                 }
             });
         });
-
     }
 })
 
