@@ -12,7 +12,8 @@ Template.store.onCreated(function () {
         title: '',
         to: 5000,
         from: 0,
-        categories: []
+        categories: [],
+        sort: 'Like'
     })
 })
 

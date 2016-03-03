@@ -36,8 +36,8 @@ Template.searchFilter.onRendered(function () {
     $('#slider').ionRangeSlider({
         min: template.minPrice,
         max: template.maxPrice,
-        from: template.minPrice + 100,
-        to: template.maxPrice - 100,
+        from: Session.get("searchQuery"),
+        to: Session.get("searchQuery"),
         type: 'double',
         prefix: "$",
 
@@ -71,6 +71,9 @@ Template.searchFilter.helpers({
         return _.find(Session.get('searchQuery').categories, function (cat) {
             return cat === category
         })
+    },
+    sort(sortby){
+        return Session.get('searchQuery').sort === sortby
     }
 })
 

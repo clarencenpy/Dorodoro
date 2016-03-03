@@ -59,6 +59,9 @@
         .location-container img {
             position: absolute;
         }
+        .scrolloff {
+            pointer-events: none;
+        }
 
     </style>
 
@@ -100,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="map-container">
+            <div class="map-container scrolloff">
                 {{> googleMap name="map" options=mapOptions}}
             </div>
 

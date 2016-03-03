@@ -30,51 +30,80 @@
         .filterOn img {
             background-color: #34aa3b !important;
         }
+        .sortOn {
+            background-color: #34aa3b !important;
+        }
+
+        .sort-btn {
+            display: inline-block;
+            width: 100px;
+            height: 25px;
+            margin-top: 10px;
+            margin-right: 10px;
+            padding-right: 10px;
+            padding-left: 10px;
+            border-radius: 15px;
+            background-color: #df3e49;
+            color: #eeeeee;
+            font-size: 15px;
+            line-height: 25px;
+            text-decoration: none;
+            text-align: center;
+        }
 
     </style>
     <div class="modal-container animated slideInDown">
         <div class="text-new no-borders">
-            <h2 class="ui center aligned icon header">
-                Price
+            <h4 class="ui center aligned icon header">
+                Sort by
                 <a id="close-btn">
                     <div class="icon ion-close"></div>
                 </a>
-            </h2>
+            </h4>
+            <a class="sort-btn ion-arrow-up-c {{#if sort 'Like'}}sortOn{{/if}}"> Like</a>
+            <a class="sort-btn ion-arrow-up-c {{#if sort 'Price'}}sortOn{{/if}}"> Price</a>
+            <a class="sort-btn ion-arrow-up-c {{#if sort 'Rating'}}sortOn{{/if}}"> Rating</a>
+            <h4 class="ui center aligned icon header">
+                Price
+            </h4>
             <!-- ionden range.slider -->
             <input type="text" id="slider" name="example_name" value=""/>
             <div class="separator-fields"></div>
-            <h2 class="ui center aligned icon header">
+            <h4 class="ui center aligned icon header">
                 Gender
-            </h2>
+            </h4>
             <div>
                 {{#with gender.male}}
-                <div class="gender-btn {{#if isCategorySelected 'For Him'}}filterOn{{/if}}" style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/male.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 40px;">
-                    <h4 style="margin-left: 70px">Male</h4>
-                </div>
+                    <div class="gender-btn {{#if isCategorySelected 'For Him'}}filterOn{{/if}}"
+                         style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/male.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 40px;">
+                        <h5 style="margin-left: 70px">Male</h5>
+                    </div>
                 {{/with}}
                 {{#with gender.female}}
-                <div class="gender-btn {{#if isCategorySelected 'For Her'}}filterOn{{/if}}" style="display: inline-block;">
-                    <img class="img-circle"
-                         src="/images/female.png"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 50px;">
-                    <h4 style="margin-left: 65px">Female</h4>
-                </div>
+                    <div class="gender-btn {{#if isCategorySelected 'For Her'}}filterOn{{/if}}"
+                         style="display: inline-block;">
+                        <img class="img-circle"
+                             src="/images/female.png"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 50px;">
+                        <h5 style="margin-left: 65px">Female</h5>
+                    </div>
                 {{/with}}
             </div>
-            <h2 class="ui center aligned icon header">
+            <h4 class="ui center aligned icon header">
                 Category
-            </h2>
+            </h4>
             <div class="category-container">
                 {{#each categories}}
-                <div class="category-btn {{#if isCategorySelected name}}filterOn{{/if}}" style="display: inline-block;">
-                    <img class="img-circle"
-                         src="{{image}}"
-                         style="background-color: #df3e49; width: 100px; height: auto; margin-left: 5px;">
-                    <h4 style="text-align: center">{{name}}</h4>
-                </div>
+                    <div class="category-btn {{#if isCategorySelected name}}filterOn{{/if}}"
+                         style="display: inline-block;">
+                        <img class="img-circle"
+                             src="{{image}}"
+                             style="background-color: #df3e49; width: 100px; height: auto; margin-left: 5px;">
+                        <h5 style="text-align: center">{{name}}</h5>
+                    </div>
                 {{/each}}
             </div>
             <div class="separator-fields"></div>
