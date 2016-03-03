@@ -50,6 +50,9 @@
             text-decoration: none;
             text-align: center;
         }
+        .sortby{
+            text-align: center;
+        }
 
     </style>
     <div class="modal-container animated slideInDown">
@@ -60,9 +63,11 @@
                     <div class="icon ion-close"></div>
                 </a>
             </h4>
-            <a class="sort-btn ion-arrow-up-c {{#if sort 'Like'}}sortOn{{/if}}"> Like</a>
-            <a class="sort-btn ion-arrow-up-c {{#if sort 'Price'}}sortOn{{/if}}"> Price</a>
-            <a class="sort-btn ion-arrow-up-c {{#if sort 'Rating'}}sortOn{{/if}}"> Rating</a>
+            <div class="sortby">
+            <a id="sortby-likes" class="sort-btn {{#if sortby 'likes'}}sortOn {{#if sort 1}}ion-arrow-up-c{{else}}ion-arrow-down-c{{/if}}{{/if}}"> Like</a>
+            <a id="sortby-price" class="sort-btn {{#if sortby 'price'}}sortOn {{#if sort 1}}ion-arrow-up-c{{else}}ion-arrow-down-c{{/if}}{{/if}}"> Price</a>
+                </div>
+            <!--<a id="sortby-rating" class="sort-btn {{#if sortby 'rating'}}sortOn {{#if sort 1}}ion-arrow-up-c{{else}}ion-arrow-down-c{{/if}}{{/if}}"> Rating</a>-->
             <h4 class="ui center aligned icon header">
                 Price
             </h4>

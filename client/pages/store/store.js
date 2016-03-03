@@ -13,7 +13,10 @@ Template.store.onCreated(function () {
         to: 5000,
         from: 0,
         categories: [],
-        sort: 'Like'
+        sort: {
+            sortby: 'likes',
+            by: -1
+        }
     })
 })
 
@@ -25,7 +28,7 @@ Template.store.onRendered(function () {
     this.$('.rateit').rateit();
 
     let gs = Session.get('giftSelection')
-    
+
     //add listener to search input
     let $search = template.$('#search-input')
     $search.on('keyup', function (event) {
@@ -60,12 +63,16 @@ Template.store.onRendered(function () {
                         if (idea.productId === pid) addedBefore = true
                     })
                     if (!addedBefore) {
-                        Groups.update(groupId, {$push: {giftIdeas: {
-                            productId: pid,
-                            contributor: Meteor.userId(),
-                            date: new Date(),
-                            votes: [Meteor.userId()] //self auto votes
-                        }}})
+                        Groups.update(groupId, {
+                            $push: {
+                                giftIdeas: {
+                                    productId: pid,
+                                    contributor: Meteor.userId(),
+                                    date: new Date(),
+                                    votes: [Meteor.userId()] //self auto votes
+                                }
+                            }
+                        })
 
                         //create a chat!
                         Chats.insert({
@@ -105,10 +112,10 @@ Template.store.onRendered(function () {
             draggabilly: {
                 handle: '.drag-handle'
             },
-            scroll : true,
-            scrollable : '#drop-area',
-            scrollSpeed : 40,
-            scrollSensitivity : 50,
+            scroll: true,
+            scrollable: '#drop-area',
+            scrollSpeed: 40,
+            scrollSensitivity: 50,
             animBack: false,
             helper: true,
             onStart: function () {
@@ -148,43 +155,65 @@ Template.store.helpers({
     products() {
         let queryParams = {}
         let sq = Session.get('searchQuery')
+        let sortby = sq.sort.sortby
         if (sq.title.length > 0) queryParams.title = {$regex: sq.title, $options: 'i'}
-        if (sq.categories.length > 0) queryParams.category  = {$in: sq.categories}
+        if (sq.categories.length > 0) queryParams.category = {$in: sq.categories}
         queryParams.price = {$lt: sq.to, $gt: sq.from}
 
-        return Products.find(queryParams, {sort: { likes: -1 }})
+        if (sortby === 'likes') {
+            return Products.find(queryParams, {sort: {'likes': sq.sort.by}})
+        }
+        if(sortby === 'price'){
+            return Products.find(queryParams, {sort: { 'price': sq.sort.by }})
+        }
+        /*if(sortby === 'rating'){
+            return Products.find(queryParams, {sort: { $avg{}: sq.sort.by }})
+        }*/
     },
 
     //single selection mode
-    isSelecting() {
+    isSelecting()
+    {
         return !!Session.get('giftSelection')
-    },
-    receiverName() {
+    }
+    ,
+    receiverName()
+    {
         let gs = Session.get('giftSelection')
         if (gs) {
             return Meteor.users.findOne(gs.group.receiver).profile.name
         }
-    },
-    selection() {
+    }
+    ,
+    selection()
+    {
         let gs = Session.get('giftSelection')
         if (gs) {
             return gs.selection
         }
-    },
+    }
+    ,
 
 
-    groups() {
+    groups()
+    {
         return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]})
-    },
-    productRating(arr){
-        return _.reduce(arr, function(memo, num) {
+    }
+    ,
+    productRating(arr)
+    {
+        return _.reduce(arr, function (memo, num) {
                 return memo + num;
             }, 0) / (arr.length === 0 ? 1 : arr.length);
-    },
-    selectedProduct() {
+    }
+    ,
+    selectedProduct()
+    {
         return Session.get('selectedProduct')
-    },
-    showFilter(){
+    }
+    ,
+    showFilter()
+    {
         return Session.get('showFilter')
     }
 })
