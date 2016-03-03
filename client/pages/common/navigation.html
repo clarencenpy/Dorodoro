@@ -7,29 +7,23 @@
                     <div class="logo">{{currentUser.profile.name}}</div>
                 </div>
 
-                <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'home'}}" href="{{pathFor '/'}}">
+                <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'groups'}}" href="{{pathFor 'groups'}}">
                     <div class="icon-list-menu">
-                        <div class="icon ion-ios-home-outline"></div>
+                        <div class="icon ion-ios-people"></div>
                     </div>
-                    <div class="nav-menu-titles">Home Page</div>
+                    <div class="nav-menu-titles">Home</div>
                 </a>
                 <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'store'}}" href="{{pathFor 'store'}}">
                     <div class="icon-list-menu">
                         <div class="icon ion-ios-home"></div>
                     </div>
-                    <div class="nav-menu-titles">Store</div>
+                    <div class="nav-menu-titles">Gift Store</div>
                 </a>
                 <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'createGroup'}}" href="{{pathFor 'createGroup'}}">
                     <div class="icon-list-menu">
                         <div class="icon ion-person-add"></div>
                     </div>
                     <div class="nav-menu-titles">Create Group</div>
-                </a>
-                <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'groups'}}" href="{{pathFor 'groups'}}">
-                    <div class="icon-list-menu">
-                        <div class="icon ion-ios-people"></div>
-                    </div>
-                    <div class="nav-menu-titles">Active Groups</div>
                 </a>
                 <a class="w-clearfix w-inline-block nav-menu-link {{isActiveRoute 'calendar'}}" href="{{pathFor 'calendar'}}">
                     <div class="icon-list-menu">

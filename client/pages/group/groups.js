@@ -1,5 +1,5 @@
 Template.groups.onCreated(function() {
-    Session.set('header', 'Current Active Groups')
+    Session.set('header', 'Dorodoro')
 })
 
 Template.groups.onRendered(function() {
@@ -12,6 +12,10 @@ Template.groups.helpers({
     },
     addOne(n) {
         return n+1
+    },
+    daysLeft(time) {
+        let now = moment()
+        return moment(time).diff(now, 'days')
     }
 })
 

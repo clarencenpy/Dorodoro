@@ -13,29 +13,67 @@
             padding-left: 20px;
             border-bottom: 1px solid #e7e7e9;
         }
-        .days-left {
-            height: 25px;
-            width: 90px;
-            right: 0px;
-            margin-left: 10px;
-            padding-top: 2px;
-            padding-left: 7px;
-            background-color: #d7d7d7;
-            border-radius: 10%;
-            display: inline-block;
+        .image-message {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-top: 0;
         }
         .members-circle {
             height: 25px;
             width: 25px;
-            margin-left: 2px;
+            margin-right: 2px;
             border-radius: 50%;
-            background-color: black;
             display: inline-block;
+        }
+        .member-count {
+            line-height: 14px;
+            margin-top: 2px;
+        }
+        .column-right {
+            position: relative;
+        }
+        .days-container {
+            position: absolute;
+            right: 10px;
+            top: 7px;
+        }
+        .days-container .days {
+            font-size: 30px;
+            line-height: 40px;
+            font-weight: 700;
+            text-align: center;
+            color: black;
+            background: #eeeeee;
+        }
+        .days-container .subtext {
+            font-size: 10px;
+            padding: 0 5px 0 5px;
+            font-weight: 700;
+            text-align: center;
+            color: white;
+            background: #fd4c58;
+        }
+
+        .empty-container {
+            margin-top: 50px;
+            text-align: center;
+            padding: 0 20vw 0 20vw;
+        }
+        .empty-container img {
+            height: 40vw;
+            width: 40vw;
+        }
+        .empty-container .subtext {
+            font-size: 14px;
         }
     </style>
 
     <div class="page-content">
         <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
+            <div class="grey-header">
+                <h2 class="grey-heading-title">My Active Groups</h2>
+            </div>
             <ul class="list list-messages">
                 {{#each groups}}
                     <li class="list-message">
@@ -46,20 +84,29 @@
                             <div class="column-right">
                                 <div class="message-title">
                                     {{getFirstNameFromId receiver}}'s {{eventName}}
-                                    <div class="days-left">5 days left</div>
                                 </div>
                                 <div class="message-text">
-                                    <div class="members-circle"></div>
-                                    <div class="members-circle"></div>
-                                    <div class="members-circle"></div>
-                                    <div class="members-circle"></div>
-                                    {{addOne members.length}} members
+                                    <img class="members-circle" src="{{getAvatar createdBy}}">
+                                    {{#each members}}
+                                        <img class="members-circle" src="{{getAvatar this}}">
+                                    {{/each}}
+                                    <div class="member-count">{{addOne members.length}} members</div>
+                                </div>
+                                <div class="days-container">
+                                    <div class="days">{{daysLeft eventDate}}</div>
+                                    <div class="subtext">DAYS LEFT</div>
                                 </div>
                             </div>
                         </a>
                     </li>
+                {{else}}
+                    <div class="empty-container">
+                        <img src="/images/dorodoro.png">
+                        <div class="subtext">Want to share a gift for someone with a group of friends? Create a group now!</div>
+                    </div>
                 {{/each}}
             </ul>
         </div>
+        <a class="footer-btn animated fadeInUp" href="{{pathFor 'createGroup'}}">Create Group</a>
     </div>
 </template>

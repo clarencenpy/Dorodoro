@@ -60,9 +60,14 @@ Template.addMembers.events({
         group.createdBy = Meteor.userId()
         group.receiver = template.group.receiver
 
+        Session.set('createGroup', null)
+
+        //set pagestack to home page
+        let pageStack = []
+        pageStack.push('/')
+        Session.set('pageStack', pageStack)
+
         let groupId = Groups.insert(group)
-        //clear page stack
-        Session.set('pageStack', null)
         FlowRouter.go('group', {id: groupId})
     }
 })
