@@ -12,7 +12,11 @@ Template.store.onCreated(function () {
         title: '',
         to: 5000,
         from: 0,
-        categories: []
+        categories: [],
+        sort: {
+            sortby: 'likes',
+            by: -1
+        }
     })
 })
 
@@ -24,7 +28,7 @@ Template.store.onRendered(function () {
     this.$('.rateit').rateit();
 
     let gs = Session.get('giftSelection')
-    
+
     //add listener to search input
     let $search = template.$('#search-input')
     $search.on('keyup', function (event) {
@@ -59,12 +63,16 @@ Template.store.onRendered(function () {
                         if (idea.productId === pid) addedBefore = true
                     })
                     if (!addedBefore) {
-                        Groups.update(groupId, {$push: {giftIdeas: {
-                            productId: pid,
-                            contributor: Meteor.userId(),
-                            date: new Date(),
-                            votes: [Meteor.userId()] //self auto votes
-                        }}})
+                        Groups.update(groupId, {
+                            $push: {
+                                giftIdeas: {
+                                    productId: pid,
+                                    contributor: Meteor.userId(),
+                                    date: new Date(),
+                                    votes: [Meteor.userId()] //self auto votes
+                                }
+                            }
+                        })
 
                         //create a chat!
                         Chats.insert({
@@ -147,11 +155,20 @@ Template.store.helpers({
     products() {
         let queryParams = {}
         let sq = Session.get('searchQuery')
+        let sortby = sq.sort.sortby
         if (sq.title.length > 0) queryParams.title = {$regex: sq.title, $options: 'i'}
-        if (sq.categories.length > 0) queryParams.category  = {$in: sq.categories}
+        if (sq.categories.length > 0) queryParams.category = {$in: sq.categories}
         queryParams.price = {$lt: sq.to, $gt: sq.from}
-        queryParams.isUserSubmitted = {$in: [null, undefined, false]}
-        return Products.find(queryParams, {sort: { likes: -1 }})
+
+        if (sortby === 'likes') {
+            return Products.find(queryParams, {sort: {'likes': sq.sort.by}})
+        }
+        if(sortby === 'price'){
+            return Products.find(queryParams, {sort: { 'price': sq.sort.by }})
+        }
+        /*if(sortby === 'rating'){
+            return Products.find(queryParams, {sort: { $avg{}: sq.sort.by }})
+        }*/
     },
 
     //single selection mode

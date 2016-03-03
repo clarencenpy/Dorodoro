@@ -1,0 +1,102 @@
+<template name="questionnaire">
+
+    <style>
+        .group-header {
+            position: fixed;
+            height: 70px;
+            width: 100%;
+            background-color: #fafafa;
+            color: #102a3b;
+            z-index: 1;
+            top: 60px;
+            left: 0;
+            padding-top: 10px;
+            padding-left: 20px;
+            border-bottom: 1px solid #e7e7e9;
+        }
+        .product-header-title {
+            position: absolute;
+            left: 120px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .product-header-subtitle {
+            position: absolute;
+            left: 120px;
+            top: 38px;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        .doro-container {
+            height: 85px;
+            margin-top: 0px;
+            margin-left: 0px;
+            position: fixed;
+        }
+        .text-container {
+            width: 100%;
+            height: 300px;
+            margin-top: 110px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 5%;
+            position: relative;
+        }
+        .text-field {
+            height: 200px;
+            border-radius: 5%;
+            padding: 20px 20px 20px 20px;
+            background-color: #e8e8e8;
+        }
+        .doro-hand-one {
+            height: 60px;
+            margin-left: 330px;
+        }
+        .doro-hand-two {
+            height: 60px;
+            margin-top: 40px;
+            margin-left: -10px;
+            overflow: hidden;
+        }
+        .button-one {
+            height: 70px;
+            width: 165px;
+            margin-top: 10px;
+            padding: 10px 10px 10px 10px;
+            background-color: #e8e8e8;
+            border-radius: 10%;
+            display: inline-block;
+        }
+        .button-two {
+            height: 70px;
+            width: 165px;
+            margin-top: 10px;
+            margin-left: 10px;
+            padding: 10px 10px 10px 10px;
+            background-color: #e8e8e8;
+            border-radius: 10%;
+            display: inline-block;
+        }
+    </style>
+
+    <div class="page-content">
+        <div class="body animated">
+
+            <div class="group-header animated fadeInDown">
+                <img class="doro-container" src="/images/dorodoro-help.png">
+                <h4 class="product-header-title">LET ME HELP YOU</h4>
+                <div class="product-header-subtitle">
+                    <span>Answer these questions!</span>
+                </div>
+            </div>
+
+            <div class="text-container">
+                <div class="text-field">(Insert question here!)</div>
+                <div class="button-one">(Option 1)</div>
+                <div class="button-two">(Option 2)</div>
+            </div>
+
+        </div>
+    </div>
+
+</template>

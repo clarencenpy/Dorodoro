@@ -1,7 +1,7 @@
 Template.searchFilter.onCreated(function () {
     const template = this
     template.maxPrice = 5000
-    template.minPrice = 1000
+    template.minPrice = 0
     template.categories = [
         {
             name: 'Sport',
@@ -36,8 +36,8 @@ Template.searchFilter.onRendered(function () {
     $('#slider').ionRangeSlider({
         min: template.minPrice,
         max: template.maxPrice,
-        from: template.minPrice + 100,
-        to: template.maxPrice - 100,
+        from: Session.get("searchQuery"),
+        to: Session.get("searchQuery"),
         type: 'double',
         prefix: "$",
 
@@ -71,6 +71,12 @@ Template.searchFilter.helpers({
         return _.find(Session.get('searchQuery').categories, function (cat) {
             return cat === category
         })
+    },
+    sortby(sortby){
+        return Session.get('searchQuery').sort.sortby === sortby
+    },
+    sort(sortby){
+        return Session.get('searchQuery').sort.by === sortby
     }
 })
 
@@ -109,8 +115,64 @@ Template.searchFilter.events({
     },
 
 
-    'click #search-btn': function (event, template) {
+    'click #filter-done-btn': function (event, template) {
+        template.$('.modal-container').addClass('slideOutUp')
+        Meteor.setTimeout(function () {
+            Session.set('showFilter', false)
+        }, 1000)
+    },
 
+    'click #sortby-likes': function (event, template) {
+        let sq = Session.get('searchQuery')
+        let sortby = sq.sort.sortby
+        if(sortby === 'likes'){
+            if(template.$('#sortby-likes').hasClass('ion-arrow-up-c')){
+                sq.sort = {sortby: 'likes', by: -1}
+                Session.set('searchQuery', sq)
+            }else{
+                sq.sort = {sortby: 'likes', by: 1}
+                Session.set('searchQuery', sq)
+            }
+        }else{
+            sq.sort = {sortby: 'likes', by: -1}
+            Session.set('searchQuery', sq)
+        }
+    },
+    'click #sortby-price': function (event, template) {
+        let sq = Session.get('searchQuery')
+        let sortby = sq.sort.sortby
+        if(sortby === 'price'){
+            if(template.$('#sortby-price').hasClass('ion-arrow-up-c')){
+                sq.sort = {sortby: 'price', by: -1}
+                Session.set('searchQuery', sq)
+            }else{
+                sq.sort = {sortby: 'price', by: 1}
+                Session.set('searchQuery', sq)
+            }
+        }else{
+            sq.sort = {sortby: 'price', by: 1}
+            Session.set('searchQuery', sq)
+        }
+    },
+    'click #sortby-rating': function (event, template) {
+        let sq = Session.get('searchQuery')
+        let sortby = sq.sort.sortby
+        if(sortby === 'rating'){
+            if(template.$('#sortby-rating').hasClass('ion-arrow-up-c')){
+                template.$('#sortby-rating').removeClass('ion-arrow-up-c')
+                template.$('#sortby-rating').addClass('ion-arrow-down-c')
+                sq.sort = {sortby: 'rating', by: 1}
+                Session.set('searchQuery', sq)
+            }else{
+                template.$('#sortby-rating').removeClass('ion-arrow-down-c')
+                template.$('#sortby-rating').addClass('ion-arrow-up-c')
+                sq.sort = {sortby: 'rating', by: -1}
+                Session.set('searchQuery', sq)
+            }
+        }else{
+            sq.sort = {sortby: 'rating', by: -1}
+            Session.set('searchQuery', sq)
+        }
     }
 })
 
