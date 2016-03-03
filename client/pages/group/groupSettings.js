@@ -16,6 +16,18 @@ Template.groupSettings.helpers({
         let groupId = FlowRouter.getParam('id')
         let group = Groups.findOne(groupId)
         return Meteor.userId() === group.createdBy
+    },
+    members() {
+        let groupId = FlowRouter.getParam('id')
+        let members = Groups.findOne(groupId).members
+        return _.map(members, function (m) {
+            return Meteor.users.findOne(m)
+        })
+    },
+    creator() {
+        let groupId = FlowRouter.getParam('id')
+        let creator = Groups.findOne(groupId).createdBy
+        return Meteor.users.findOne(creator)
     }
 })
 

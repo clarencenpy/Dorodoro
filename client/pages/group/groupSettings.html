@@ -45,6 +45,32 @@
             background: #f36e00;
         }
 
+        .members-header {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px 10px 0 10px;
+        }
+
+        .list-item {
+            position: relative;
+        }
+        .title-list {
+            margin-left: 20px;
+            color: #181818;
+        }
+        .kick-btn {
+            font-size: 12px;
+            color: darkblue;
+            font-weight: 700;
+            position: absolute;
+            right: 10px;
+            top: 20px;
+        }
+        .icon-list img {
+            border-radius: 50%;
+        }
+
     </style>
 
     <div class="modal-container animated slideInRight">
@@ -73,7 +99,34 @@
                     </div>
                 {{/if}}
             {{/if}}
-            <div>Members</div>
+
+            <div class="members-header">
+                Members
+                <hr>
+            </div>
+
+            <ul class="contact-list list">
+                <li class="list-item">
+                    <a class="w-clearfix w-inline-block">
+                        <div class="icon-list">
+                            <img src="{{creator.profile.avatar}}">
+                        </div>
+                        <div class="title-list">{{creator.profile.name}}</div>
+                        <div class="kick-btn">Admin</div>
+                    </a>
+                </li>
+                {{#each members}}
+                    <li class="list-item">
+                        <a class="w-clearfix w-inline-block">
+                            <div class="icon-list">
+                                <img src="{{profile.avatar}}">
+                            </div>
+                            <div class="title-list">{{profile.name}}</div>
+                            <div class="kick-btn">Kick</div>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
         </div>
     </div>
 </template>
