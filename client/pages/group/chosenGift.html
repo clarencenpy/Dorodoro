@@ -88,6 +88,27 @@
             text-align: center;
             color: #aaa;
         }
+
+        .winner-details {
+            position: fixed;
+            bottom: 40px;
+            width: 100%;
+            height: calc(100vh - 70px - 40px - 60px - 375px);
+            overflow-y: scroll;
+            background: rgb(25,14,20);
+            padding: 10px;
+            text-align: center;
+        }
+        .winner-details .name {
+            font-size: 20px;
+            color: white;
+        }
+        .winner-details .location {
+            margin-top: 3px;
+            font-size: 12px;
+            line-height: 14px;
+            color: #dadada;
+        }
     </style>
 
     <div class="gif-box">
@@ -104,5 +125,11 @@
         <img class="img-circle drop-shadow" src="{{winner.image}}">
     </div>
 
+    <div class="winner-details">
+        <div class="name">{{winner.title}}</div>
+        <div class="location">
+            {{winner.location.name}} <br> {{winner.location.vicinity}}
+        </div>
+    </div>
 
 </template>
