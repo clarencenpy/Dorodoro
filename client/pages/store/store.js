@@ -191,7 +191,7 @@ Template.store.helpers({
 
 
     groups() {
-        return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]})
+        return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]}, {sort: {date: -1}})
     },
     productRating(arr){
         return _.reduce(arr, function(memo, num) {
