@@ -63,7 +63,6 @@ Template.addMembers.events({
         let groupId = Groups.insert(group)
 
         //send a message to all members
-        let receiverName = Meteor.users.findOne(group.receiver)
         _.each(members, function (member) {
             let message = {
                 from: Meteor.userId(),
@@ -72,7 +71,7 @@ Template.addMembers.events({
                 type: 'GROUP_INVITE',
                 data: {
                     groupId: groupId,
-                    receiverName: receiverName,
+                    receiverId: group.receiver,
                     eventName: group.eventName
                 }
             }
