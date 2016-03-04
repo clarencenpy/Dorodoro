@@ -5,10 +5,9 @@ Template.addMembers.onCreated(function() {
     const template = this;
 
     template.group = Session.get('createGroup')
-    template.users = new ReactiveVar(Meteor.users.find({_id: {$nin: [Meteor.userId(), template.group.receiver]}}, {
-        sort: {'profile.name': 1},
-        fields: {'profile.name': 1}
-    }).fetch())
+    template.selectedUsers = new ReactiveVar([])
+
+    template.searchFilter = new ReactiveVar('')
 })
 
 Template.addMembers.onRendered(function() {
@@ -17,7 +16,15 @@ Template.addMembers.onRendered(function() {
 
 Template.addMembers.helpers({
     users() {
-        return Template.instance().users.get()
+        let searchFilter = Template.instance().searchFilter.get()
+        let queryParams = {
+            _id: {$nin: [Meteor.userId(), Template.instance().group.receiver]}
+        }
+        if (searchFilter.length > 0) queryParams['profile.name'] = {$regex: searchFilter, $options: 'i'}
+        return Meteor.users.find(queryParams, {
+            sort: {'profile.name': 1},
+            fields: {'profile.name': 1}
+        })
     },
     receiver() {
         return Meteor.users.findOne(Template.instance().group.receiver)
@@ -26,36 +33,35 @@ Template.addMembers.helpers({
         return Template.instance().group
     },
     numMembers() {
-        let num = 0
-        let users = Template.instance().users.get()
-        _.each(users, function (u) {
-            if (u.selected) num++
+        return Template.instance().selectedUsers.get().length
+    },
+    isSelected(id) {
+        return _.find(Template.instance().selectedUsers.get(), function (user) {
+            return user === id
         })
-        return num
     }
 })
 
 Template.addMembers.events({
     'click .list-item'(event, template) {
         let id = this._id;
-        let users = template.users.get()
-        users = _.map(users, function (u) {
-            if (u._id === id) {
-                u.selected = !u.selected
-            }
-            return u
-        })
-        template.users.set(users)
+        let selectedUsers = template.selectedUsers.get()
+        if (selectedUsers.indexOf(id) >= 0) {
+            selectedUsers = _.without(selectedUsers, id)
+        } else {
+            selectedUsers.push(id)
+        }
+        template.selectedUsers.set(selectedUsers)
+    },
+    'keyup #search-input'(event, template) {
+        let name = $(event.target).val()
+        template.searchFilter.set(name)
     },
     'click #createGroup-btn'(event, template) {
         let group = {}
         group.eventName = template.$('#name').val()
         group.eventDate = template.$('#date').val()
-        let members = []
-        _.each(template.users.get(), function (u) {
-            if (u.selected) members.push(u._id)
-        })
-        group.pendingMembers = members
+        group.pendingMembers = template.selectedUsers.get()
         group.createdBy = Meteor.userId()
         group.receiver = template.group.receiver
         group.date = new Date()
@@ -63,7 +69,7 @@ Template.addMembers.events({
         let groupId = Groups.insert(group)
 
         //send a message to all members
-        _.each(members, function (member) {
+        _.each(template.selectedUsers.get(), function (member) {
             let message = {
                 from: Meteor.userId(),
                 to: member,
@@ -75,7 +81,6 @@ Template.addMembers.events({
                     eventName: group.eventName
                 }
             }
-            console.log(message)
             Messages.insert(message)
         })
 

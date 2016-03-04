@@ -4,6 +4,8 @@ Template.createGroup.onCreated(function() {
     let group = Session.get('createGroup')
     let receiverId = group ? group.receiver : undefined
     template.receiver = new ReactiveVar(Meteor.users.findOne(receiverId))
+
+    template.searchFilter = new ReactiveVar('')
 })
 
 Template.createGroup.onRendered(function() {
@@ -12,8 +14,14 @@ Template.createGroup.onRendered(function() {
 
 Template.createGroup.helpers({
     users() {
-        return Meteor.users.find({_id: {$ne: Meteor.userId()}}, {
-            sort: {'profile.name': 1}
+        let searchFilter = Template.instance().searchFilter.get()
+        let queryParams = {
+            _id: {$ne: Meteor.userId()}
+        }
+        if (searchFilter.length > 0) queryParams['profile.name'] = {$regex: searchFilter, $options: 'i'}
+        return Meteor.users.find(queryParams, {
+            sort: {'profile.name': 1},
+            fields: {'profile.name': 1}
         })
     },
     receiver() {
@@ -31,6 +39,10 @@ Template.createGroup.helpers({
 Template.createGroup.events({
     'click .list-item'(event, template) {
         template.receiver.set(this)
+    },
+    'keyup #search-input'(event, template) {
+        let name = $(event.target).val()
+        template.searchFilter.set(name)
     },
     'click #next-btn'(event, template) {
         let group = {}

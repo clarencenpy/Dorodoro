@@ -10,18 +10,37 @@
         }
         .contact-list {
             overflow-y: auto;
-            height: calc(100vh - 60px - 130px - 40px - 100px);
+            height: calc(100vh - 60px - 130px - 40px - 40px - 40px - 38px);
             -webkit-overflow-scrolling: touch;
         }
         .receiver-avatar {
             border-radius: 50%;
             position: absolute;
-            top: 130px;
+            top: 115px;
             left: 10px;
             height: calc(30vw - 15px);
             width: calc(30vw - 15px);
             max-width: 100px;
             max-height: 100px;
+        }
+        #search-bar {
+            width: 100%;
+        }
+
+        #search-bar .search-input {
+            margin-bottom: 0;
+        }
+
+        #search-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
         }
     </style>
     <div class="page-content">
@@ -47,6 +66,17 @@
             <div class="grey-header">
                 <h3 style="margin: 0" class="grey-heading-title">2. Who is the Gift for?</h3>
             </div>
+            <div id="search-bar" class="drop-shadow">
+                <div class="row-input-list search">
+                    <div class="block-input-combined">
+                        <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search">
+                        <a id="search-btn">
+                            <div class="icon ion-search"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
 
             <ul class="contact-list list">
                 {{#each users}}

@@ -10,18 +10,38 @@
         }
         .contact-list {
             overflow-y: auto;
-            height: calc(100vh - 60px - 130px - 50px - 40px);
+            height: calc(100vh - 60px - 130px - 40px - 40px - 38px);
             -webkit-overflow-scrolling: touch;
         }
         .receiver-avatar {
             border-radius: 50%;
             position: absolute;
-            top: 80px;
+            top: 65px;
             left: 10px;
             height: calc(30vw - 15px);
             width: calc(30vw - 15px);
             max-width: 100px;
             max-height: 100px;
+        }
+
+        #search-bar {
+            width: 100%;
+        }
+
+        #search-bar .search-input {
+            margin-bottom: 0;
+        }
+
+        #search-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
         }
     </style>
 
@@ -45,9 +65,20 @@
                 <h3 style="margin: 0" class="grey-heading-title">3. Who will be sharing the Gift?</h3>
             </div>
 
+            <div id="search-bar" class="drop-shadow">
+                <div class="row-input-list search">
+                    <div class="block-input-combined">
+                        <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search">
+                        <a id="search-btn">
+                            <div class="icon ion-search"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <ul class="contact-list list">
                 {{#each users}}
-                    <li class="list-item {{#if selected}} highlighted {{else}} grey {{/if}}">
+                    <li class="list-item {{#if isSelected _id}} highlighted {{else}} grey {{/if}}">
                         <a class="w-clearfix w-inline-block">
                             <div class="icon-list">
                                 <div class="icon ion-ios-checkmark-empty"></div>
