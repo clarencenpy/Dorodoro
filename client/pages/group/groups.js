@@ -8,7 +8,7 @@ Template.groups.onRendered(function() {
 
 Template.groups.helpers({
     groups() {
-        return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]})
+        return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]}, {sort: {date: -1}})
     },
     addOne(n) {
         return n+1
@@ -44,11 +44,6 @@ Template.groups.events({
             $pull: {pendingMembers: Meteor.userId()}
         })
         Messages.remove(this._id)
-        let pageStack = Session.get('pageStack') || []
-        pageStack.push(FlowRouter.current().path)
-        Session.set('pageStack', pageStack)
-
-        FlowRouter.go('group', {id: groupId})
     },
     'click .group-invite .reject-btn'() {
         let groupId = this.data.groupId

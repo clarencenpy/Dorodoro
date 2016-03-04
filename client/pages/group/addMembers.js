@@ -58,7 +58,7 @@ Template.addMembers.events({
         group.pendingMembers = members
         group.createdBy = Meteor.userId()
         group.receiver = template.group.receiver
-
+        group.date = new Date()
 
         let groupId = Groups.insert(group)
 
