@@ -85,7 +85,7 @@ Template.group.events({
         members = _.without(members, Meteor.userId())
 
         //find the idea with the most votes
-        let winner = ideas[0]
+        let winner = group.giftIdeas[0]
         let maxVotes = 0
         _.each(group.giftIdeas, function (idea) {
             if (idea.votes.length > maxVotes) {
