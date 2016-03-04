@@ -45,3 +45,7 @@ Template.registerHelper('log', function (obj) {
 Template.registerHelper('equals', function (a, b) {
     return a === b
 })
+
+Template.registerHelper('isMale', function (id) {
+    return Meteor.users.findOne(id).services.facebook.gender === 'male'
+})

@@ -78,6 +78,42 @@ Template.group.events({
         let groupId = FlowRouter.getParam('id')
         Groups.update(groupId, {$set: {boughtBy: Meteor.userId()}})
 
+        //send message to everyone
+        let group = Groups.findOne(groupId)
+        let members = group.members
+        members.push(group.createdBy)
+        members = _.without(members, Meteor.userId())
+
+        //find the idea with the most votes
+        let winner = ideas[0]
+        let maxVotes = 0
+        _.each(group.giftIdeas, function (idea) {
+            if (idea.votes.length > maxVotes) {
+                maxVotes = idea.votes.length
+                winner = idea
+            }
+        })
+        winner = Products.findOne(winner.productId)
+        let price = winner.price / (group.members.length + 1)
+        price = price.toFixed(1)
+
+        _.each(members, function (userId) {
+            if (!Meteor.users.findOne(userId).services.facebook) return //dont bother sending to fakes
+            let message = {
+                from: Meteor.userId(),
+                to: userId,
+                date: new Date(),
+                type: 'PAY_NOTIFICATION',
+                data: {
+                    groupId: groupId,
+                    receiverId: group.receiver,
+                    eventName: group.eventName,
+                    price: price
+                }
+            }
+            Messages.insert(message)
+        })
+
         let pageStack = Session.get('pageStack') || []
         pageStack.push(FlowRouter.current().path)
         Session.set('pageStack', pageStack)

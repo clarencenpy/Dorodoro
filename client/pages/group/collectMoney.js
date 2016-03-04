@@ -43,7 +43,7 @@ Template.collectMoney.helpers({
     divide(price) {
         let groupId = FlowRouter.getParam('id')
         let group = Groups.findOne(groupId)
-        price = price / group.members.length + 1
+        price = price / (group.members.length + 1)
         return price.toFixed(1)
     },
     paidPercent() {

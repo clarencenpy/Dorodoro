@@ -51,7 +51,11 @@ Template.groups.events({
             $pull: {pendingMembers: Meteor.userId()}
         })
         Messages.remove(this._id)
+    },
+    'click .pay-notification .accept-btn'() {
+        Messages.remove(this._id)
     }
+
 })
 
 Template.groups.onDestroyed(function() {

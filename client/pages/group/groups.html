@@ -141,6 +141,24 @@
                             </a>
                         </li>
                         {{/if}}
+
+                        {{#if equals type 'PAY_NOTIFICATION'}}
+                            <li class="list-message pay-notification">
+                                <a class="w-clearfix w-inline-block">
+                                    <div class="w-clearfix column-left">
+                                        <div class="image-message"><img src="{{getAvatar from}}"></div>
+                                    </div>
+                                    <div class="column-right">
+                                        <div class="message-content">
+                                            {{getFirstNameFromId from}} has volunteered to buy the gift for {{getFirstNameFromId data.receiverId}}'s {{data.eventName}}! Please pay {{#if isMale from}}him{{else}}her{{/if}} <strong>${{data.price}}</strong>
+                                        </div>
+                                        <div class="call-to-action">
+                                            <div class="accept-btn">Okay</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {{/if}}
                     {{else}}
                         <div class="empty-container">
                             <div class="subtext">No notifications</div>
