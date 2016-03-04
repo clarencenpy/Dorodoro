@@ -16,11 +16,14 @@ Template.groups.helpers({
     daysLeft(time) {
         let now = moment()
         return moment(time).diff(now, 'days')
+    },
+    messages() {
+        return Messages.find({to: Meteor.userId()})
     }
 })
 
 Template.groups.events({
-    'click .list-message'() {
+    'click .groups-container .list-message'() {
         let pageStack = Session.get('pageStack') || []
         pageStack.push(FlowRouter.current().path)
         Session.set('pageStack', pageStack)
@@ -33,6 +36,26 @@ Template.groups.events({
         Session.set('pageStack', pageStack)
 
         FlowRouter.go('createGroup')
+    },
+    'click .group-invite .accept-btn'() {
+        let groupId = this.data.groupId
+        Groups.update(groupId, {
+            $push: {members: Meteor.userId()},
+            $pull: {pendingMembers: Meteor.userId()}
+        })
+        Messages.remove(this._id)
+        let pageStack = Session.get('pageStack') || []
+        pageStack.push(FlowRouter.current().path)
+        Session.set('pageStack', pageStack)
+
+        FlowRouter.go('group', {id: groupId})
+    },
+    'click .group-invite .reject-btn'() {
+        let groupId = this.data.groupId
+        Groups.update(groupId, {
+            $pull: {pendingMembers: Meteor.userId()}
+        })
+        Messages.remove(this._id)
     }
 })
 

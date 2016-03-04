@@ -41,3 +41,7 @@ Template.registerHelper('getAvatar', function (userId) {
 Template.registerHelper('log', function (obj) {
     console.log(obj)
 })
+
+Template.registerHelper('equals', function (a, b) {
+    return a === b
+})

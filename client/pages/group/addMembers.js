@@ -5,7 +5,6 @@ Template.addMembers.onCreated(function() {
     const template = this;
 
     template.group = Session.get('createGroup')
-    console.log(template.group)
     template.users = new ReactiveVar(Meteor.users.find({_id: {$nin: [Meteor.userId(), template.group.receiver]}}, {
         sort: {'profile.name': 1},
         fields: {'profile.name': 1}
@@ -56,9 +55,30 @@ Template.addMembers.events({
         _.each(template.users.get(), function (u) {
             if (u.selected) members.push(u._id)
         })
-        group.members = members
+        group.pendingMembers = members
         group.createdBy = Meteor.userId()
         group.receiver = template.group.receiver
+
+
+        let groupId = Groups.insert(group)
+
+        //send a message to all members
+        let receiverName = Meteor.users.findOne(group.receiver)
+        _.each(members, function (member) {
+            let message = {
+                from: Meteor.userId(),
+                to: member,
+                date: new Date(),
+                type: 'GROUP_INVITE',
+                data: {
+                    groupId: groupId,
+                    receiverName: receiverName,
+                    eventName: group.eventName
+                }
+            }
+            console.log(message)
+            Messages.insert(message)
+        })
 
         Session.set('createGroup', null)
 
@@ -67,7 +87,6 @@ Template.addMembers.events({
         pageStack.push('/')
         Session.set('pageStack', pageStack)
 
-        let groupId = Groups.insert(group)
         FlowRouter.go('group', {id: groupId})
     }
 })

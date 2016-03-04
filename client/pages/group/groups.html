@@ -56,7 +56,8 @@
         }
 
         .empty-container {
-            margin-top: 50px;
+            margin-top: 25px;
+            margin-bottom: 25px;
             text-align: center;
             padding: 0 20vw 0 20vw;
         }
@@ -67,45 +68,124 @@
         .empty-container .subtext {
             font-size: 14px;
         }
+
+        .groups-container {
+            height: calc(100vh - 60px - 46px - 46px - 40px - 100px);
+            width: 100%;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+        .no-notifications .groups-container {
+            height: calc(100vh - 60px - 46px - 46px - 40px - 70px);
+        }
+        .notifications-container {
+            height: 100px;
+            width: 100%;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+        .no-notifications .notifications-container {
+            height: 70px;
+        }
+        .message-content {
+            padding-right: 80px;
+        }
+        .list-message {
+            position: relative;
+        }
+        .call-to-action div {
+            height: 25px;
+            width: 70px;
+            line-height: 25px;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .call-to-action .accept-btn {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            background: greenyellow;
+        }
+        .call-to-action .reject-btn {
+            position: absolute;
+            top: 32px;
+            right: 10px;
+            background: #d5ceca;
+        }
     </style>
 
     <div class="page-content">
-        <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
+        <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}} {{#unless messages.count}}no-notifications{{/unless}}">
+            <div class="grey-header">
+                <h2 class="grey-heading-title">Notifications</h2>
+            </div>
+            <div class="notifications-container">
+                <ul class="list list-messages">
+                    {{#each messages}}
+                        {{#if equals type 'GROUP_INVITE'}}
+                        <li class="list-message group-invite">
+                            <a class="w-clearfix w-inline-block">
+                                <div class="w-clearfix column-left">
+                                    <div class="image-message"><img src="{{getAvatar from}}"></div>
+                                </div>
+                                <div class="column-right">
+                                    <div class="message-content">
+                                        {{getFirstNameFromId from}} has invited you to share a gift for {{data.receiverName}}'s {{data.eventName}}
+                                    </div>
+                                    <div class="call-to-action">
+                                        <div class="accept-btn">Accept</div>
+                                        <div class="reject-btn">Reject</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {{/if}}
+                    {{else}}
+                        <div class="empty-container">
+                            <div class="subtext">No notifications</div>
+                        </div>
+                    {{/each}}
+                </ul>
+            </div>
+
             <div class="grey-header">
                 <h2 class="grey-heading-title">My Active Groups</h2>
             </div>
-            <ul class="list list-messages">
-                {{#each groups}}
-                    <li class="list-message">
-                        <a class="w-clearfix w-inline-block">
-                            <div class="w-clearfix column-left">
-                                <div class="image-message"><img src="{{getAvatar receiver}}"></div>
-                            </div>
-                            <div class="column-right">
-                                <div class="message-title">
-                                    {{getFirstNameFromId receiver}}'s {{eventName}}
+            <div class="groups-container">
+                <ul class="list list-messages">
+                    {{#each groups}}
+                        <li class="list-message">
+                            <a class="w-clearfix w-inline-block">
+                                <div class="w-clearfix column-left">
+                                    <div class="image-message"><img src="{{getAvatar receiver}}"></div>
                                 </div>
-                                <div class="message-text">
-                                    <img class="members-circle" src="{{getAvatar createdBy}}">
-                                    {{#each members}}
-                                        <img class="members-circle" src="{{getAvatar this}}">
-                                    {{/each}}
-                                    <div class="member-count">{{addOne members.length}} members</div>
+                                <div class="column-right">
+                                    <div class="message-title">
+                                        {{getFirstNameFromId receiver}}'s {{eventName}}
+                                    </div>
+                                    <div class="message-text">
+                                        <img class="members-circle" src="{{getAvatar createdBy}}">
+                                        {{#each members}}
+                                            <img class="members-circle" src="{{getAvatar this}}">
+                                        {{/each}}
+                                        <div class="member-count">{{addOne members.length}} members</div>
+                                    </div>
+                                    <div class="days-container">
+                                        <div class="days">{{daysLeft eventDate}}</div>
+                                        <div class="subtext">DAYS LEFT</div>
+                                    </div>
                                 </div>
-                                <div class="days-container">
-                                    <div class="days">{{daysLeft eventDate}}</div>
-                                    <div class="subtext">DAYS LEFT</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                {{else}}
-                    <div class="empty-container">
-                        <img src="/images/dorodoro.png">
-                        <div class="subtext">Want to share a gift for someone with a group of friends? Create a group now!</div>
-                    </div>
-                {{/each}}
-            </ul>
+                            </a>
+                        </li>
+                    {{else}}
+                        <div class="empty-container">
+                            <img src="/images/dorodoro.png">
+                            <div class="subtext">Want to share a gift for someone with a group of friends? Create a group now!</div>
+                        </div>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
         <a class="footer-btn animated fadeInUp">Create Group</a>
     </div>
