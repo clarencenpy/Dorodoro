@@ -59,20 +59,33 @@ Template.addMembers.events({
     },
     'click #createGroup-btn'(event, template) {
         let group = {}
+        let selectedUsers = template.selectedUsers.get()
         group.eventName = template.$('#name').val()
         group.eventDate = template.$('#date').val()
-        group.pendingMembers = template.selectedUsers.get()
+        group.pendingMembers = []
+        group.members = []
+        _.each(selectedUsers, function (userId) {
+            let user = Meteor.users.findOne(userId)
+            if (user.services.facebook) {
+                //real user, send invite
+                group.pendingMembers.push(userId)
+            } else {
+                //fake user, auto accept and dont send notifications
+                group.members.push(userId)
+            }
+        })
         group.createdBy = Meteor.userId()
         group.receiver = template.group.receiver
         group.date = new Date()
 
         let groupId = Groups.insert(group)
-
+        console.log(group.pendingMembers)
         //send a message to all members
-        _.each(template.selectedUsers.get(), function (member) {
+        _.each(group.pendingMembers, function (userId) {
+
             let message = {
                 from: Meteor.userId(),
-                to: member,
+                to: userId,
                 date: new Date(),
                 type: 'GROUP_INVITE',
                 data: {
