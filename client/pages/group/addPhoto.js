@@ -38,6 +38,12 @@ Template.addPhoto.events({
             votes: []
         }}})
 
+        //create a chat!
+        Chats.insert({
+            groupId: groupId,
+            productId: pid
+        })
+
         Session.set('showPhoto', false)
     }
 })
