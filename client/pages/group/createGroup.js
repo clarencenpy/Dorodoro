@@ -21,7 +21,7 @@ Template.createGroup.helpers({
         if (searchFilter.length > 0) queryParams['profile.name'] = {$regex: searchFilter, $options: 'i'}
         return Meteor.users.find(queryParams, {
             sort: {'profile.name': 1},
-            fields: {'profile.name': 1}
+            fields: {'profile.name': 1, 'profile.avatar': 1}
         })
     },
     receiver() {
