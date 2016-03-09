@@ -155,21 +155,32 @@ Template.store.helpers({
     products() {
         let queryParams = {}
         let sq = Session.get('searchQuery')
-        let sortby = sq.sort.sortby
-        if (sq.title.length > 0) queryParams.title = {$regex: sq.title, $options: 'i'}
-        if (sq.categories.length > 0) queryParams.category = {$in: sq.categories}
-        queryParams.price = {$lt: sq.to, $gt: sq.from}
-        queryParams.isUserSubmitted = {$in: [null, undefined, false]}
+        let sortBy = sq.sort.sortby
 
-        if (sortby === 'likes') {
-            return Products.find(queryParams, {sort: {'likes': sq.sort.by}})
+        let products = Products.find({isUserSubmitted: {$in: [null, undefined, false]}}).fetch()
+        products = _.map(products, function (product) {
+            if (sq.title.length > 0 && product.title.toUpperCase().search(sq.title.toUpperCase()) < 0) product.hide = true
+            if (product.price < sq.from || product.price > sq.to) product.hide = true
+            let inAllCategories = true
+            _.each(sq.categories, function (cat) {
+                if (_.indexOf(product.category, cat) === -1) inAllCategories = false
+            })
+            if (!inAllCategories) product.hide = true
+            return product
+        })
+
+        if (sortBy === 'likes') {
+            products = _.sortBy(products, 'likes')
+            if (sq.sort.by < 0) products.reverse()
         }
-        if(sortby === 'price'){
-            return Products.find(queryParams, {sort: { 'price': sq.sort.by }})
+        if (sortBy === 'price') {
+            products = _.sortBy(products, 'price')
+            if (sq.sort.by < 0) products.reverse()
         }
         /*if(sortby === 'rating'){
             return Products.find(queryParams, {sort: { $avg{}: sq.sort.by }})
         }*/
+        return products
     },
 
     //single selection mode

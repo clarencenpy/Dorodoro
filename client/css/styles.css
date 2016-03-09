@@ -9,6 +9,10 @@
 5. Extra
 -------------------------------------------------------------------*/
 
+.hide {
+  display: none;
+}
+
 .footer-btn {
   position: fixed;
   padding: 10px;

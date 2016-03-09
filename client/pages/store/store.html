@@ -209,7 +209,7 @@
 
             <div id="grid" class="container {{#if isSelecting}} is-selecting {{/if}}">
                 {{#each products}}
-                    <div class="group-block">
+                    <div class="group-block {{#if hide}} hide {{/if}}">
                         <a class="w-inline-block">
                             <div class="ui image grid__item" style="position: relative" data-id="{{_id}}">
                                 <img class="square-crop" src="{{image}}">
