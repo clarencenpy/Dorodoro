@@ -1,0 +1,211 @@
+<template name="storeB">
+    <style>
+
+        #grid {
+            padding: 10px 5px 0px 5px;
+        }
+
+        img.square-crop {
+            object-fit: cover;
+            object-position: center; /* Center the image within the element */
+            width: calc((100vw - 30px) / 2);
+            height: 164px !important;
+        }
+
+        .drag-handle {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: white;
+            line-height: 40px;
+            font-size: 20px;
+            height: 40px;
+            width: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border-top-left-radius: 20px;
+        }
+
+        .product-subtitle .likes {
+            position: absolute;
+            bottom: 13px;
+            left: 15px;
+            font-size: 14px;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+
+        .product-subtitle .likes i {
+            font-size: 20px;
+        }
+
+        .product-subtitle .rateit {
+            position: absolute;
+            bottom: 13px;
+            right: 15px;
+        }
+
+        #custom-ribbon {
+            width: 100px !important;
+            border-color: #ff274a;
+            background-color: #fd4c58;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        /*store products*/
+        .container {
+            margin-top: 38px;
+            height: calc(100vh - 60px - 38px);
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            background-color: rgb(44, 44, 44);
+        }
+
+        .container.is-selecting {
+            height: calc(100vh - 60px - 120px);
+        }
+
+        #search-bar {
+            position: fixed;
+            top: 60px;
+            z-index: 1;
+            width: 100%;
+        }
+
+        #search-bar .search-input {
+            margin-bottom: 0;
+        }
+
+        #search-btn, #filter-btn {
+            color: #848484
+        }
+
+        #filter-btn {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+            background: #e9e9e9;
+        }
+
+        #search-btn {
+            position: absolute;
+            top: 0px;
+            right: 38px;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            line-height: 38px;
+            text-align: center;
+        }
+
+        .drop-area-header {
+            color: white;
+            padding: 10px 50px 0 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+    </style>
+
+    <div class="page-content">
+        <div class="body animated fadeIn">
+            <div id="drop-area" class="drop-area">
+                <div>
+                    <div class="drop-area-header">Drag and drop to suggest gifts to your groups <i
+                            class="icons ion-arrow-down-c"></i></div>
+                    {{#each groups}}
+                        <div class="drop-area__item" data-id="{{_id}}">
+                            <div class="drop-area__label">{{getFirstNameFromId receiver}}'s {{eventName}}</div>
+                        </div>
+                    {{/each}}
+                    <div class="drop-area__spacer"></div>
+                </div>
+            </div>
+            <div class="drop-overlay"></div>
+
+            <div id="search-bar" class="drop-shadow">
+                <div class="row-input-list search">
+                    <div class="block-input-combined">
+                        <input id="search-input" class="w-input input-form search-input" type="text"
+                               placeholder="Search">
+                        <a id="search-btn">
+                            <div class="icon ion-search"></div>
+                        </a>
+                        <a id="filter-btn" class="search-filter">
+                            <div class="icon ion-funnel"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="grid" class="container {{#if isSelecting}} is-selecting {{/if}}">
+                {{#each products}}
+                    <div class="group-block {{#if hide}} hide {{/if}}">
+                        <a class="w-inline-block">
+                            <div class="ui image grid__item" style="position: relative" data-id="{{_id}}">
+                                <img class="square-crop" src="{{image}}">
+                                <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
+                                <div class="drag-handle"><i class="fa fa-hand-paper-o"></i></div>
+                            </div>
+                            <div class="group-title">
+                                <div class="title-text">{{title}}</div>
+                                <div class="product-subtitle">
+                                    <span class="likes"><i class="icon ion-ios-heart custom-icon"></i> {{likes}}</span>
+                                    <span class="rateit"
+                                          data-rateit-value={{productRating rating}} data-rateit-ispreset="true"
+                                          data-rateit-readonly="true"></span>
+                                </div>
+                            </div>
+
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        {{#if selectedProduct}}
+            {{>productModal product=selectedProduct}}
+        {{/if}}
+
+        {{#if showFilter}}
+            {{>searchFilter}}
+        {{/if}}
+
+        {{#if isSelecting}}
+            <div class="selection-container animated fadeInUp drop-shadow-upwards">
+                <div class="selection-label">Suggest Gifts for {{getFirstName receiverName}}</div>
+                <div id="selection-droparea">
+                    {{#each selection}}
+                        <img class="selection-product-icon animated fadeIn" src="{{image}}">
+                    {{else}}
+                        <div class="droparea-placeholder">Drag Gifts Here!</div>
+                    {{/each}}
+                </div>
+                <div class="selection-done-btn">Done</div>
+            </div>
+        {{/if}}
+
+
+    </div>
+
+    <div id="modal-onboarding" class="dialog dialog--open">
+        <div class="dialog__overlay"></div>
+        <div class="dialog__content">
+            <div class="contents">
+                <h2><strong>Howdy</strong>, I'm a dialog box</h2>
+            </div>
+            <div class="btn-close">Got it</div>
+        </div>
+
+    </div>
+
+</template>

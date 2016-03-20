@@ -9,6 +9,10 @@
 5. Extra
 -------------------------------------------------------------------*/
 
+input:focus, textarea:focus {
+  outline: none;
+}
+
 .hide {
   display: none;
 }
