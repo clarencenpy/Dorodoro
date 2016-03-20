@@ -34,6 +34,7 @@
             width: 30px;
             height: 30px;
             text-align: center;
+            font-size: 20px;
         }
         .container {
             height: calc(100vh - 60px - 70px - 40px);
@@ -159,7 +160,7 @@
             <div class="ch-item-container small">
                 <img class="ch-item drop-shadow" src="{{receiver.profile.avatar}}">
             </div>
-            <div class="settings-btn"><i class="fa fa-cog fa-lg"></i></div>
+            <div class="settings-btn"><i class="icon ion-chevron-right"></i></div>
         </div>
 
         <div class="body animated {{#if goingBack}}slideInLeft{{else}}fadeIn{{/if}}">
@@ -189,7 +190,7 @@
                         {{else}}
                             <div class="empty-container">
                                 <img src="/images/dorodoro.png">
-                                <div class="subtext">Welcome! Suggest ideas to the group for discussion here! You can either browse the Gift Store or upload your own photos.</div>
+                                <div class="subtext">Welcome! Suggest ideas to the group for discussion here! You can either add it from the Gift Store or upload your own photos.</div>
                             </div>
                         {{/each}}
                     </div>

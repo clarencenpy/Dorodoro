@@ -38,9 +38,17 @@ Template.groupSettings.events({
             Session.set('showSettings', false)
         }, 1000)
     },
-    'click .endVoting-btn'() {
+    'click .endVoting-btn'(event, template) {
         let groupId = FlowRouter.getParam('id')
         Groups.update(groupId, {$set: {votingClosed: true}})
+        template.$('.modal-container').addClass('slideOutRight')
+        Meteor.setTimeout(function () {
+            Session.set('showSettings', false)
+        }, 1000)
+    },
+    'click .restartVoting-btn'() {
+        let groupId = FlowRouter.getParam('id')
+        Groups.update(groupId, {$set: {votingClosed: false}})
     }
 })
 

@@ -71,7 +71,7 @@ Template.group.events({
         let groupId = FlowRouter.getParam('id')
         Meteor.call('vote', pid, groupId, Meteor.userId())
     },
-    'click .settings-btn'() {
+    'click .group-header'() {
         Session.set('showSettings', true)
     },
     'click #volunteer-btn'() {

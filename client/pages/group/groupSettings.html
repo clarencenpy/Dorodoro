@@ -30,19 +30,38 @@
             background-color: darkgreen;
             color: white;
             padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+        .voting-status.admin {
+            width: calc(100vw - 40px - 80px - 3px);
+            display: inline-block;
+
+        }
+        .voting-status.open {
+            background-color: mediumseagreen;
         }
         .voting-status.closed {
             background-color: darkred;
         }
         .voting-status .title {
-            font-size: 16px;
+            font-size: 14px;
         }
         .voting-status .subtitle {
             font-size: 12px;
             line-height: 12px;
         }
-        .endVoting-btn {
-            background: #f36e00;
+        .endVoting-btn, .restartVoting-btn {
+            display: inline-block;
+            width: 80px;
+            background: #fd4c58;
+            color: white;
+            float: right;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
         .members-header {
@@ -81,21 +100,31 @@
             </a>
         </div>
         <div style="padding: 20px">
+
             {{#if votingClosed}}
-                <div class="voting-status closed">
-                    <div class="title">Voting has Closed</div>
-                    <div class="subtitle">Check out the winning gift!</div>
-                </div>
+                {{#if isAdmin}}
+                    <div class="voting-status closed admin">
+                        <div class="title">Voting has closed</div>
+                    </div>
+                    <div class="restartVoting-btn">
+                        Restart
+                    </div>
+                {{else}}
+                    <div class="voting-status closed">
+                        <div class="title">Voting has closed</div>
+                    </div>
+                {{/if}}
             {{else}}
                 {{#if isAdmin}}
-                    <div class="voting-status endVoting-btn">
-                        <div class="title">Click to End Brainstorming</div>
-                        <div class="subtitle">And decide on the winning gift</div>
+                    <div class="voting-status admin">
+                        <div class="title">Brainstorming is in progress</div>
+                    </div>
+                    <div class="endVoting-btn">
+                        End
                     </div>
                 {{else}}
                     <div class="voting-status">
                         <div class="title">Brainstorming is In Progress</div>
-                        <div class="subtitle">Contribute ideas and vote!</div>
                     </div>
                 {{/if}}
             {{/if}}
