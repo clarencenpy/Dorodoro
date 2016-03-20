@@ -38,6 +38,7 @@ Template.searchFilter.onRendered(function () {
         max: template.maxPrice,
         from: Session.get("searchQuery"),
         to: Session.get("searchQuery"),
+        step: 100,
         type: 'double',
         prefix: "$",
 
