@@ -49,6 +49,11 @@ Template.group.helpers({
         let groupId = FlowRouter.getParam('id')
         let group = Groups.findOne(groupId)
         return group.boughtBy === Meteor.userId()
+    },
+
+    //onboarding prompts
+    onboarded() {
+        return Session.get('onboarded.group')
     }
 })
 
@@ -132,6 +137,11 @@ Template.group.events({
                 }
             });
         });
+    },
+
+    'click .dialog .btn-close'(event) {
+        $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
+        Session.set('onboarded.group', true)
     }
 })
 

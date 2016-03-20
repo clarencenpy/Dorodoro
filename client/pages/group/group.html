@@ -107,14 +107,25 @@
             border-bottom-right-radius: 12px;
         }
 
-
+        #suggest-btn {
+            position: fixed;
+            bottom: 5px;
+            left: 5px;
+            z-index: 2;
+            height: 30px;
+            width: calc(100vw - 100px - 20px);
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 10px;
+        }
         .camera-btn {
             position: fixed;
             bottom: 5px;
             right: 5px;
             z-index: 2;
             height: 30px;
-            width: 60px;
+            width: 100px;
             background: #d5424b;
             color: white;
             line-height: 30px;
@@ -135,7 +146,7 @@
         }
 
         .empty-container {
-            margin-top: 25px;
+            margin-top: 20vw;
             margin-bottom: 25px;
             text-align: center;
             padding: 0 20vw 0 20vw;
@@ -146,6 +157,12 @@
         }
         .empty-container .subtext {
             font-size: 14px;
+        }
+        .arrow {
+            position: fixed;
+            bottom: 80px;
+            left: 40vw;
+            transform: rotate(120deg);
         }
 
     </style>
@@ -190,8 +207,9 @@
                         {{else}}
                             <div class="empty-container">
                                 <img src="/images/dorodoro.png">
-                                <div class="subtext">Welcome! Suggest ideas to the group for discussion here! You can either add it from the Gift Store or upload your own photos.</div>
+                                <div class="subtext">No one has suggested a gift for {{getFirstName receiver.profile.name}} yet. Be the first!</div>
                             </div>
+                            <img class="arrow" src="/images/arrow.png">
                         {{/each}}
                     </div>
                 </div>
@@ -209,7 +227,10 @@
                 <div id="volunteer-btn" class="footer-btn">Volunteer To Buy</div>
             {{/if}}
         {{else}}
-            <div id="suggest-btn" class="footer-btn animated fadeInUp">Suggest Gifts</div>
+            <div class="footer-btn animated fadeInUp"></div>
+            <div id="suggest-btn" class="animated fadeInUp">
+                Suggest from Gift Store
+            </div>
             <div class="camera-btn animated fadeInUp">
                 <span><i class="fa fa-camera fa-lg"></i></span>
                 <input id="camera-input" type="file" accept="image/*;capture=camera">
@@ -226,4 +247,16 @@
             {{>addPhoto}}
         {{/if}}
     </div>
+
+    {{#unless onboarded}}
+        <div class="dialog dialog--open">
+            <div class="dialog__overlay"></div>
+            <div class="dialog__content">
+                <div class="contents">
+                    <div><strong>Congratulations!</strong><br>You have joined your first group! Suggest gifts for {{getFirstName receiver.profile.name}} from the gift store OR snap a photo!</div>
+                </div>
+                <div class="btn-close">Got it</div>
+            </div>
+        </div>
+    {{/unless}}
 </template>
