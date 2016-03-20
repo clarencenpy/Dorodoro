@@ -15,10 +15,21 @@ Template.addMembers.onRendered(function() {
 })
 
 Template.addMembers.helpers({
-    users() {
+    selectedUsers() {
         let searchFilter = Template.instance().searchFilter.get()
+        let queryParams = {_id: {$in: Template.instance().selectedUsers.get()}}
+        if (searchFilter.length > 0) queryParams['profile.name'] = {$regex: searchFilter, $options: 'i'}
+        return Meteor.users.find(queryParams, {
+            sort: {'profile.name': 1},
+            fields: {'profile.name': 1}
+        })
+    },
+    otherUsers() {
+        let searchFilter = Template.instance().searchFilter.get()
+        let excludedUsers = [Meteor.userId(), Template.instance().group.receiver]
+        excludedUsers = excludedUsers.concat(Template.instance().selectedUsers.get())
         let queryParams = {
-            _id: {$nin: [Meteor.userId(), Template.instance().group.receiver]}
+            _id: {$nin: excludedUsers}
         }
         if (searchFilter.length > 0) queryParams['profile.name'] = {$regex: searchFilter, $options: 'i'}
         return Meteor.users.find(queryParams, {
@@ -52,6 +63,8 @@ Template.addMembers.events({
             selectedUsers.push(id)
         }
         template.selectedUsers.set(selectedUsers)
+        $(template.$('#search-input')[0]).val('')
+        template.searchFilter.set('')
     },
     'keyup #search-input'(event, template) {
         let name = $(event.target).val()

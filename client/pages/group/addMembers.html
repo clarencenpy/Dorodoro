@@ -9,7 +9,7 @@
             padding-bottom: 20px;
         }
         .contact-list {
-            overflow-y: auto;
+            overflow-y: scroll;
             height: calc(100vh - 60px - 130px - 40px - 40px - 38px);
             -webkit-overflow-scrolling: touch;
         }
@@ -68,7 +68,7 @@
             <div id="search-bar" class="drop-shadow">
                 <div class="row-input-list search">
                     <div class="block-input-combined">
-                        <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search">
+                        <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search by typing a name here">
                         <a id="search-btn">
                             <div class="icon ion-search"></div>
                         </a>
@@ -77,8 +77,18 @@
             </div>
 
             <ul class="contact-list list">
-                {{#each users}}
-                    <li class="list-item {{#if isSelected _id}} highlighted {{else}} grey {{/if}}">
+                {{#each selectedUsers}}
+                    <li class="list-item highlighted">
+                        <a class="w-clearfix w-inline-block">
+                            <div class="icon-list">
+                                <div class="icon ion-ios-checkmark-empty"></div>
+                            </div>
+                            <div class="title-list">{{profile.name}}</div>
+                        </a>
+                    </li>
+                {{/each}}
+                {{#each otherUsers}}
+                    <li class="list-item grey">
                         <a class="w-clearfix w-inline-block">
                             <div class="icon-list">
                                 <div class="icon ion-ios-checkmark-empty"></div>
