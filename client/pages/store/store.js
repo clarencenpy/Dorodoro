@@ -261,7 +261,9 @@ Template.store.events({
     },
     'click .dialog .btn-close'(event) {
         $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
-        Session.set('onboarded.giftStore', true)
+        Meteor.setTimeout(function() {
+            Session.set('onboarded.giftStore', true)
+        }, 1000)
     }
 
 })

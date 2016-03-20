@@ -141,7 +141,9 @@ Template.group.events({
 
     'click .dialog .btn-close'(event) {
         $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
-        Session.set('onboarded.group', true)
+        Meteor.setTimeout(function() {
+            Session.set('onboarded.group', true)
+        }, 1000)
     }
 })
 
