@@ -1,71 +1,6 @@
 <template name="store">
     <style>
 
-        /*Gift Selection Mode*/
-        .selection-container {
-            position: relative;
-            height: 120px;
-            width: 100%;
-            background-color: #fd4c58;
-            position: fixed;
-            padding: 10px;
-            bottom: 0;
-            z-index: 1;
-            color: white;
-            font-size: 14px;
-            font-weight: 400;
-        }
-
-        .selection-label {
-            display: inline;
-            padding-right: 60px;
-            line-height: 30px;
-            font-size: 16px;
-        }
-
-        .selection-done-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 60px;
-            line-height: 30px;
-            height: 30px;
-            border-radius: 4px;
-            background: #d9424d;
-            text-align: center;
-        }
-
-        #selection-droparea {
-            margin-top: 5px;
-            width: 100%;
-            height: 65px;
-            border-radius: 5px;
-            border: 2px dashed antiquewhite;
-            overflow-x: scroll;
-            white-space: nowrap;
-        }
-
-        .droparea-placeholder {
-            padding-top: 20px;
-            font-size: 14px;
-            text-align: center;
-            color: antiquewhite;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .selection-product-icon {
-            margin: 5px 0 5px 5px;
-            display: inline;
-            border-radius: 50%;
-            height: 50px;
-            width: 50px;
-            object-fit: cover;
-            object-position: 50%;
-        }
-
-        /*-------------------*/
-
         #grid {
             padding: 10px 5px 0px 5px;
         }
@@ -124,10 +59,6 @@
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
             background-color: rgb(44,44,44);
-        }
-
-        .container.is-selecting {
-            height: calc(100vh - 60px - 120px);
         }
 
         #search-bar {
@@ -207,7 +138,7 @@
                 </div>
             </div>
 
-            <div id="grid" class="container {{#if isSelecting}} is-selecting {{/if}}">
+            <div id="grid" class="container">
                 {{#each products}}
                     <div class="group-block {{#if hide}} hide {{/if}}">
                         <a class="w-inline-block">
@@ -240,19 +171,19 @@
             {{>searchFilter}}
         {{/if}}
 
-        {{#if isSelecting}}
-        <div class="selection-container animated fadeInUp drop-shadow-upwards">
-            <div class="selection-label">Suggest Gifts for {{getFirstName receiverName}}</div>
-            <div id="selection-droparea">
-                {{#each selection}}
-                    <img class="selection-product-icon animated fadeIn" src="{{image}}">
-                {{else}}
-                    <div class="droparea-placeholder">Drag Gifts Here!</div>
-                {{/each}}
-            </div>
-            <div class="selection-done-btn">Done</div>
-        </div>
-        {{/if}}
-
     </div>
+
+    {{#unless onboarded}}
+        <div class="dialog dialog--open">
+            <div class="dialog__overlay"></div>
+            <div class="dialog__content">
+                <div class="contents">
+                    <div><strong>Suggest a gift</strong><br> by dragging it into the pockets of the side drawer</div>
+                    <div style="margin-top: 10px; font-size: 25px;"><i class="fa fa-hand-paper-o"></i></div>
+                </div>
+                <div class="btn-close">Got it</div>
+            </div>
+        </div>
+    {{/unless}}
+
 </template>

@@ -54,10 +54,9 @@ Template.group.helpers({
 
 Template.group.events({
     'click #suggest-btn'() {
-        Session.set('giftSelection', {
-            group: Groups.findOne(FlowRouter.getParam('id')),
-            selection: []
-        })
+        let pageStack = Session.get('pageStack') || []
+        pageStack.push(FlowRouter.current().path)
+        Session.set('pageStack', pageStack)
         FlowRouter.go('store')
     },
     'click .comment-btn, click .image'() {

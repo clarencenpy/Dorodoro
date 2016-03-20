@@ -183,24 +183,6 @@ Template.store.helpers({
         return products
     },
 
-    //single selection mode
-    isSelecting() {
-        return !!Session.get('giftSelection')
-    },
-    receiverName() {
-        let gs = Session.get('giftSelection')
-        if (gs) {
-            return Meteor.users.findOne(gs.group.receiver).profile.name
-        }
-    },
-    selection() {
-        let gs = Session.get('giftSelection')
-        if (gs) {
-            return gs.selection
-        }
-    },
-
-
     groups() {
         return Groups.find({$or: [{members: Meteor.userId()}, {createdBy: Meteor.userId()}]}, {sort: {date: -1}})
     },
@@ -214,6 +196,17 @@ Template.store.helpers({
     },
     showFilter(){
         return Session.get('showFilter')
+    },
+    
+    
+    //show a prompt if they came from the group page
+    currentlySuggestingFor() {
+        return Session.get('currentlySuggestingFor')
+    },
+    
+    //onboarding prompts
+    onboarded() {
+        return Session.get('onboarded.giftStore')
     }
 })
 
@@ -265,6 +258,10 @@ Template.store.events({
         let sq = Session.get('searchQuery') || {}
         sq.title = title
         Session.set('searchQuery', sq)
+    },
+    'click .dialog .btn-close'(event) {
+        $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
+        Session.set('onboarded.giftStore', true)
     }
 
 })
