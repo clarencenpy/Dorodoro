@@ -63,10 +63,6 @@
             background-color: rgb(44, 44, 44);
         }
 
-        .container.is-selecting {
-            height: calc(100vh - 60px - 120px);
-        }
-
         #search-bar {
             position: fixed;
             top: 60px;
@@ -107,36 +103,36 @@
             text-align: center;
         }
 
-        .drop-area-header {
-            color: white;
-            padding: 10px 50px 0 10px;
+        .dialog__content .contents {
+            padding: 25px 25px;
+        }
+        .group-btn {
+            height: 50px;
+            line-height: 50px;
             text-align: center;
-            font-size: 14px;
+            font-weight: 700;
+            color: black;
+            background: lightgrey;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .groups-container {
+            height: 300px;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
         }
 
     </style>
 
     <div class="page-content">
         <div class="body animated fadeIn">
-            <div id="drop-area" class="drop-area">
-                <div>
-                    <div class="drop-area-header">Drag and drop to suggest gifts to your groups <i
-                            class="icons ion-arrow-down-c"></i></div>
-                    {{#each groups}}
-                        <div class="drop-area__item" data-id="{{_id}}">
-                            <div class="drop-area__label">{{getFirstNameFromId receiver}}'s {{eventName}}</div>
-                        </div>
-                    {{/each}}
-                    <div class="drop-area__spacer"></div>
-                </div>
-            </div>
-            <div class="drop-overlay"></div>
 
             <div id="search-bar" class="drop-shadow">
                 <div class="row-input-list search">
                     <div class="block-input-combined">
-                        <input id="search-input" class="w-input input-form search-input" type="text"
-                               placeholder="Search">
+                        <input id="search-input" class="w-input input-form search-input" type="text" placeholder="Search">
                         <a id="search-btn">
                             <div class="icon ion-search"></div>
                         </a>
@@ -147,14 +143,14 @@
                 </div>
             </div>
 
-            <div id="grid" class="container {{#if isSelecting}} is-selecting {{/if}}">
+            <div id="grid" class="container">
                 {{#each products}}
                     <div class="group-block {{#if hide}} hide {{/if}}">
                         <a class="w-inline-block">
                             <div class="ui image grid__item" style="position: relative" data-id="{{_id}}">
                                 <img class="square-crop" src="{{image}}">
                                 <a id="custom-ribbon" class="ui small left ribbon label">${{price}}</a>
-                                <div class="drag-handle"><i class="fa fa-hand-paper-o"></i></div>
+                                <div class="drag-handle"><i class="fa fa-gift"></i></div>
                             </div>
                             <div class="group-title">
                                 <div class="title-text">{{title}}</div>
@@ -180,32 +176,41 @@
             {{>searchFilter}}
         {{/if}}
 
-        {{#if isSelecting}}
-            <div class="selection-container animated fadeInUp drop-shadow-upwards">
-                <div class="selection-label">Suggest Gifts for {{getFirstName receiverName}}</div>
-                <div id="selection-droparea">
-                    {{#each selection}}
-                        <img class="selection-product-icon animated fadeIn" src="{{image}}">
-                    {{else}}
-                        <div class="droparea-placeholder">Drag Gifts Here!</div>
-                    {{/each}}
+
+    </div>
+
+    {{#if currentGift}}
+        <div class="group-dialog dialog dialog--open">
+            <div class="dialog__overlay"></div>
+            <div class="dialog__content">
+                <div class="contents">
+                    <div style="margin-bottom: 20px"><strong>Select Group</strong></div>
+                    <div class="groups-container">
+                        {{#each groups}}
+                            <div class="group-btn">
+                                {{getFirstNameFromId receiver}}'s {{eventName}}
+                            </div>
+                        {{else}}
+                            <div>No groups yet!<br> <a style="color: dodgerblue" href="{{pathFor 'createGroup'}}">Create one now</a></div>
+                        {{/each}}
+                    </div>
                 </div>
-                <div class="selection-done-btn">Done</div>
+                <div class="btn-close">Back</div>
             </div>
-        {{/if}}
-
-
-    </div>
-
-    <div id="modal-onboarding" class="dialog dialog--open">
-        <div class="dialog__overlay"></div>
-        <div class="dialog__content">
-            <div class="contents">
-                <h2><strong>Howdy</strong>, I'm a dialog box</h2>
-            </div>
-            <div class="btn-close">Got it</div>
         </div>
+    {{/if}}
 
-    </div>
+    {{#unless onboarded}}
+        <div class="dialog dialog--open">
+            <div class="dialog__overlay"></div>
+            <div class="dialog__content">
+                <div class="contents">
+                    <div><strong>Suggest a gift</strong><br> by clicking on the gift icon and choosing who it is for</div>
+                    <div style="margin-top: 10px; font-size: 25px;"><i class="fa fa-gift"></i></div>
+                </div>
+                <div class="btn-close">Got it</div>
+            </div>
+        </div>
+    {{/unless}}
 
 </template>

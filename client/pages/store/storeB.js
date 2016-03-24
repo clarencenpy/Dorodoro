@@ -1,13 +1,6 @@
 Template.storeB.onCreated(function () {
     const template = this
 
-    //gift selection mode
-    //{
-    //    group:
-    //    selection: [products]
-    //}
-
-
     Session.set('searchQuery', {
         title: '',
         to: 5000,
@@ -82,6 +75,13 @@ Template.storeB.helpers({
     },
     showFilter(){
         return Session.get('showFilter')
+    },
+    currentGift() {
+        return Session.get('currentGift')
+    },
+    //onboarding prompts
+    onboarded() {
+        return Session.get('onboarded.giftStore')
     }
 })
 
@@ -101,6 +101,43 @@ Template.storeB.events({
     
     'click .dialog .btn-close'(event) {
         $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
+    },
+
+    'click .drag-handle'(event, template) {
+        event.stopPropagation()
+        Session.set('currentGift', this._id)
+        template.$('.group-dialog').removeClass("dialog--close").addClass('dialog--open')
+    },
+    'click .group-btn'(event) {
+        $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
+
+        let pid = Session.get('currentGift')
+        if (!pid) return
+        let groupId = this._id
+        let group = Groups.findOne(groupId)
+        let addedBefore = false
+        _.each(group.giftIdeas, function (idea) {
+            if (idea.productId === pid) addedBefore = true
+        })
+        if (!addedBefore) {
+            Groups.update(groupId, {
+                $push: {
+                    giftIdeas: {
+                        productId: pid,
+                        contributor: Meteor.userId(),
+                        date: new Date(),
+                        votes: []
+                    }
+                }
+            })
+
+            //create a chat!
+            Chats.insert({
+                groupId: groupId,
+                productId: pid
+            })
+        }
+        Session.set('currentGift', null)
     }
 
 })

@@ -106,6 +106,12 @@
             text-align: center;
             font-size: 14px;
         }
+        .drop-area-empty {
+            color: white;
+            padding: 10px 50px 0 10px;
+            text-align: center;
+            font-size: 14px;
+        }
 
     </style>
 
@@ -117,6 +123,10 @@
                     {{#each groups}}
                         <div class="drop-area__item" data-id="{{_id}}">
                             <div class="drop-area__label">{{getFirstNameFromId receiver}}'s {{eventName}}</div>
+                        </div>
+                    {{else}}
+                        <div class="drop-area-empty">
+                            No Groups Yet!
                         </div>
                     {{/each}}
                     <div class="drop-area__spacer"></div>

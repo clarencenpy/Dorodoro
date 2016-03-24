@@ -198,12 +198,6 @@ Template.store.helpers({
         return Session.get('showFilter')
     },
     
-    
-    //show a prompt if they came from the group page
-    currentlySuggestingFor() {
-        return Session.get('currentlySuggestingFor')
-    },
-    
     //onboarding prompts
     onboarded() {
         return Session.get('onboarded.giftStore')
