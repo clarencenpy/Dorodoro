@@ -109,7 +109,16 @@ Template.storeB.events({
         template.$('.group-dialog').removeClass("dialog--close").addClass('dialog--open')
     },
     'click .group-btn'(event) {
-        $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
+        $(event.target).addClass('tick-feedback')
+
+        Meteor.setTimeout(function() {
+            $(event.target).closest('.dialog').removeClass("dialog--open").addClass("dialog--close")
+        }, 1000)
+
+        Meteor.setTimeout(function () {
+            Session.set('currentGift', null)
+        }, 2000)
+
 
         let pid = Session.get('currentGift')
         if (!pid) return
@@ -137,7 +146,6 @@ Template.storeB.events({
                 productId: pid
             })
         }
-        Session.set('currentGift', null)
     }
 
 })
