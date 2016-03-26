@@ -58,6 +58,19 @@ Template.addPhoto.events({
             productId: pid
         })
 
+        let group = Groups.findOne(groupId)
+
+        Events.insert({
+            date: new Date(),
+            userId: Meteor.userId(),
+            name: 'ADD_PHOTO',
+            metadata: {
+                groupId: groupId,
+                receiver: Meteor.users.findOne(group.receiver).profile.name,
+                productName: product.title
+            }
+        })
+
         Session.set('showPhoto', false)
     },
     'click .dialog .btn-close'(event) {
@@ -99,6 +112,19 @@ Template.addPhoto.events({
         Chats.insert({
             groupId: groupId,
             productId: pid
+        })
+
+        let group = Groups.findOne(groupId)
+
+        Events.insert({
+            date: new Date(),
+            userId: Meteor.userId(),
+            name: 'ADD_PHOTO_FROM_NAV',
+            metadata: {
+                groupId: groupId,
+                receiver: Meteor.users.findOne(group.receiver).profile.name,
+                productName: product.title
+            }
         })
 
     }

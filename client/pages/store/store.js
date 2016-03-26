@@ -18,6 +18,12 @@ Template.store.onCreated(function () {
             by: -1
         }
     })
+
+    Events.insert({
+        date: new Date(),
+        userId: Meteor.userId(),
+        name: 'STORE'
+    })
 })
 
 Template.store.onRendered(function () {
@@ -78,6 +84,17 @@ Template.store.onRendered(function () {
                         Chats.insert({
                             groupId: groupId,
                             productId: pid
+                        })
+
+                        Events.insert({
+                            date: new Date(),
+                            userId: Meteor.userId(),
+                            name: 'GIFT_ADDED',
+                            metadata: {
+                                groupId: groupId,
+                                receiver: Meteor.users.findOne(group.receiver).profile.name,
+                                productName: Products.findOne(pid).title
+                            }
                         })
                     }
 

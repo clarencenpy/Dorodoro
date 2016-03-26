@@ -92,7 +92,6 @@ Template.addMembers.events({
         group.date = new Date()
 
         let groupId = Groups.insert(group)
-        console.log(group.pendingMembers)
         //send a message to all members
         _.each(group.pendingMembers, function (userId) {
 
@@ -116,6 +115,12 @@ Template.addMembers.events({
         let pageStack = []
         pageStack.push('/')
         Session.set('pageStack', pageStack)
+
+        Events.insert({
+            date: new Date(),
+            userId: Meteor.userId(),
+            name: 'GROUP_CREATED'
+        })
 
         FlowRouter.go('group', {id: groupId})
     }

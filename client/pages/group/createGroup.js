@@ -6,6 +6,12 @@ Template.createGroup.onCreated(function() {
     template.receiver = new ReactiveVar(Meteor.users.findOne(receiverId))
 
     template.searchFilter = new ReactiveVar('')
+
+    Events.insert({
+        date: new Date(),
+        userId: Meteor.userId(),
+        name: 'CREATE_GROUP'
+    })
 })
 
 Template.createGroup.onRendered(function() {

@@ -145,6 +145,17 @@ Template.storeB.events({
                 groupId: groupId,
                 productId: pid
             })
+
+            Events.insert({
+                date: new Date(),
+                userId: Meteor.userId(),
+                name: 'GIFT_ADDED',
+                metadata: {
+                    groupId: groupId,
+                    receiver: Meteor.users.findOne(group.receiver).profile.name,
+                    productName: Products.findOne(pid).title
+                }
+            })
         }
     }
 
