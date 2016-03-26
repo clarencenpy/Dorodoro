@@ -1,6 +1,22 @@
 <template name="navigation">
+    <style>
+        input#camera-input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            height: 100%;
+            width: 100%;
+        }
+    </style>
         <div class="w-nav navbar" data-collapse="all" data-animation="over-right" data-duration="400" data-contain="1" data-easing="ease-out-quint" data-no-scroll="1">
         <div class="w-container">
+            <div class="wrapper-mask" data-ix="menu-mask"></div>
+
             <nav class="w-nav-menu nav-menu bg-gradient" role="navigation">
                 <div class="nav-menu-header">
                     <img class="avatar" src="{{currentUser.profile.avatar}}">
@@ -25,6 +41,14 @@
                     </div>
                     <div class="nav-menu-titles">Create Group</div>
                 </a>
+                <a class="w-clearfix w-inline-block nav-menu-link" style="position: relative">
+                    <input id="camera-input" type="file" accept="image/*;capture=camera">
+
+                    <div class="icon-list-menu">
+                        <div class="icon ion-camera"></div>
+                    </div>
+                    <div class="nav-menu-titles">Take Photo</div>
+                </a>
                 <a id="logout-btn" class="w-clearfix w-inline-block nav-menu-link">
                     <div class="icon-list-menu">
                         <div class="icon ion-log-out"></div>
@@ -36,7 +60,6 @@
                 <div class="separator-bottom"></div>
                 <div class="separator-bottom"></div>
             </nav>
-            <div class="wrapper-mask" data-ix="menu-mask"></div>
             <div class="navbar-title">{{header}}</div>
             {{#if showBackButton}}
             <div class="navbar-back-button left" id="back-btn">
@@ -48,4 +71,10 @@
             </div>
         </div>
     </div>
+
+
+    {{#if showPhoto}}
+        {{>addPhoto}}
+    {{/if}}
+
 </template>

@@ -73,4 +73,78 @@
     </div>
 
     <div id="submit-btn" class="footer-btn animated fadeInUp" style="z-index: 6">Suggest this to Group</div>
+
+    <style>
+        .dialog__content .contents {
+            padding: 25px 25px;
+        }
+        .group-btn {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-weight: 700;
+            color: black;
+            background: lightgrey;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .groups-container {
+            height: 300px;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tick-feedback {
+            background: mediumseagreen;
+            transition: background 0.3s;
+        }
+        .tick-feedback.group-btn .label {
+            opacity: 0;
+            -webkit-transform: scale3d(0,0,1);
+            transform: scale3d(0,0,1);
+        }
+        .group-btn::after {
+            position: absolute;
+            z-index: 35;
+            color: white;
+            font-family: FontAwesome;
+            margin-left: -20px;
+            margin-top: -50px;
+            content: '\f00c';
+            font-size: 3em;
+            opacity: 0;
+            -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+            transition: opacity 0.3s, transform 0.3s;
+            -webkit-transform: scale3d(2,2,1);
+            transform: scale3d(2,2,1);
+        }
+        .tick-feedback.group-btn::after {
+            opacity: 1;
+            -webkit-transform: scale3d(1,1,1);
+            transform: scale3d(1,1,1);
+        }
+    </style>
+
+    {{#if showGroupsModal}}
+        <div class="group-dialog dialog dialog--open">
+            <div class="dialog__overlay"></div>
+            <div class="dialog__content">
+                <div class="contents">
+                    <div style="margin-bottom: 20px"><strong>Select Group</strong></div>
+                    <div class="groups-container">
+                        {{#each groups}}
+                            <div class="group-btn">
+                                <div class="label">{{getFirstNameFromId receiver}}'s {{eventName}}</div>
+                            </div>
+                        {{else}}
+                            <div>No groups yet!<br> <a style="color: dodgerblue" href="{{pathFor 'createGroup'}}">Create one now</a></div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="btn-close">Back</div>
+            </div>
+        </div>
+    {{/if}}
 </template>
