@@ -6,3 +6,14 @@ Your friend's birthday is just round the corner, and you are absolutely clueless
 * Get reminders when the date is approaching
 * Handle bill splitting for you
 * Facebook integration: simply add collaborators from your facebook contacts
+
+<img src="Home Page.png" align="middle" width="300" >
+<img src="Create Group.png" align="middle" width="300" >
+<img src="Add Members.png" align="middle" width="300" >
+<img src="Gift Suggestions.png" align="middle" width="300" >
+<img src="Store.png" align="middle" width="300" >
+<img src="Drag Drop.jpg" align="middle" width="300" >
+<img src="Vote.png" align="middle" width="300" >
+<img src="Chat.png" align="middle" width="300" >
+<img src="Winning Gift.png" align="middle" width="300" >
+<img src="Collect Money.png" align="middle" width="300" >
